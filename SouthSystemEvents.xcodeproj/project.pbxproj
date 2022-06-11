@@ -13,6 +13,8 @@
 		4CF2F03028553B1E00EBCB41 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F02F28553B1E00EBCB41 /* DataTests.swift */; };
 		4CF2F03928553B4500EBCB41 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0132855371500EBCB41 /* Domain.framework */; };
 		4CF2F03A28553B4500EBCB41 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0132855371500EBCB41 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CF2F03F2855419900EBCB41 /* HttpGetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F03E2855419900EBCB41 /* HttpGetClient.swift */; };
+		4CF2F041285541D900EBCB41 /* RemoteGetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		4CF2F02328553B1E00EBCB41 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F02A28553B1E00EBCB41 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F02F28553B1E00EBCB41 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		4CF2F03E2855419900EBCB41 /* HttpGetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGetClient.swift; sourceTree = "<group>"; };
+		4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEvents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		4CF2F02428553B1E00EBCB41 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4CF2F03E2855419900EBCB41 /* HttpGetClient.swift */,
+				4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 					};
 					4CF2F02228553B1E00EBCB41 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					4CF2F02928553B1E00EBCB41 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -290,6 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2F03F2855419900EBCB41 /* HttpGetClient.swift in Sources */,
+				4CF2F041285541D900EBCB41 /* RemoteGetEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +506,7 @@
 		4CF2F03328553B1E00EBCB41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -516,6 +526,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -526,6 +537,7 @@
 		4CF2F03428553B1E00EBCB41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -555,6 +567,7 @@
 		4CF2F03628553B1E00EBCB41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -570,6 +583,7 @@
 		4CF2F03728553B1E00EBCB41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

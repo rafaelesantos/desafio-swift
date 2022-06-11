@@ -6,24 +6,7 @@
 //
 
 import XCTest
-
-class RemoteGetEvents {
-    private let url: URL
-    private let httpGetClient: HttpGetClient
-
-    init(url: URL, httpGetClient: HttpGetClient) {
-        self.url = url
-        self.httpGetClient = httpGetClient
-    }
-
-    func getEvents() {
-        httpGetClient.get(url: url)
-    }
-}
-
-protocol HttpGetClient {
-    func get(url: URL)
-}
+import Data
 
 class RemoteGetEventsTests: XCTestCase {
     func testGetEventsShouldCallHttpClientWithCorrectUrl() {
