@@ -26,7 +26,7 @@ protocol HttpGetClient {
 }
 
 class RemoteGetEventsTests: XCTestCase {
-    func test() {
+    func testGetEventsShouldCallHttpClientWithCorrectUrl() {
         let url = URL(string: "http://any-url.com")!
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteGetEvents(url: url, httpGetClient: httpClientSpy)
