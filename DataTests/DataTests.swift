@@ -33,7 +33,9 @@ class RemoteGetEventsTests: XCTestCase {
         sut.getEvents()
         XCTAssertEqual(httpClientSpy.url, url)
     }
+}
 
+extension RemoteGetEventsTests {
     class HttpClientSpy: HttpGetClient {
         var url: URL?
 
