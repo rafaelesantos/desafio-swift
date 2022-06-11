@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol GetEvents {
+public protocol GetEvents {
     func get(completion: @escaping (Result<EventModel, Error>) -> Void)
 }

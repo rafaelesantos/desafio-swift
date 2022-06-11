@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct EventModel {
-    var date: Int?
-    var id: String
-    var image: String?
-    var latitude: Double?
-    var longitude: Double?
-    var people: [Any]?
-    var price: Double?
-    var title: String?
-    var welcomeDescription: String
+public struct EventModel {
+    public var date: Int?
+    public var id: String
+    public var image: String?
+    public var latitude: Double?
+    public var longitude: Double?
+    public var people: [Any]?
+    public var price: Double?
+    public var title: String?
+    public var welcomeDescription: String
 }
