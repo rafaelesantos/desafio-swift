@@ -11,7 +11,7 @@ import Domain
 
 class RemoteGetEventsTests: XCTestCase {
     func testGetEventsShouldCallHttpClientWithCorrectUrl() {
-        let url = URL(string: "http://any-url.com")!
+        let url = makeUrl()
         let (sut, httpClientSpy) = makeSut(url: url)
         sut.getEvents() { _ in }
         XCTAssertEqual(httpClientSpy.urls, [url])
@@ -35,7 +35,7 @@ class RemoteGetEventsTests: XCTestCase {
     func testGetEventsShouldCompleteWithEventsIfClientCompletesWithInvalidData() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.unexpected), when: {
-            httpClientSpy.completeWithData(Data("invalid_data".utf8))
+            httpClientSpy.completeWithData(makeInvalidData())
         })
     }
 }
@@ -45,6 +45,14 @@ extension RemoteGetEventsTests {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteGetEvents(url: url, httpGetClient: httpClientSpy)
         return (sut, httpClientSpy)
+    }
+    
+    func makeInvalidData() -> Data {
+        return Data("invalid_data".utf8)
+    }
+    
+    func makeUrl() -> URL {
+        return URL(string: "http://any-url.com")!
     }
     
     func makeEventsModel() -> [EventModel] {
