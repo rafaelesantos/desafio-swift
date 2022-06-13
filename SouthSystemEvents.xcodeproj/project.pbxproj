@@ -31,6 +31,8 @@
 		4CF2F07A2856F3B400EBCB41 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0132855371500EBCB41 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CF2F07E2856F3EC00EBCB41 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0542856F17100EBCB41 /* TestFactories.swift */; };
 		4CF2F07F2856F3F000EBCB41 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
+		4CF2F0822857023700EBCB41 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */; };
+		4CF2F0832857027100EBCB41 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,7 @@
 		4CF2F0602856F2C200EBCB41 /* Infra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F0672856F2C200EBCB41 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F06C2856F2C200EBCB41 /* NetworkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapterTests.swift; sourceTree = "<group>"; };
+		4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,7 @@
 		4CF2F0612856F2C200EBCB41 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				4CF2F0802857022500EBCB41 /* Http */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -314,6 +318,14 @@
 				4CF2F06C2856F2C200EBCB41 /* NetworkAdapterTests.swift */,
 			);
 			path = InfraTests;
+			sourceTree = "<group>";
+		};
+		4CF2F0802857022500EBCB41 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */,
+			);
+			path = Http;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,6 +473,7 @@
 					};
 					4CF2F05F2856F2C200EBCB41 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					4CF2F0662856F2C200EBCB41 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -566,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2F0822857023700EBCB41 /* NetworkAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +589,7 @@
 			files = (
 				4CF2F07E2856F3EC00EBCB41 /* TestFactories.swift in Sources */,
 				4CF2F07F2856F3F000EBCB41 /* TestExtensions.swift in Sources */,
+				4CF2F0832857027100EBCB41 /* NetworkAdapter.swift in Sources */,
 				4CF2F06D2856F2C200EBCB41 /* NetworkAdapterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,6 +898,7 @@
 		4CF2F0702856F2C200EBCB41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -902,6 +918,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -912,6 +929,7 @@
 		4CF2F0712856F2C200EBCB41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -941,6 +959,7 @@
 		4CF2F0732856F2C200EBCB41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -956,6 +975,7 @@
 		4CF2F0742856F2C200EBCB41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
