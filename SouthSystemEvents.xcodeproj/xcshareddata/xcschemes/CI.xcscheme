@@ -56,6 +56,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4CF2F0B728570BEE00EBCB41"
+               BuildableName = "Presentation.framework"
+               BlueprintName = "Presentation"
+               ReferencedContainer = "container:SouthSystemEvents.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CF2F02928553B1E00EBCB41"
                BuildableName = "DataTests.xctest"
                BlueprintName = "DataTests"
@@ -73,6 +87,20 @@
                BlueprintIdentifier = "4CF2F0662856F2C200EBCB41"
                BuildableName = "InfraTests.xctest"
                BlueprintName = "InfraTests"
+               ReferencedContainer = "container:SouthSystemEvents.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4CF2F0BE28570BEE00EBCB41"
+               BuildableName = "PresentationTests.xctest"
+               BlueprintName = "PresentationTests"
                ReferencedContainer = "container:SouthSystemEvents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -129,6 +157,17 @@
                BlueprintIdentifier = "4CF2F0662856F2C200EBCB41"
                BuildableName = "InfraTests.xctest"
                BlueprintName = "InfraTests"
+               ReferencedContainer = "container:SouthSystemEvents.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4CF2F0BE28570BEE00EBCB41"
+               BuildableName = "PresentationTests.xctest"
+               BlueprintName = "PresentationTests"
                ReferencedContainer = "container:SouthSystemEvents.xcodeproj">
             </BuildableReference>
          </TestableReference>
