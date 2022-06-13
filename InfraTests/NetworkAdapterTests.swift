@@ -8,20 +8,30 @@
 import XCTest
 import Data
 
-class NetworkAdapter {
+class NetworkAdapter: HttpGetClient {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func get(to url: URL, completion: @escaping (Result<Data, HttpError>) -> Void) {
+    func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         session.dataTask(with: request) { data, response, error in
-            guard (response as? HTTPURLResponse)?.statusCode != nil else { return completion(.failure(.noConnectivity)) }
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
             if error != nil { completion(.failure(.noConnectivity)) }
-            if let data = data { completion(.success(data)) }
+            if let data = data {
+                switch statusCode {
+                case 204: completion(.success(nil))
+                case 200...299: completion(.success(data))
+                case 401: completion(.failure(.unauthorized))
+                case 403: completion(.failure(.forbidden))
+                case 400...499: completion(.failure(.badRequest))
+                case 500...599: completion(.failure(.serverError))
+                default: completion(.failure(.noConnectivity))
+                }
+            }
         }.resume()
     }
 }
@@ -44,8 +54,28 @@ class NetworkAdapterTests: XCTestCase {
         expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: nil, error: makeError()))
         expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: nil, error: nil))
         expectResult(.failure(.noConnectivity), when: (data: nil, response: makeHttpResponse(), error: makeError()))
-        //expectResult(.failure(.noConnectivity), when: (data: nil, response: makeHttpResponse(), error: nil))
         expectResult(.failure(.noConnectivity), when: (data: nil, response: nil, error: nil))
+    }
+    
+    func testGetShouldCompleteWithDataWhenRequestCompletesWith200() {
+        expectResult(.success(makeValidData()), when: (data: makeValidData(), response: makeHttpResponse(), error: nil))
+    }
+    
+    func testGetShouldCompleteWithNoDataWhenRequestCompletesWith204() {
+        expectResult(.success(nil), when: (data: nil, response: makeHttpResponse(statusCode: 204), error: nil))
+        expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
+        expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
+    }
+    
+    func testGetShouldCompleteWithErrorWhenRequestCompletesWithNon200() {
+        expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 400), error: nil))
+        expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 450), error: nil))
+        expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 499), error: nil))
+        expectResult(.failure(.serverError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 500), error: nil))
+        expectResult(.failure(.serverError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 550), error: nil))
+        expectResult(.failure(.serverError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 599), error: nil))
+        expectResult(.failure(.unauthorized), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 401), error: nil))
+        expectResult(.failure(.forbidden), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 403), error: nil))
     }
 }
 
@@ -69,7 +99,7 @@ extension NetworkAdapterTests {
         action(request!)
     }
     
-    func expectResult(_ expectedResult: Result<Data, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
+    func expectResult(_ expectedResult: Result<Data?, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
         let sut = makeSut()
         UrlProtocolStub.simulate(data: stub.data, response: stub.response, error: stub.error)
         let exp = expectation(description: "waiting")
