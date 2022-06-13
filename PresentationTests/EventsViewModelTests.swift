@@ -43,13 +43,28 @@ class EventsViewModelTests: XCTestCase {
         getEventsSpy.completeWithError(.unexpected)
         wait(for: [exp2], timeout: 1)
     }
+    
+    func testListEventsShouldShowAllEventsIfGetEventsSucceeds() {
+        let loadingSpy = LoadingSpy()
+        let getEventsSpy = GetEventsSpy()
+        let eventsSpy = EventsSpy()
+        let sut = makeSut(loading: loadingSpy, getEvents: getEventsSpy, events: eventsSpy)
+        let exp = expectation(description: "waiting")
+        eventsSpy.observe { events in
+            XCTAssertEqual(makeEventsModel(), events)
+            exp.fulfill()
+        }
+        sut.getAllEvents()
+        getEventsSpy.completeWithSuccess(makeEventsModel())
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 // MARK: Make
 
 extension EventsViewModelTests {
-    func makeSut(alert: AlertSpy = AlertSpy(), loading: LoadingSpy = LoadingSpy(), getEvents: GetEventsSpy = GetEventsSpy(), file: StaticString = #file, line: UInt = #line) -> EventsViewModel {
-        let sut = EventsViewModel(alert: alert, loading: loading, getEvents: getEvents)
+    func makeSut(alert: AlertSpy = AlertSpy(), loading: LoadingSpy = LoadingSpy(), getEvents: GetEventsSpy = GetEventsSpy(), events: EventsSpy = EventsSpy(), file: StaticString = #file, line: UInt = #line) -> EventsViewModel {
+        let sut = EventsViewModel(alert: alert, loading: loading, getEvents: getEvents, events: events)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
@@ -97,6 +112,23 @@ extension EventsViewModelTests {
         
         func completeWithError(_ error: DomainError) {
             completion?(.failure(error))
+        }
+        
+        func completeWithSuccess(_ events: [EventModel]) {
+            completion?(.success(events))
+        }
+    }
+    
+    class EventsSpy: EventsProtocol {
+        var events: [EventModel]?
+        var emit: (([EventModel]) -> Void)?
+        
+        func observe(completion: @escaping ([EventModel]) -> Void) {
+            self.emit = completion
+        }
+        
+        func recieved(events: [EventModel]) {
+            self.emit?(events)
         }
     }
 }

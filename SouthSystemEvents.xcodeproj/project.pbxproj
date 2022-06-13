@@ -43,6 +43,8 @@
 		4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */; };
 		4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 		4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */; };
+		4CF2F0D72857206B00EBCB41 /* EventModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0522856F13F00EBCB41 /* EventModelFactory.swift */; };
+		4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +183,7 @@
 		4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 		4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
+		4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +470,7 @@
 			children = (
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
+				4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -850,6 +854,7 @@
 			files = (
 				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
 				4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */,
+				4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +863,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2F0D72857206B00EBCB41 /* EventModelFactory.swift in Sources */,
 				4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */,
 				4CF2F0C528570BEE00EBCB41 /* EventsViewModelTests.swift in Sources */,
 			);
