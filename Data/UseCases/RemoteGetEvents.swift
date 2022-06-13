@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 
 public class RemoteGetEvents {
     private let url: URL
@@ -16,7 +17,9 @@ public class RemoteGetEvents {
         self.httpGetClient = httpGetClient
     }
 
-    public func getEvents() {
-        httpGetClient.get(url: url)
+    public func getEvents(completion: @escaping (DomainError) -> Void) {
+        httpGetClient.get(url: url) { error in
+            completion(.unexpected)
+        }
     }
 }
