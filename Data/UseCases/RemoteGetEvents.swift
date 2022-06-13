@@ -23,6 +23,8 @@ public class RemoteGetEvents: GetEvents {
             case .success(let data):
                 if let model: [EventModel] = data.toModel() {
                     completion(.success(model))
+                } else {
+                    completion(.failure(.unexpected))
                 }
             case .failure: completion(.failure(.unexpected))
             }
