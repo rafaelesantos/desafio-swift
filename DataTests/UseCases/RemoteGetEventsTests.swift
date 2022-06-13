@@ -59,36 +59,6 @@ extension RemoteGetEventsTests {
         return (sut, httpClientSpy)
     }
     
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
-    }
-    
-    func makeUrl() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    func makeEventsModel() -> [EventModel] {
-        return [
-            EventModel(
-                date: 0,
-                id: "any-id",
-                image: "any-image",
-                latitude: 0,
-                longitude: 0,
-                people: [],
-                price: 0,
-                title: "any-title",
-                welcomeDescription: "any-description"
-            )
-        ]
-    }
-    
-    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
     func expect(_ sut: RemoteGetEvents, completeWith expectedResult: Result<[EventModel], DomainError>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "waiting")
         sut.getEvents() { receivedResult in
@@ -101,23 +71,5 @@ extension RemoteGetEventsTests {
         }
         action()
         wait(for: [exp], timeout: 1)
-    }
-    
-    class HttpClientSpy: HttpGetClient {
-        var urls = [URL]()
-        var completion: ((Result<Data, HttpError>) -> Void)?
-        
-        func get(url: URL, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            self.urls.append(url)
-            self.completion = completion
-        }
-        
-        func completeWithError(_ error: HttpError) {
-            completion?(.failure(error))
-        }
-        
-        func completeWithData(_ data: Data) {
-            completion?(.success(data))
-        }
     }
 }
