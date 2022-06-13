@@ -20,7 +20,7 @@ class NetworkAdapter: HttpGetClient {
         request.httpMethod = "GET"
         session.dataTask(with: request) { data, response, error in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
-            if error != nil { completion(.failure(.noConnectivity)) }
+            if error != nil { return completion(.failure(.noConnectivity)) }
             if let data = data {
                 switch statusCode {
                 case 204: completion(.success(nil))
