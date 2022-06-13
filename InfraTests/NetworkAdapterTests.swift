@@ -20,7 +20,7 @@ class NetworkAdapter {
 }
 
 class NetworkAdapterTests: XCTestCase {
-    func test_() {
+    func testGetShouldMakeRequestWithValidUrlAndMethod() {
         let url = makeUrl()
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
