@@ -14,16 +14,26 @@ class EventsViewModelTests: XCTestCase {
         let alertSpy = AlertSpy()
         let getEventsSpy = GetEventsSpy()
         let sut = makeSut(alert: alertSpy, getEvents: getEventsSpy)
+        let exp = expectation(description: "waiting")
+        alertSpy.observe { [weak self] model in
+            XCTAssertEqual(model, self?.makeErrorAlertModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+            exp.fulfill()
+        }
         sut.getAllEvents()
         getEventsSpy.completeWithError(.unexpected)
-        XCTAssertEqual(alertSpy.model, makeErrorAlertModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+        wait(for: [exp], timeout: 1)
     }
     
     func testListEventsShouldShowLoadingIfBeforeCallGetEvents() {
         let loadingSpy = LoadingSpy()
         let sut = makeSut(loading: loadingSpy)
+        let exp = expectation(description: "waiting")
+        loadingSpy.observe { model in
+            XCTAssertEqual(model, .init(isLoading: true))
+            exp.fulfill()
+        }
         sut.getAllEvents()
-        XCTAssertEqual(loadingSpy.model, .init(isLoading: true))
+        wait(for: [exp], timeout: 1)
     }
 }
 
@@ -53,15 +63,20 @@ extension EventsViewModelTests {
         }
         
         func show(with model: AlertModel) {
-            self.model = model
+            self.emit?(model)
         }
     }
     
     class LoadingSpy: LoadingProtocol {
         var model: LoadingModel?
+        var emit: ((LoadingModel) -> Void)?
+        
+        func observe(completion: @escaping (LoadingModel) -> Void) {
+            self.emit = completion
+        }
         
         func display(with model: LoadingModel) {
-            self.model = model
+            self.emit?(model)
         }
     }
     
