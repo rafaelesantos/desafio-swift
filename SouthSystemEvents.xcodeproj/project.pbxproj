@@ -41,6 +41,7 @@
 		4CF2F0C528570BEE00EBCB41 /* EventsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0C428570BEE00EBCB41 /* EventsViewModelTests.swift */; };
 		4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */; };
 		4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */; };
+		4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -853,6 +854,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */,
 				4CF2F0C528570BEE00EBCB41 /* EventsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

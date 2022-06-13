@@ -23,8 +23,9 @@ class EventsViewModelTests: XCTestCase {
 // MARK: Make
 
 extension EventsViewModelTests {
-    func makeSut(alert: AlertSpy = AlertSpy(), getEvents: GetEventsSpy = GetEventsSpy()) -> EventsViewModel {
+    func makeSut(alert: AlertSpy = AlertSpy(), getEvents: GetEventsSpy = GetEventsSpy(), file: StaticString = #file, line: UInt = #line) -> EventsViewModel {
         let sut = EventsViewModel(alert: alert, getEvents: getEvents)
+        checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
     
@@ -38,6 +39,11 @@ extension EventsViewModelTests {
 extension EventsViewModelTests {
     class AlertSpy: AlertProtocol {
         var model: AlertModel?
+        var emit: ((AlertModel) -> Void)?
+        
+        func observe(completion: @escaping (AlertModel) -> Void) {
+            self.emit = completion
+        }
         
         func show(with model: AlertModel) {
             self.model = model

@@ -18,7 +18,8 @@ public class EventsViewModel {
     }
 
     public func getAllEvents() {
-        getEvents.getEvents { result in
+        getEvents.getEvents { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure: self.alert.show(with: AlertModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
             case .success: break
