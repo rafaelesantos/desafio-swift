@@ -22,10 +22,7 @@ class NetworkAdapter {
 class NetworkAdapterTests: XCTestCase {
     func testGetShouldMakeRequestWithValidUrlAndMethod() {
         let url = makeUrl()
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [UrlProtocolStub.self]
-        let session = URLSession(configuration: configuration)
-        let sut = NetworkAdapter(session: session)
+        let sut = makeSut()
         sut.get(to: url)
         let exp = expectation(description: "waiting")
         UrlProtocolStub.observeRequest { request in
@@ -34,6 +31,15 @@ class NetworkAdapterTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
+    }
+}
+
+extension NetworkAdapterTests {
+    func makeSut() -> NetworkAdapter {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [UrlProtocolStub.self]
+        let session = URLSession(configuration: configuration)
+        return NetworkAdapter(session: session)
     }
 }
 
