@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public class RemoteGetEvents {
+public class RemoteGetEvents: GetEvents {
     private let url: URL
     private let httpGetClient: HttpGetClient
 
@@ -17,9 +17,9 @@ public class RemoteGetEvents {
         self.httpGetClient = httpGetClient
     }
 
-    public func getEvents(completion: @escaping (DomainError) -> Void) {
+    public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
         httpGetClient.get(url: url) { error in
-            completion(.unexpected)
+            completion(.failure(.unexpected))
         }
     }
 }

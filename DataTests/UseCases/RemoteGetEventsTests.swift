@@ -16,16 +16,18 @@ class RemoteGetEventsTests: XCTestCase {
         XCTAssertEqual(httpClientSpy.urls, [url])
     }
     
-    func testGetEventsShouldCompleteWithErrorIfClientFails() {
-            let (sut, httpClientSpy) = makeSut()
-            let exp = expectation(description: "waiting")
-            sut.getEvents() { error in
-                XCTAssertEqual(error, .unexpected)
-                exp.fulfill()
+    func testGetEventsShouldCompleteWithErrorIfClientCompletesWithError() {
+        let (sut, httpClientSpy) = makeSut()
+        let exp = expectation(description: "waiting")
+        sut.getEvents() { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .unexpected)
+            case .success: XCTFail("Expected error receive \(result) instead")
             }
-            httpClientSpy.completeWithError(.noConnectivity)
-            wait(for: [exp], timeout: 1)
         }
+        httpClientSpy.completeWithError(.noConnectivity)
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 extension RemoteGetEventsTests {
@@ -37,15 +39,15 @@ extension RemoteGetEventsTests {
     
     class HttpClientSpy: HttpGetClient {
         var urls = [URL]()
-        var completion: ((HttpError) -> Void)?
+        var completion: ((Result<Data, HttpError>) -> Void)?
 
-        func get(url: URL, completion: @escaping (HttpError) -> Void) {
+        func get(url: URL, completion: @escaping (Result<Data, HttpError>) -> Void) {
             self.urls.append(url)
             self.completion = completion
         }
         
         func completeWithError(_ error: HttpError) {
-            completion?(error)
+            completion?(.failure(error))
         }
     }
 }
