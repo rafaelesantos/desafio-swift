@@ -38,6 +38,16 @@ class RemoteGetEventsTests: XCTestCase {
             httpClientSpy.completeWithData(makeInvalidData())
         })
     }
+    
+    func testGetEventsShouldNotCompleteIfSutHasBeenDeallocated() {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteGetEvents? = RemoteGetEvents(url: makeUrl(), httpGetClient: httpClientSpy)
+        var result: Result<[EventModel], DomainError>?
+        sut?.getEvents() { result = $0 }
+        sut = nil
+        httpClientSpy.completeWithError(.noConnectivity)
+        XCTAssertNil(result)
+    }
 }
 
 extension RemoteGetEventsTests {
