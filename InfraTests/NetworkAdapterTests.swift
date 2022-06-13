@@ -30,11 +30,13 @@ class NetworkAdapterTests: XCTestCase {
 }
 
 extension NetworkAdapterTests {
-    func makeSut() -> NetworkAdapter {
+    func makeSut(file: StaticString = #file, line: UInt = #line) -> NetworkAdapter {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        return NetworkAdapter(session: session)
+        let sut = NetworkAdapter(session: session)
+        checkMemoryLeak(for: sut, file: file, line: line)
+        return sut
     }
     
     func testRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
