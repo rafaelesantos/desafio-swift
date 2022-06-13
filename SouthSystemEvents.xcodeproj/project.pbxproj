@@ -45,6 +45,11 @@
 		4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */; };
 		4CF2F0D72857206B00EBCB41 /* EventModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0522856F13F00EBCB41 /* EventModelFactory.swift */; };
 		4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */; };
+		4CF2F0DE2857241500EBCB41 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0DD2857241500EBCB41 /* TestFactories.swift */; };
+		4CF2F0E12857248E00EBCB41 /* GetEventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */; };
+		4CF2F0E4285724CD00EBCB41 /* AlertSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E3285724CD00EBCB41 /* AlertSpy.swift */; };
+		4CF2F0E6285724D900EBCB41 /* LoadingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E5285724D900EBCB41 /* LoadingSpy.swift */; };
+		4CF2F0E8285724E800EBCB41 /* EventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +189,11 @@
 		4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 		4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
 		4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProtocol.swift; sourceTree = "<group>"; };
+		4CF2F0DD2857241500EBCB41 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
+		4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventsSpy.swift; sourceTree = "<group>"; };
+		4CF2F0E3285724CD00EBCB41 /* AlertSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSpy.swift; sourceTree = "<group>"; };
+		4CF2F0E5285724D900EBCB41 /* LoadingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpy.swift; sourceTree = "<group>"; };
+		4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,7 +462,10 @@
 		4CF2F0C328570BEE00EBCB41 /* PresentationTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CF2F0C428570BEE00EBCB41 /* EventsViewModelTests.swift */,
+				4CF2F0E2285724A400EBCB41 /* Protocols */,
+				4CF2F0DF2857245E00EBCB41 /* UseCases */,
+				4CF2F0DB285723CA00EBCB41 /* ViewModels */,
+				4CF2F0DA285723BF00EBCB41 /* Helpers */,
 			);
 			path = PresentationTests;
 			sourceTree = "<group>";
@@ -471,6 +484,48 @@
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
 				4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4CF2F0DA285723BF00EBCB41 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0DD2857241500EBCB41 /* TestFactories.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4CF2F0DB285723CA00EBCB41 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0DC285723DA00EBCB41 /* Events */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4CF2F0DC285723DA00EBCB41 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0C428570BEE00EBCB41 /* EventsViewModelTests.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4CF2F0DF2857245E00EBCB41 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4CF2F0E2285724A400EBCB41 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0E3285724CD00EBCB41 /* AlertSpy.swift */,
+				4CF2F0E5285724D900EBCB41 /* LoadingSpy.swift */,
+				4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -863,8 +918,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2F0E12857248E00EBCB41 /* GetEventsSpy.swift in Sources */,
+				4CF2F0E4285724CD00EBCB41 /* AlertSpy.swift in Sources */,
 				4CF2F0D72857206B00EBCB41 /* EventModelFactory.swift in Sources */,
+				4CF2F0E8285724E800EBCB41 /* EventsSpy.swift in Sources */,
 				4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */,
+				4CF2F0DE2857241500EBCB41 /* TestFactories.swift in Sources */,
+				4CF2F0E6285724D900EBCB41 /* LoadingSpy.swift in Sources */,
 				4CF2F0C528570BEE00EBCB41 /* EventsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
