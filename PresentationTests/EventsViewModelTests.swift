@@ -24,9 +24,10 @@ class EventsViewModelTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func testListEventsShouldShowLoadingIfBeforeCallGetEvents() {
+    func testListEventsShouldShowLoadingBeforeAndAfterGetEvents() {
         let loadingSpy = LoadingSpy()
-        let sut = makeSut(loading: loadingSpy)
+        let getEventsSpy = GetEventsSpy()
+        let sut = makeSut(loading: loadingSpy, getEvents: getEventsSpy)
         let exp = expectation(description: "waiting")
         loadingSpy.observe { model in
             XCTAssertEqual(model, .init(isLoading: true))
@@ -34,6 +35,13 @@ class EventsViewModelTests: XCTestCase {
         }
         sut.getAllEvents()
         wait(for: [exp], timeout: 1)
+        let exp2 = expectation(description: "waiting")
+        loadingSpy.observe { model in
+            XCTAssertEqual(model, .init(isLoading: false))
+            exp2.fulfill()
+        }
+        getEventsSpy.completeWithError(.unexpected)
+        wait(for: [exp2], timeout: 1)
     }
 }
 

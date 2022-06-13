@@ -27,6 +27,7 @@ public class EventsViewModel {
             case .failure: self.alert.show(with: AlertModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
             case .success: break
             }
+            self.loading.display(with: .init(isLoading: false))
         }
     }
 }
