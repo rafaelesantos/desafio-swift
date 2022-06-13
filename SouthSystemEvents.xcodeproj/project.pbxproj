@@ -33,6 +33,7 @@
 		4CF2F07F2856F3F000EBCB41 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 		4CF2F0822857023700EBCB41 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */; };
 		4CF2F0832857027100EBCB41 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */; };
+		4CF2F086285702C100EBCB41 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F085285702C100EBCB41 /* UrlProtocolStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		4CF2F0672856F2C200EBCB41 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F06C2856F2C200EBCB41 /* NetworkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapterTests.swift; sourceTree = "<group>"; };
 		4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		4CF2F085285702C100EBCB41 /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,7 +317,7 @@
 		4CF2F06B2856F2C200EBCB41 /* InfraTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CF2F06C2856F2C200EBCB41 /* NetworkAdapterTests.swift */,
+				4CF2F084285702B300EBCB41 /* Http */,
 			);
 			path = InfraTests;
 			sourceTree = "<group>";
@@ -324,6 +326,15 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		4CF2F084285702B300EBCB41 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F06C2856F2C200EBCB41 /* NetworkAdapterTests.swift */,
+				4CF2F085285702C100EBCB41 /* UrlProtocolStub.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -591,6 +602,7 @@
 				4CF2F07F2856F3F000EBCB41 /* TestExtensions.swift in Sources */,
 				4CF2F0832857027100EBCB41 /* NetworkAdapter.swift in Sources */,
 				4CF2F06D2856F2C200EBCB41 /* NetworkAdapterTests.swift in Sources */,
+				4CF2F086285702C100EBCB41 /* UrlProtocolStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
