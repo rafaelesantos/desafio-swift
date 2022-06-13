@@ -7,14 +7,26 @@
 
 import Foundation
 
-public struct EventModel {
+public struct EventModel: Model {
     public var date: Int?
     public var id: String
     public var image: String?
     public var latitude: Double?
     public var longitude: Double?
-    public var people: [Any]?
+    public var people: [String]?
     public var price: Double?
     public var title: String?
-    public var welcomeDescription: String
+    public var welcomeDescription: String?
+    
+    public init(date: Int? = nil, id: String, image: String? = nil, latitude: Double? = nil, longitude: Double? = nil, people: [String]? = nil, price: Double? = nil, title: String? = nil, welcomeDescription: String? = nil) {
+        self.date = date
+        self.id = id
+        self.image = image
+        self.latitude = latitude
+        self.longitude = longitude
+        self.people = people
+        self.price = price
+        self.title = title
+        self.welcomeDescription = welcomeDescription
+    }
 }

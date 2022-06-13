@@ -18,8 +18,14 @@ public class RemoteGetEvents: GetEvents {
     }
 
     public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
-        httpGetClient.get(url: url) { error in
-            completion(.failure(.unexpected))
+        httpGetClient.get(url: url) { result in
+            switch result {
+            case .success(let data):
+                if let model: [EventModel] = data.toModel() {
+                    completion(.success(model))
+                }
+            case .failure: completion(.failure(.unexpected))
+            }
         }
     }
 }

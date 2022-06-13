@@ -7,6 +7,7 @@
 
 import XCTest
 import Data
+import Domain
 
 class RemoteGetEventsTests: XCTestCase {
     func testGetEventsShouldCallHttpClientWithCorrectUrl() {
@@ -22,12 +23,28 @@ class RemoteGetEventsTests: XCTestCase {
         sut.getEvents() { result in
             switch result {
             case .failure(let error): XCTAssertEqual(error, .unexpected)
-            case .success: XCTFail("Expected error receive \(result) instead")
+            case .success: XCTFail("Expected error received \(result) instead")
             }
+            exp.fulfill()
         }
         httpClientSpy.completeWithError(.noConnectivity)
         wait(for: [exp], timeout: 1)
     }
+    
+    func testGetEventsShouldCompleteWithEventsIfClientCompletesWithData() {
+            let (sut, httpClientSpy) = makeSut()
+            let exp = expectation(description: "waiting")
+            let expectedEvents = makeEventsModel()
+            sut.getEvents() { result in
+                switch result {
+                case .failure: XCTFail("Expected success received \(result) instead")
+                case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedEvents)
+                }
+                exp.fulfill()
+            }
+            httpClientSpy.completeWithData(expectedEvents.toData()!)
+            wait(for: [exp], timeout: 1)
+        }
 }
 
 extension RemoteGetEventsTests {
@@ -35,6 +52,22 @@ extension RemoteGetEventsTests {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteGetEvents(url: url, httpGetClient: httpClientSpy)
         return (sut, httpClientSpy)
+    }
+    
+    func makeEventsModel() -> [EventModel] {
+        return [
+            EventModel(
+                date: 0,
+                id: "any-id",
+                image: "any-image",
+                latitude: 0,
+                longitude: 0,
+                people: [],
+                price: 0,
+                title: "any-title",
+                welcomeDescription: "any-description"
+            )
+        ]
     }
     
     class HttpClientSpy: HttpGetClient {
@@ -48,6 +81,10 @@ extension RemoteGetEventsTests {
         
         func completeWithError(_ error: HttpError) {
             completion?(.failure(error))
+        }
+        
+        func completeWithData(_ data: Data) {
+            completion?(.success(data))
         }
     }
 }
