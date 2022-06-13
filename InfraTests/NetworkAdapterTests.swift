@@ -62,13 +62,12 @@ extension NetworkAdapterTests {
     
     func testRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
-        sut.get(to: url) { _ in }
         let exp = expectation(description: "waiting")
-        UrlProtocolStub.observeRequest { request in
-            action(request)
-            exp.fulfill()
-        }
+        sut.get(to: url) { _ in exp.fulfill() }
+        var request: URLRequest?
+        UrlProtocolStub.observeRequest { request = $0 }
         wait(for: [exp], timeout: 1)
+        action(request!)
     }
 }
 
