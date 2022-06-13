@@ -30,6 +30,7 @@ class NetworkAdapterTests: XCTestCase {
         let exp = expectation(description: "waiting")
         UrlProtocolStub.observeRequest { request in
             XCTAssertEqual(url, request.url)
+            XCTAssertEqual("GET", request.httpMethod)
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
