@@ -7,35 +7,7 @@
 
 import XCTest
 import Domain
-import Data
-
-class EventsViewModel {
-    private let alert: AlertProtocol
-    private let getEvents: GetEvents
-    
-    init(alert: AlertProtocol, getEvents: GetEvents) {
-        self.alert = alert
-        self.getEvents = getEvents
-    }
-
-    func getAllEvents() {
-        getEvents.getEvents { result in
-            switch result {
-            case .failure: self.alert.show(with: AlertModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
-            case .success: break
-            }
-        }
-    }
-}
-
-protocol AlertProtocol {
-    func show(with model: AlertModel)
-}
-
-struct AlertModel: Equatable {
-    var title: String
-    var message: String
-}
+import Presentation
 
 class EventsViewModelTests: XCTestCase {
     func testListEventsShouldShowErrorMessageIfGetEventsFails() {
@@ -48,6 +20,8 @@ class EventsViewModelTests: XCTestCase {
     }
 }
 
+// MARK: Make
+
 extension EventsViewModelTests {
     func makeSut(alert: AlertSpy = AlertSpy(), getEvents: GetEventsSpy = GetEventsSpy()) -> EventsViewModel {
         let sut = EventsViewModel(alert: alert, getEvents: getEvents)
@@ -57,7 +31,11 @@ extension EventsViewModelTests {
     func makeErrorAlertModel(message: String) -> AlertModel {
         return AlertModel(title: "Erro", message: message)
     }
-    
+}
+
+// MARK: - Spy
+
+extension EventsViewModelTests {
     class AlertSpy: AlertProtocol {
         var model: AlertModel?
         
