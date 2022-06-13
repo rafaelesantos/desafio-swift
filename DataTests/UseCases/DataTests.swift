@@ -14,16 +14,16 @@ class RemoteGetEventsTests: XCTestCase {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteGetEvents(url: url, httpGetClient: httpClientSpy)
         sut.getEvents()
-        XCTAssertEqual(httpClientSpy.url, url)
+        XCTAssertEqual(httpClientSpy.urls, [url])
     }
 }
 
 extension RemoteGetEventsTests {
     class HttpClientSpy: HttpGetClient {
-        var url: URL?
+        var urls = [URL]()
 
         func get(url: URL) {
-            self.url = url
+            self.urls.append(url)
         }
     }
 }
