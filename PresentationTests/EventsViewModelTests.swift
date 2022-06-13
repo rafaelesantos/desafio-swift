@@ -18,13 +18,20 @@ class EventsViewModelTests: XCTestCase {
         getEventsSpy.completeWithError(.unexpected)
         XCTAssertEqual(alertSpy.model, makeErrorAlertModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
     }
+    
+    func testListEventsShouldShowLoadingIfBeforeCallGetEvents() {
+        let loadingSpy = LoadingSpy()
+        let sut = makeSut(loading: loadingSpy)
+        sut.getAllEvents()
+        XCTAssertEqual(loadingSpy.model, .init(isLoading: true))
+    }
 }
 
 // MARK: Make
 
 extension EventsViewModelTests {
-    func makeSut(alert: AlertSpy = AlertSpy(), getEvents: GetEventsSpy = GetEventsSpy(), file: StaticString = #file, line: UInt = #line) -> EventsViewModel {
-        let sut = EventsViewModel(alert: alert, getEvents: getEvents)
+    func makeSut(alert: AlertSpy = AlertSpy(), loading: LoadingSpy = LoadingSpy(), getEvents: GetEventsSpy = GetEventsSpy(), file: StaticString = #file, line: UInt = #line) -> EventsViewModel {
+        let sut = EventsViewModel(alert: alert, loading: loading, getEvents: getEvents)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
@@ -46,6 +53,14 @@ extension EventsViewModelTests {
         }
         
         func show(with model: AlertModel) {
+            self.model = model
+        }
+    }
+    
+    class LoadingSpy: LoadingProtocol {
+        var model: LoadingModel?
+        
+        func display(with model: LoadingModel) {
             self.model = model
         }
     }

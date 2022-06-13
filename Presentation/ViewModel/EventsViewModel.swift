@@ -10,14 +10,17 @@ import Domain
 
 public class EventsViewModel {
     private let alert: AlertProtocol
+    private let loading: LoadingProtocol
     private let getEvents: GetEvents
     
-    public init(alert: AlertProtocol, getEvents: GetEvents) {
+    public init(alert: AlertProtocol, loading: LoadingProtocol, getEvents: GetEvents) {
         self.alert = alert
+        self.loading = loading
         self.getEvents = getEvents
     }
 
     public func getAllEvents() {
+        loading.display(with: .init(isLoading: true))
         getEvents.getEvents { [weak self] result in
             guard let self = self else { return }
             switch result {
