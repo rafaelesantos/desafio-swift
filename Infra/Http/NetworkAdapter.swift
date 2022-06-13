@@ -8,14 +8,14 @@
 import Foundation
 import Data
 
-class NetworkAdapter: HttpGetClient {
+public class NetworkAdapter: HttpGetClient {
     private let session: URLSession
     
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) {
+    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         session.dataTask(with: request) { data, response, error in
