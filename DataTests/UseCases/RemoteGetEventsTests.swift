@@ -19,45 +19,24 @@ class RemoteGetEventsTests: XCTestCase {
     
     func testGetEventsShouldCompleteWithErrorIfClientCompletesWithError() {
         let (sut, httpClientSpy) = makeSut()
-        let exp = expectation(description: "waiting")
-        sut.getEvents() { result in
-            switch result {
-            case .failure(let error): XCTAssertEqual(error, .unexpected)
-            case .success: XCTFail("Expected error received \(result) instead")
-            }
-            exp.fulfill()
-        }
-        httpClientSpy.completeWithError(.noConnectivity)
-        wait(for: [exp], timeout: 1)
+        expect(sut, completeWith: .failure(.unexpected), when: {
+            httpClientSpy.completeWithError(.noConnectivity)
+        })
     }
     
     func testGetEventsShouldCompleteWithEventsIfClientCompletesWithValidData() {
         let (sut, httpClientSpy) = makeSut()
-        let exp = expectation(description: "waiting")
         let expectedEvents = makeEventsModel()
-        sut.getEvents() { result in
-            switch result {
-            case .failure: XCTFail("Expected success received \(result) instead")
-            case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedEvents)
-            }
-            exp.fulfill()
-        }
-        httpClientSpy.completeWithData(expectedEvents.toData()!)
-        wait(for: [exp], timeout: 1)
+        expect(sut, completeWith: .success(expectedEvents), when: {
+            httpClientSpy.completeWithData(expectedEvents.toData()!)
+        })
     }
     
     func testGetEventsShouldCompleteWithEventsIfClientCompletesWithInvalidData() {
         let (sut, httpClientSpy) = makeSut()
-        let exp = expectation(description: "waiting")
-        sut.getEvents() { result in
-            switch result {
-            case .failure(let error): XCTAssertEqual(error, .unexpected)
-            case .success: XCTFail("Expected error received \(result) instead")
-            }
-            exp.fulfill()
-        }
-        httpClientSpy.completeWithData(Data("invalid_data".utf8))
-        wait(for: [exp], timeout: 1)
+        expect(sut, completeWith: .failure(.unexpected), when: {
+            httpClientSpy.completeWithData(Data("invalid_data".utf8))
+        })
     }
 }
 
@@ -82,6 +61,20 @@ extension RemoteGetEventsTests {
                 welcomeDescription: "any-description"
             )
         ]
+    }
+    
+    func expect(_ sut: RemoteGetEvents, completeWith expectedResult: Result<[EventModel], DomainError>, when action: () -> Void) {
+        let exp = expectation(description: "waiting")
+        sut.getEvents() { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
+            case (.success(let expectedEvents), .success(let receivedEvents)): XCTAssertEqual(expectedEvents, receivedEvents)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) instead")
+            }
+            exp.fulfill()
+        }
+        action()
+        wait(for: [exp], timeout: 1)
     }
     
     class HttpClientSpy: HttpGetClient {
