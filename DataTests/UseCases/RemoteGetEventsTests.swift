@@ -42,7 +42,7 @@ class RemoteGetEventsTests: XCTestCase {
     func testGetEventsShouldNotCompleteIfSutHasBeenDeallocated() {
         let httpClientSpy = HttpClientSpy()
         var sut: RemoteGetEvents? = RemoteGetEvents(url: makeUrl(), httpClient: httpClientSpy)
-        var result: Result<[EventModel], DomainError>?
+        var result: GetEvents.Result?
         sut?.getEvents() { result = $0 }
         sut = nil
         httpClientSpy.completeWithError(.noConnectivity)
@@ -59,7 +59,7 @@ extension RemoteGetEventsTests {
         return (sut, httpClientSpy)
     }
     
-    func expect(_ sut: RemoteGetEvents, completeWith expectedResult: Result<[EventModel], DomainError>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: RemoteGetEvents, completeWith expectedResult: GetEvents.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "waiting")
         sut.getEvents() { receivedResult in
             switch (expectedResult, receivedResult) {

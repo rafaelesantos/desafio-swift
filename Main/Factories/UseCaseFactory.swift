@@ -31,7 +31,7 @@ public final class RemoteGetEventsDecorator: GetEvents {
         self.instance = instance
     }
     
-    public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
+    public func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
         instance.getEvents { result in
             DispatchQueue.main.async {
                 completion(result)

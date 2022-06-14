@@ -22,7 +22,7 @@ public final class MainQueueDispatchDecorator<T> {
 }
 
 extension MainQueueDispatchDecorator: GetEvents where T: GetEvents {
-    public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
+    public func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
         instance.getEvents { [weak self] result in
             self?.dispatch { completion(result) }
         }

@@ -9,9 +9,9 @@ import Foundation
 import Domain
 
 class GetEventsSpy: GetEvents {
-    var completion: ((Result<[EventModel], DomainError>) -> Void)?
+    var completion: ((GetEvents.Result) -> Void)?
     
-    func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
+    func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
         self.completion = completion
     }
     
