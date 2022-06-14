@@ -7,15 +7,61 @@
 
 import Foundation
 import UIKit
+import Presentation
 
 final class EventTableViewCell: UITableViewCell {
     @UsesAutoLayout
-    var titleLabel: UILabel = {
+    var eventImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .secondarySystemBackground
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 6
+        return imageView
+    }()
+    
+    var eventPrice: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
-        label.textColor = .label
-        label.numberOfLines = 0
+        label.font = .preferredFont(forTextStyle: .footnote).bold()
+        label.textColor = .accent
+        label.numberOfLines = 1
         return label
+    }()
+    
+    var eventTitle: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textColor = .label
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    var eventDescription: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .footnote)
+        label.textColor = .secondaryLabel
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    @UsesAutoLayout
+    var textStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    @UsesAutoLayout
+    var imageTextStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        return stackView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String? = String(describing: self)) {
@@ -33,11 +79,20 @@ final class EventTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        setupTitleLabel()
+        textStack.addArrangedSubview(eventPrice)
+        textStack.addArrangedSubview(eventTitle)
+        textStack.addArrangedSubview(eventDescription)
+        imageTextStack.addArrangedSubview(eventImage)
+        imageTextStack.addArrangedSubview(textStack)
+        contentView.addSubview(imageTextStack)
+        var constraints = imageTextStack.constraintsForAnchoringTo(boundsOf: contentView)
+        constraints += eventImage.constraintAspectRatio(height: 80, ratio: (14, 9))
+        NSLayoutConstraint.activate(constraints)
     }
     
-    private func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
-        NSLayoutConstraint.activate(titleLabel.constraintsForAnchoringTo(boundsOf: contentView))
+    func setupCell(with event: EventModel) {
+        eventTitle.text = event.title
+        eventDescription.text = event.description?.replacingOccurrences(of: "\n", with: " ")
+        if let price = event.price { eventPrice.text = price.formatted(.currency(code: "BRL")) }
     }
 }

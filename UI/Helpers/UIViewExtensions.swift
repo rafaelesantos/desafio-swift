@@ -11,10 +11,17 @@ import UIKit
 extension UIView {
     func constraintsForAnchoringTo(boundsOf view: UIView) -> [NSLayoutConstraint] {
         return [
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor)
+            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
+        ]
+    }
+    
+    func constraintAspectRatio(height: CGFloat, ratio: (CGFloat, CGFloat)) -> [NSLayoutConstraint] {
+        return [
+            heightAnchor.constraint(equalTo: widthAnchor, multiplier: ratio.1 / ratio.0),
+            heightAnchor.constraint(equalToConstant: height)
         ]
     }
 }

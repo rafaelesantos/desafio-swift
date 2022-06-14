@@ -29,7 +29,7 @@ extension WeakProxy: LoadingProtocol where T: LoadingProtocol {
 }
 
 extension WeakProxy: EventsProtocol where T: EventsProtocol {
-    func recieved(events: Events) {
+    func recieved(events: [EventModel]) {
         instance?.recieved(events: events)
     }
 }

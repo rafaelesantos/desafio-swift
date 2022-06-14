@@ -8,8 +8,8 @@
 import Foundation
 import Domain
 
-public typealias Events = [EventModel]
+public typealias EventModel = Domain.EventModel
 
 public protocol EventsProtocol {
-    func recieved(events: Events)
+    func recieved(events: [EventModel])
 }

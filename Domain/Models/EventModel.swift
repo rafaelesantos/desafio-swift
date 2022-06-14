@@ -8,6 +8,7 @@
 import Foundation
 
 public struct EventModel: Model {
+    public var description: String?
     public var date: Int?
     public var id: String
     public var image: String?
@@ -16,9 +17,10 @@ public struct EventModel: Model {
     public var people: [String]?
     public var price: Double?
     public var title: String?
-    public var welcomeDescription: String?
     
-    public init(date: Int? = nil, id: String, image: String? = nil, latitude: Double? = nil, longitude: Double? = nil, people: [String]? = nil, price: Double? = nil, title: String? = nil, welcomeDescription: String? = nil) {
+    
+    public init(description: String? = nil, date: Int? = nil, id: String, image: String? = nil, latitude: Double? = nil, longitude: Double? = nil, people: [String]? = nil, price: Double? = nil, title: String? = nil) {
+        self.description = description
         self.date = date
         self.id = id
         self.image = image
@@ -27,6 +29,5 @@ public struct EventModel: Model {
         self.people = people
         self.price = price
         self.title = title
-        self.welcomeDescription = welcomeDescription
     }
 }

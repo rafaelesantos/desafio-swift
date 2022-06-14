@@ -11,6 +11,7 @@ import Domain
 func makeEventsModel() -> [EventModel] {
     return [
         EventModel(
+            description: "any-description",
             date: 0,
             id: "any-id",
             image: "any-image",
@@ -18,8 +19,7 @@ func makeEventsModel() -> [EventModel] {
             longitude: 0,
             people: [],
             price: 0,
-            title: "any-title",
-            welcomeDescription: "any-description"
+            title: "any-title"
         )
     ]
 }
