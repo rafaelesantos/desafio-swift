@@ -11,9 +11,14 @@ import Infra
 import Domain
 
 final class UseCaseFactory {
+    private static let httpClient = NetworkAdapter()
+    private static let apiBaseUrl = "http://5f5a8f24d44d640016169133.mockapi.io/api/"
+    
+    private static func makeUrl(path: String) -> URL {
+        return URL(string: "\(apiBaseUrl)/\(path)")!
+    }
+    
     static func makeRemoteGetEvents() -> GetEvents {
-        let networkAdapter = NetworkAdapter()
-        let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events")!
-        return RemoteGetEvents(url: url, httpGetClient: networkAdapter)
+        return RemoteGetEvents(url: makeUrl(path: "events"), httpClient: httpClient)
     }
 }

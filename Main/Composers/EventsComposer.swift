@@ -6,11 +6,15 @@
 //
 
 import Foundation
-import Domain
 import UI
+import Presentation
+import Domain
 
 public final class EventsComposer {
     public static func composeControllerWith(getEvents: GetEvents) -> EventsViewController {
-        return ControllerFactory.makeEvents(getEvents: getEvents)
+        let controller = EventsViewController()
+        let viewModel = EventsViewModel(alert: WeakProxy(controller), loading: WeakProxy(controller), getEvents: getEvents, events: WeakProxy(controller))
+        controller.getAllEvents = viewModel.getAllEvents
+        return controller
     }
 }

@@ -10,15 +10,15 @@ import Domain
 
 public class RemoteGetEvents: GetEvents {
     private let url: URL
-    private let httpGetClient: HttpGetClient
+    private let httpClient: HttpGetClient
 
-    public init(url: URL, httpGetClient: HttpGetClient) {
+    public init(url: URL, httpClient: HttpGetClient) {
         self.url = url
-        self.httpGetClient = httpGetClient
+        self.httpClient = httpClient
     }
 
     public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
-        httpGetClient.get(to: url) { [weak self] result in
+        httpClient.get(to: url) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success(let data):

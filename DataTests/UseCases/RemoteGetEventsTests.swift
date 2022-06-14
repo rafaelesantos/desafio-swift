@@ -41,7 +41,7 @@ class RemoteGetEventsTests: XCTestCase {
     
     func testGetEventsShouldNotCompleteIfSutHasBeenDeallocated() {
         let httpClientSpy = HttpClientSpy()
-        var sut: RemoteGetEvents? = RemoteGetEvents(url: makeUrl(), httpGetClient: httpClientSpy)
+        var sut: RemoteGetEvents? = RemoteGetEvents(url: makeUrl(), httpClient: httpClientSpy)
         var result: Result<[EventModel], DomainError>?
         sut?.getEvents() { result = $0 }
         sut = nil
@@ -53,7 +53,7 @@ class RemoteGetEventsTests: XCTestCase {
 extension RemoteGetEventsTests {
     func makeSut(url: URL = URL(string: "http://any-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteGetEvents, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
-        let sut = RemoteGetEvents(url: url, httpGetClient: httpClientSpy)
+        let sut = RemoteGetEvents(url: url, httpClient: httpClientSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
