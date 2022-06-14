@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   NetworkInfo.plist
+   SouthSystemEvents
+
+   Created by Rafael Escaleira on 14/06/22.
+   Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>API_BASE_URL</key>
+        <string>${API_BASE_URL}</string>
+    </dict>
+</plist>

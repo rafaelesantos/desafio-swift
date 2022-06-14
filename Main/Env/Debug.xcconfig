@@ -1,0 +1,10 @@
+//
+//  Debug.xcconfig
+//  SouthSystemEvents
+//
+//  Created by Rafael Escaleira on 14/06/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+API_BASE_URL = http:/$()/5f5a8f24d44d640016169133.mockapi.io/api/

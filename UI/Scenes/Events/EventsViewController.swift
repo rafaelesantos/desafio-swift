@@ -34,6 +34,8 @@ public final class EventsViewController: UIViewController {
     }
     
     private func setupUI() {
+        title = "Eventos"
+        navigationController?.navigationBar.prefersLargeTitles = true
         setupActivityIndicatorView()
         setupTableView()
         loadData()
