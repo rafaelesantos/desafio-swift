@@ -38,7 +38,6 @@
 		4CBE2EAE285862D000297862 /* GetEventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */; };
 		4CBE2EAF285862FB00297862 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 		4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB12858660600297862 /* WeakProxy.swift */; };
-		4CBE2EB728586D5D00297862 /* NetworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB628586D5D00297862 /* NetworkInfo.plist */; };
 		4CBE2EB928586E0200297862 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB828586E0200297862 /* Environment.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
@@ -314,7 +313,6 @@
 		4CBE2EB12858660600297862 /* WeakProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakProxy.swift; sourceTree = "<group>"; };
 		4CBE2EB428586C6800297862 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4CBE2EB528586C7D00297862 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		4CBE2EB628586D5D00297862 /* NetworkInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkInfo.plist; sourceTree = "<group>"; };
 		4CBE2EB828586E0200297862 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
@@ -517,7 +515,6 @@
 				4CBE2E67285853B500297862 /* Assets.xcassets */,
 				4CBE2E69285853B500297862 /* LaunchScreen.storyboard */,
 				4CBE2E6C285853B500297862 /* Info.plist */,
-				4CBE2EB628586D5D00297862 /* NetworkInfo.plist */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1220,7 +1217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBE2E6B285853B500297862 /* LaunchScreen.storyboard in Resources */,
-				4CBE2EB728586D5D00297862 /* NetworkInfo.plist in Resources */,
 				4CBE2E68285853B500297862 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2252,7 +2248,7 @@
 				4CBE2E85285853B600297862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CBE2E86285853B600297862 /* Build configuration list for PBXNativeTarget "MainTests" */ = {
 			isa = XCConfigurationList;
@@ -2261,7 +2257,7 @@
 				4CBE2E88285853B600297862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2EFD62855320700EBCB41 /* Build configuration list for PBXProject "SouthSystemEvents" */ = {
 			isa = XCConfigurationList;
@@ -2270,7 +2266,7 @@
 				4CF2F0042855320B00EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F0172855371500EBCB41 /* Build configuration list for PBXNativeTarget "Domain" */ = {
 			isa = XCConfigurationList;
@@ -2279,7 +2275,7 @@
 				4CF2F0192855371500EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F03228553B1E00EBCB41 /* Build configuration list for PBXNativeTarget "Data" */ = {
 			isa = XCConfigurationList;
@@ -2288,7 +2284,7 @@
 				4CF2F03428553B1E00EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F03528553B1E00EBCB41 /* Build configuration list for PBXNativeTarget "DataTests" */ = {
 			isa = XCConfigurationList;
@@ -2297,7 +2293,7 @@
 				4CF2F03728553B1E00EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F06F2856F2C200EBCB41 /* Build configuration list for PBXNativeTarget "Infra" */ = {
 			isa = XCConfigurationList;
@@ -2306,7 +2302,7 @@
 				4CF2F0712856F2C200EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F0722856F2C200EBCB41 /* Build configuration list for PBXNativeTarget "InfraTests" */ = {
 			isa = XCConfigurationList;
@@ -2315,7 +2311,7 @@
 				4CF2F0742856F2C200EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F09D2857067400EBCB41 /* Build configuration list for PBXNativeTarget "UseCasesIntegrationTests" */ = {
 			isa = XCConfigurationList;
@@ -2324,7 +2320,7 @@
 				4CF2F09F2857067400EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F0C728570BEE00EBCB41 /* Build configuration list for PBXNativeTarget "Presentation" */ = {
 			isa = XCConfigurationList;
@@ -2333,7 +2329,7 @@
 				4CF2F0C928570BEE00EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F0CA28570BEE00EBCB41 /* Build configuration list for PBXNativeTarget "PresentationTests" */ = {
 			isa = XCConfigurationList;
@@ -2342,7 +2338,7 @@
 				4CF2F0CC28570BEE00EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F0FD285725C100EBCB41 /* Build configuration list for PBXNativeTarget "UI" */ = {
 			isa = XCConfigurationList;
@@ -2351,7 +2347,7 @@
 				4CF2F0FF285725C100EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4CF2F100285725C100EBCB41 /* Build configuration list for PBXNativeTarget "UITests" */ = {
 			isa = XCConfigurationList;
@@ -2360,7 +2356,7 @@
 				4CF2F102285725C100EBCB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
