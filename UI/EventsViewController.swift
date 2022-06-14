@@ -7,6 +7,7 @@
 
 import UIKit
 import Presentation
+import Domain
 
 final class EventsViewController: UIViewController {
     @UsesAutoLayout
@@ -47,4 +48,8 @@ extension EventsViewController: AlertProtocol {
     }
 }
 
-
+extension EventsViewController: EventsProtocol {
+    func recieved(events: [EventModel]) {
+        
+    }
+}
