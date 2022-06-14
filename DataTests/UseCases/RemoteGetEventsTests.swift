@@ -1,6 +1,6 @@
 //
 //  RemoteGetEventsTests.swift
-//  RemoteGetEventsTests
+//  DataTests
 //
 //  Created by Rafael Escaleira on 11/06/22.
 //

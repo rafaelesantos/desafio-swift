@@ -6,9 +6,13 @@
 //
 
 import XCTest
+import UIKit
+@testable import UI
 
 class UITests: XCTestCase {
-    func test() {
-        
+    func testLoadingIsHiddenOnStart() {
+        let sut = EventsViewController()
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.activityIndicatorView.isAnimating, false)
     }
 }

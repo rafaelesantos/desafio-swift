@@ -1,6 +1,6 @@
 //
 //  EventsViewModelTests.swift
-//  EventsViewModelTests
+//  PresentationTests
 //
 //  Created by Rafael Escaleira on 13/06/22.
 //

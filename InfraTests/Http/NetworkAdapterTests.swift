@@ -1,6 +1,6 @@
 //
 //  NetworkAdapterTests.swift
-//  NetworkAdapterTests
+//  InfraTests
 //
 //  Created by Rafael Escaleira on 13/06/22.
 //

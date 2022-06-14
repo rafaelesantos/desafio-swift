@@ -1,6 +1,6 @@
 //
 //  GetEventsIntegrationTests.swift
-//  GetEventsIntegrationTests
+//  UseCasesIntegrationTests
 //
 //  Created by Rafael Escaleira on 13/06/22.
 //
