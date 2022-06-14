@@ -12,23 +12,26 @@ import Presentation
 
 class UITests: XCTestCase {
     func testLoadingIsHiddenOnStart() {
-        let sut = EventsViewController()
-        sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.activityIndicatorView.isAnimating, false)
+        XCTAssertEqual(makeSut().activityIndicatorView.isAnimating, false)
     }
     
     func testSutImplementsLoadingProtocol() {
-        let sut = EventsViewController()
-        XCTAssertNotNil(sut as LoadingProtocol)
+        XCTAssertNotNil(makeSut() as LoadingProtocol)
     }
     
     func testSutImplementsAlertProtocol() {
-        let sut = EventsViewController()
-        XCTAssertNotNil(sut as AlertProtocol)
+        XCTAssertNotNil(makeSut() as AlertProtocol)
     }
     
     func testSutImplementsEventsProtocol() {
+        XCTAssertNotNil(makeSut() as EventsProtocol)
+    }
+}
+
+extension UITests {
+    func makeSut() -> EventsViewController {
         let sut = EventsViewController()
-        XCTAssertNotNil(sut as EventsProtocol)
+        sut.loadViewIfNeeded()
+        return sut
     }
 }
