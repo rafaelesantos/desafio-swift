@@ -55,7 +55,7 @@
 		4CF2F0E6285724D900EBCB41 /* LoadingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E5285724D900EBCB41 /* LoadingSpy.swift */; };
 		4CF2F0E8285724E800EBCB41 /* EventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */; };
 		4CF2F0F6285725C100EBCB41 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; };
-		4CF2F0FB285725C100EBCB41 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0FA285725C100EBCB41 /* UITests.swift */; };
+		4CF2F0FB285725C100EBCB41 /* EventsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0FA285725C100EBCB41 /* EventsViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,7 +229,7 @@
 		4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSpy.swift; sourceTree = "<group>"; };
 		4CF2F0EE285725C100EBCB41 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F0F5285725C100EBCB41 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CF2F0FA285725C100EBCB41 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		4CF2F0FA285725C100EBCB41 /* EventsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +323,30 @@
 				4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4CBE2E432858396100297862 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2E442858396C00297862 /* Events */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4CBE2E442858396C00297862 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2E3928582B6E00297862 /* EventsViewController.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4CBE2E452858398000297862 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4CF2F0FA285725C100EBCB41 /* EventsViewControllerTests.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		4CF2EFD22855320700EBCB41 = {
@@ -597,8 +621,8 @@
 		4CF2F0EF285725C100EBCB41 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE2E432858396100297862 /* Scenes */,
 				4CBE2E3B2858326000297862 /* Helpers */,
-				4CBE2E3928582B6E00297862 /* EventsViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -606,7 +630,7 @@
 		4CF2F0F9285725C100EBCB41 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				4CF2F0FA285725C100EBCB41 /* UITests.swift */,
+				4CBE2E452858398000297862 /* Scenes */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -1091,7 +1115,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CF2F0FB285725C100EBCB41 /* UITests.swift in Sources */,
+				4CF2F0FB285725C100EBCB41 /* EventsViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

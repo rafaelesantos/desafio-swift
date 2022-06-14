@@ -1,5 +1,5 @@
 //
-//  UITests.swift
+//  EventsViewControllerTests.swift
 //  UITests
 //
 //  Created by Rafael Escaleira on 13/06/22.
@@ -10,7 +10,7 @@ import UIKit
 import Presentation
 @testable import UI
 
-class UITests: XCTestCase {
+class EventsViewControllerTests: XCTestCase {
     func testLoadingIsHiddenOnStart() {
         XCTAssertEqual(makeSut().activityIndicatorView.isAnimating, false)
     }
@@ -28,10 +28,24 @@ class UITests: XCTestCase {
     }
 }
 
-extension UITests {
+extension EventsViewControllerTests {
     func makeSut() -> EventsViewController {
         let sut = EventsViewController()
         sut.loadViewIfNeeded()
         return sut
+    }
+}
+
+extension UIControl {
+    func simulate(event: UIControl.Event) {
+        allTargets.forEach { target in
+            actions(forTarget: target, forControlEvent: event)?.forEach { action in
+                (target as NSObject).perform(Selector(action))
+            }
+        }
+    }
+
+    func simulateTap() {
+        simulate(event: .touchUpInside)
     }
 }
