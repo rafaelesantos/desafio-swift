@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3928582B6E00297862 /* EventsViewController.swift */; };
+		4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */; };
+		4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; };
+		4CBE2E3F285834C700297862 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -56,6 +59,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4CBE2E40285834C700297862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CF2EFD32855320700EBCB41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CF2F0B728570BEE00EBCB41;
+			remoteInfo = Presentation;
+		};
 		4CF2F02C28553B1E00EBCB41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CF2EFD32855320700EBCB41 /* Project object */;
@@ -143,6 +153,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4CBE2E42285834C700297862 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CBE2E3F285834C700297862 /* Presentation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CF2F03D28553B4500EBCB41 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,6 +191,7 @@
 
 /* Begin PBXFileReference section */
 		4CBE2E3928582B6E00297862 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -280,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +317,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CBE2E3B2858326000297862 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4CF2EFD22855320700EBCB41 = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +597,7 @@
 		4CF2F0EF285725C100EBCB41 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE2E3B2858326000297862 /* Helpers */,
 				4CBE2E3928582B6E00297862 /* EventsViewController.swift */,
 			);
 			path = UI;
@@ -781,10 +813,12 @@
 				4CF2F0EA285725C100EBCB41 /* Sources */,
 				4CF2F0EB285725C100EBCB41 /* Frameworks */,
 				4CF2F0EC285725C100EBCB41 /* Resources */,
+				4CBE2E42285834C700297862 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4CBE2E41285834C700297862 /* PBXTargetDependency */,
 			);
 			name = UI;
 			productName = UI;
@@ -1048,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */,
 				4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,6 +1098,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4CBE2E41285834C700297862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CF2F0B728570BEE00EBCB41 /* Presentation */;
+			targetProxy = 4CBE2E40285834C700297862 /* PBXContainerItemProxy */;
+		};
 		4CF2F02D28553B1E00EBCB41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CF2F02228553B1E00EBCB41 /* Data */;
