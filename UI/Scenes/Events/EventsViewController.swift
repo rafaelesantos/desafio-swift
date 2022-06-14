@@ -8,7 +8,7 @@
 import UIKit
 import Presentation
 
-final class EventsViewController: UIViewController {
+public final class EventsViewController: UIViewController {
     @UsesAutoLayout
     var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
@@ -23,9 +23,9 @@ final class EventsViewController: UIViewController {
         return tableView
     }()
     
-    var getAllEvents: (() -> Void)?
+    public var getAllEvents: (() -> Void)?
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
@@ -63,7 +63,7 @@ final class EventsViewController: UIViewController {
 }
 
 extension EventsViewController: LoadingProtocol {
-    func display(with model: LoadingModel) {
+    public func display(with model: LoadingModel) {
         if model.isLoading {
             activityIndicatorView.startAnimating()
         } else {
@@ -73,7 +73,7 @@ extension EventsViewController: LoadingProtocol {
 }
 
 extension EventsViewController: AlertProtocol {
-    func show(with model: AlertModel) {
+    public func show(with model: AlertModel) {
         let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
         alerController.addAction(.init(title: "Ok", style: .default))
         present(alerController, animated: true)
@@ -81,11 +81,11 @@ extension EventsViewController: AlertProtocol {
 }
 
 extension EventsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(EventTableViewCell.self, for: indexPath) else { return .init() }
         return cell
     }
