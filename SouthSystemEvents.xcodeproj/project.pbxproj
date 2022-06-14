@@ -32,14 +32,16 @@
 		4CBE2E99285853CF00297862 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CBE2E9C285853CF00297862 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; };
 		4CBE2E9D285853CF00297862 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4CBE2EA72858592E00297862 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA62858592E00297862 /* UseCaseFactory.swift */; };
-		4CBE2EAA28585A0000297862 /* EventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA928585A0000297862 /* EventsComposer.swift */; };
+		4CBE2EA72858592E00297862 /* RemoteGetEventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */; };
+		4CBE2EAA28585A0000297862 /* EventsControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */; };
 		4CBE2EAC28585CE100297862 /* EventsComposersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EAB28585CE000297862 /* EventsComposersTests.swift */; };
 		4CBE2EAE285862D000297862 /* GetEventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */; };
 		4CBE2EAF285862FB00297862 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 		4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB12858660600297862 /* WeakProxy.swift */; };
 		4CBE2EB928586E0200297862 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB828586E0200297862 /* Environment.swift */; };
 		4CBE2EBD285874C300297862 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */; };
+		4CBE2EC028587AF100297862 /* ApiUrlFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EBF28587AF100297862 /* ApiUrlFactory.swift */; };
+		4CBE2EC328587BC100297862 /* NetworkAdapterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EC228587BC100297862 /* NetworkAdapterFactory.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -308,14 +310,16 @@
 		4CBE2E6A285853B500297862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CBE2E6C285853B500297862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CBE2E71285853B500297862 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CBE2EA62858592E00297862 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
-		4CBE2EA928585A0000297862 /* EventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsComposer.swift; sourceTree = "<group>"; };
+		4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEventsFactory.swift; sourceTree = "<group>"; };
+		4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsControllerFactory.swift; sourceTree = "<group>"; };
 		4CBE2EAB28585CE000297862 /* EventsComposersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsComposersTests.swift; sourceTree = "<group>"; };
 		4CBE2EB12858660600297862 /* WeakProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakProxy.swift; sourceTree = "<group>"; };
 		4CBE2EB428586C6800297862 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4CBE2EB528586C7D00297862 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4CBE2EB828586E0200297862 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		4CBE2EBF28587AF100297862 /* ApiUrlFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrlFactory.swift; sourceTree = "<group>"; };
+		4CBE2EC228587BC100297862 /* NetworkAdapterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapterFactory.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -533,7 +537,9 @@
 		4CBE2EA3285854EB00297862 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				4CBE2EA62858592E00297862 /* UseCaseFactory.swift */,
+				4CBE2EC428587CA700297862 /* Controller */,
+				4CBE2EC128587B6C00297862 /* Infra */,
+				4CBE2EBE28587AD800297862 /* Http */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -541,7 +547,7 @@
 		4CBE2EA8285859D300297862 /* Composers */ = {
 			isa = PBXGroup;
 			children = (
-				4CBE2EA928585A0000297862 /* EventsComposer.swift */,
+				4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -578,6 +584,30 @@
 				4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */,
 			);
 			path = Decorators;
+			sourceTree = "<group>";
+		};
+		4CBE2EBE28587AD800297862 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2EBF28587AF100297862 /* ApiUrlFactory.swift */,
+				4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		4CBE2EC128587B6C00297862 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2EC228587BC100297862 /* NetworkAdapterFactory.swift */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		4CBE2EC428587CA700297862 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		4CF2EFD22855320700EBCB41 = {
@@ -1326,11 +1356,13 @@
 			files = (
 				4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */,
 				4CBE2EBD285874C300297862 /* MainQueueDispatchDecorator.swift in Sources */,
+				4CBE2EC328587BC100297862 /* NetworkAdapterFactory.swift in Sources */,
 				4CBE2EB928586E0200297862 /* Environment.swift in Sources */,
-				4CBE2EA72858592E00297862 /* UseCaseFactory.swift in Sources */,
+				4CBE2EC028587AF100297862 /* ApiUrlFactory.swift in Sources */,
+				4CBE2EA72858592E00297862 /* RemoteGetEventsFactory.swift in Sources */,
 				4CBE2E5F285853B200297862 /* AppDelegate.swift in Sources */,
 				4CBE2E61285853B200297862 /* SceneDelegate.swift in Sources */,
-				4CBE2EAA28585A0000297862 /* EventsComposer.swift in Sources */,
+				4CBE2EAA28585A0000297862 /* EventsControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
