@@ -23,14 +23,18 @@ class EventsViewControllerTests: XCTestCase {
         XCTAssertNotNil(makeSut() as AlertProtocol)
     }
     
-    func testSutImplementsEventsProtocol() {
-        XCTAssertNotNil(makeSut() as EventsProtocol)
+    func testCallsGetAllEventsOnSetupUI() {
+        var hasCompletion = false
+        let sut = makeSut { hasCompletion = true }
+        sut.viewDidLoad()
+        XCTAssertTrue(hasCompletion)
     }
 }
 
 extension EventsViewControllerTests {
-    func makeSut() -> EventsViewController {
+    func makeSut(getAllEventsSpy: (() -> Void)? = nil) -> EventsViewController {
         let sut = EventsViewController()
+        sut.getAllEvents = getAllEventsSpy
         sut.loadViewIfNeeded()
         return sut
     }

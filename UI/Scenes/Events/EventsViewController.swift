@@ -7,7 +7,6 @@
 
 import UIKit
 import Presentation
-import Domain
 
 final class EventsViewController: UIViewController {
     @UsesAutoLayout
@@ -17,9 +16,24 @@ final class EventsViewController: UIViewController {
         return view
     }()
     
+    @UsesAutoLayout
+    var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(EventTableViewCell.self)
+        return tableView
+    }()
+    
+    var getAllEvents: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
         setupActivityIndicatorView()
+        setupTableView()
+        loadData()
     }
     
     private func setupActivityIndicatorView() {
@@ -29,6 +43,22 @@ final class EventsViewController: UIViewController {
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        let constraints = [
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func loadData() {
+        getAllEvents?()
     }
 }
 
@@ -50,8 +80,13 @@ extension EventsViewController: AlertProtocol {
     }
 }
 
-extension EventsViewController: EventsProtocol {
-    func recieved(events: [EventModel]) {
-        
+extension EventsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.cell(EventTableViewCell.self, for: indexPath) else { return .init() }
+        return cell
     }
 }
