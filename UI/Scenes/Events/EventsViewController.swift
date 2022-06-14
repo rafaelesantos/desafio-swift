@@ -44,7 +44,9 @@ extension EventsViewController: LoadingProtocol {
 
 extension EventsViewController: AlertProtocol {
     func show(with model: AlertModel) {
-        
+        let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
+        alerController.addAction(.init(title: "Ok", style: .default))
+        present(alerController, animated: true)
     }
 }
 
