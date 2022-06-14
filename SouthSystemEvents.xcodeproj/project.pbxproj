@@ -11,6 +11,7 @@
 		4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */; };
 		4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; };
 		4CBE2E3F285834C700297862 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CBE2E48285839F100297862 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E47285839F100297862 /* TestExtensions.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -192,6 +193,7 @@
 /* Begin PBXFileReference section */
 		4CBE2E3928582B6E00297862 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
+		4CBE2E47285839F100297862 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -347,6 +349,14 @@
 				4CF2F0FA285725C100EBCB41 /* EventsViewControllerTests.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4CBE2E46285839DF00297862 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2E47285839F100297862 /* TestExtensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4CF2EFD22855320700EBCB41 = {
@@ -630,6 +640,7 @@
 		4CF2F0F9285725C100EBCB41 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE2E46285839DF00297862 /* Helpers */,
 				4CBE2E452858398000297862 /* Scenes */,
 			);
 			path = UITests;
@@ -1116,6 +1127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF2F0FB285725C100EBCB41 /* EventsViewControllerTests.swift in Sources */,
+				4CBE2E48285839F100297862 /* TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
