@@ -7,10 +7,28 @@
 
 import XCTest
 import Main
+import UI
 
 class EventsComposersTests: XCTestCase {
-    func testUIPresentationIntegration() {
-        let sut = EventsComposer.composeControllerWith(getEvents: GetEventsSpy())
-        checkMemoryLeak(for: sut)
+    func testBackgroundRequestShouldCompleteOnMainThread() {
+        let (sut, getEventsSpy) = makeSut()
+        sut.loadViewIfNeeded()
+        sut.getAllEvents?()
+        let exp = expectation(description: "waiting")
+        DispatchQueue.global().async {
+            getEventsSpy.completeWithError(.unexpected)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
+}
+
+extension EventsComposersTests {
+    func makeSut(file: StaticString = #file, line: UInt = #line) -> (sut: EventsViewController, getEventsSpy: GetEventsSpy) {
+        let getEventsSpy = GetEventsSpy()
+        let sut = makeEventsController(getEvents: MainQueueDispatchDecorator(getEventsSpy))
+        checkMemoryLeak(for: sut, file: file, line: line)
+        checkMemoryLeak(for: getEventsSpy, file: file, line: line)
+        return (sut, getEventsSpy)
     }
 }

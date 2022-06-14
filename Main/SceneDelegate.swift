@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -16,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let httpClient = makeNetworkAdapter()
         let getEvents = makeRemoteGetEvents(httpClient: httpClient)
         let rootViewController = makeEventsController(getEvents: getEvents)
-        window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+        let navigationController = NavigationController(rootViewController: rootViewController)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 }

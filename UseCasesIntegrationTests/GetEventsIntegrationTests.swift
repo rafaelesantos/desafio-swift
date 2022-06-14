@@ -14,7 +14,7 @@ class GetEventsIntegrationTests: XCTestCase {
     func testGetEvents() {
         let networkAdapter = NetworkAdapter()
         let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events")!
-        let sut = RemoteGetEvents(url: url, httpGetClient: networkAdapter)
+        let sut = RemoteGetEvents(url: url, httpClient: networkAdapter)
         let exp = expectation(description: "waiting")
         sut.getEvents() { result in
             switch result {

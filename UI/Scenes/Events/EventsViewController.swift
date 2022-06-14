@@ -11,14 +11,16 @@ import Presentation
 public final class EventsViewController: UIViewController {
     @UsesAutoLayout
     var activityIndicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .large)
+        let view = UIActivityIndicatorView()
         view.hidesWhenStopped = true
         return view
     }()
     
-    @UsesAutoLayout
-    var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(EventTableViewCell.self)
         return tableView
     }()
@@ -35,7 +37,6 @@ public final class EventsViewController: UIViewController {
     
     private func setupUI() {
         title = "Eventos"
-        navigationController?.navigationBar.prefersLargeTitles = true
         setupActivityIndicatorView()
         setupTableView()
         loadData()
@@ -52,7 +53,6 @@ public final class EventsViewController: UIViewController {
     
     private func setupTableView() {
         view.addSubview(tableView)
-        tableView.dataSource = self
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -91,7 +91,7 @@ extension EventsViewController: EventsProtocol {
     }
 }
 
-extension EventsViewController: UITableViewDataSource {
+extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
