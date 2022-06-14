@@ -45,6 +45,7 @@
 		4CBE2EC72858F9D600297862 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EC62858F9D600297862 /* NavigationController.swift */; };
 		4CBE2EC92858FAA300297862 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EC82858FAA300297862 /* UIColorExtensions.swift */; };
 		4CBE2ECC285911C300297862 /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECB285911C300297862 /* UIFontsExtension.swift */; };
+		4CBE2ECE2859152D00297862 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECD2859152D00297862 /* ImageLoader.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -326,6 +327,7 @@
 		4CBE2EC62858F9D600297862 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4CBE2EC82858FAA300297862 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4CBE2ECB285911C300297862 /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
+		4CBE2ECD2859152D00297862 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F01A285537FE00EBCB41 /* GetEvents.swift */,
+				4CBE2ECD2859152D00297862 /* ImageLoader.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1399,6 +1402,7 @@
 			files = (
 				4CF2F04B2856E54D00EBCB41 /* DomainError.swift in Sources */,
 				4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */,
+				4CBE2ECE2859152D00297862 /* ImageLoader.swift in Sources */,
 				4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */,
 				4CF2F0502856EA5B00EBCB41 /* Model.swift in Sources */,
 			);
