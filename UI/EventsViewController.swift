@@ -40,3 +40,11 @@ extension EventsViewController: LoadingProtocol {
         }
     }
 }
+
+extension EventsViewController: AlertProtocol {
+    func show(with model: AlertModel) {
+        
+    }
+}
+
+

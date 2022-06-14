@@ -21,4 +21,9 @@ class UITests: XCTestCase {
         let sut = EventsViewController()
         XCTAssertNotNil(sut as LoadingProtocol)
     }
+    
+    func testSutImplementsAlertProtocol() {
+        let sut = EventsViewController()
+        XCTAssertNotNil(sut as AlertProtocol)
+    }
 }
