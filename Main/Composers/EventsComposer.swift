@@ -9,8 +9,8 @@ import Foundation
 import Domain
 import UI
 
-final class EventsComposer {
-    static func composeControllerWith(getEvents: GetEvents) -> EventsViewController {
+public final class EventsComposer {
+    public static func composeControllerWith(getEvents: GetEvents) -> EventsViewController {
         return ControllerFactory.makeEvents(getEvents: getEvents)
     }
 }

@@ -24,6 +24,9 @@ public final class EventsViewController: UIViewController {
     }()
     
     public var getAllEvents: (() -> Void)?
+    private var events = Events() {
+        didSet { tableView.reloadData() }
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +83,20 @@ extension EventsViewController: AlertProtocol {
     }
 }
 
+extension EventsViewController: EventsProtocol {
+    public func recieved(events: Events) {
+        self.events = events
+    }
+}
+
 extension EventsViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return events.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(EventTableViewCell.self, for: indexPath) else { return .init() }
+        cell.titleLabel.text = events[indexPath.row].title
         return cell
     }
 }

@@ -23,6 +23,10 @@ class EventsViewControllerTests: XCTestCase {
         XCTAssertNotNil(makeSut() as AlertProtocol)
     }
     
+    func testSutImplementsEventsProtocol() {
+        XCTAssertNotNil(makeSut() as EventsProtocol)
+    }
+    
     func testCallsGetAllEventsOnSetupUI() {
         var hasCompletion = false
         let sut = makeSut { hasCompletion = true }
