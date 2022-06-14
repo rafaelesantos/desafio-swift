@@ -34,11 +34,12 @@
 		4CBE2E9D285853CF00297862 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CBE2EA72858592E00297862 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA62858592E00297862 /* UseCaseFactory.swift */; };
 		4CBE2EAA28585A0000297862 /* EventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA928585A0000297862 /* EventsComposer.swift */; };
-		4CBE2EAC28585CE100297862 /* EventsIntegationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EAB28585CE000297862 /* EventsIntegationTests.swift */; };
+		4CBE2EAC28585CE100297862 /* EventsComposersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EAB28585CE000297862 /* EventsComposersTests.swift */; };
 		4CBE2EAE285862D000297862 /* GetEventsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */; };
 		4CBE2EAF285862FB00297862 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0562856F1AC00EBCB41 /* TestExtensions.swift */; };
 		4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB12858660600297862 /* WeakProxy.swift */; };
 		4CBE2EB928586E0200297862 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB828586E0200297862 /* Environment.swift */; };
+		4CBE2EBD285874C300297862 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -309,11 +310,12 @@
 		4CBE2E71285853B500297862 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBE2EA62858592E00297862 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		4CBE2EA928585A0000297862 /* EventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsComposer.swift; sourceTree = "<group>"; };
-		4CBE2EAB28585CE000297862 /* EventsIntegationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsIntegationTests.swift; sourceTree = "<group>"; };
+		4CBE2EAB28585CE000297862 /* EventsComposersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsComposersTests.swift; sourceTree = "<group>"; };
 		4CBE2EB12858660600297862 /* WeakProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakProxy.swift; sourceTree = "<group>"; };
 		4CBE2EB428586C6800297862 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4CBE2EB528586C7D00297862 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4CBE2EB828586E0200297862 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		4CBE2E5D285853B200297862 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE2EBB285874AB00297862 /* Decorators */,
 				4CBE2EB328586C5500297862 /* Env */,
 				4CBE2EB0285865E800297862 /* Proxies */,
 				4CBE2EA8285859D300297862 /* Composers */,
@@ -522,7 +525,7 @@
 		4CBE2E74285853B500297862 /* MainTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CBE2EAB28585CE000297862 /* EventsIntegationTests.swift */,
+				4CBE2EBA2858726200297862 /* Composers */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -559,6 +562,22 @@
 				4CBE2EB828586E0200297862 /* Environment.swift */,
 			);
 			path = Env;
+			sourceTree = "<group>";
+		};
+		4CBE2EBA2858726200297862 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2EAB28585CE000297862 /* EventsComposersTests.swift */,
+			);
+			path = Composers;
+			sourceTree = "<group>";
+		};
+		4CBE2EBB285874AB00297862 /* Decorators */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2EBC285874C300297862 /* MainQueueDispatchDecorator.swift */,
+			);
+			path = Decorators;
 			sourceTree = "<group>";
 		};
 		4CF2EFD22855320700EBCB41 = {
@@ -1306,6 +1325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */,
+				4CBE2EBD285874C300297862 /* MainQueueDispatchDecorator.swift in Sources */,
 				4CBE2EB928586E0200297862 /* Environment.swift in Sources */,
 				4CBE2EA72858592E00297862 /* UseCaseFactory.swift in Sources */,
 				4CBE2E5F285853B200297862 /* AppDelegate.swift in Sources */,
@@ -1320,7 +1340,7 @@
 			files = (
 				4CBE2EAE285862D000297862 /* GetEventsSpy.swift in Sources */,
 				4CBE2EAF285862FB00297862 /* TestExtensions.swift in Sources */,
-				4CBE2EAC28585CE100297862 /* EventsIntegationTests.swift in Sources */,
+				4CBE2EAC28585CE100297862 /* EventsComposersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,23 @@ final class UseCaseFactory {
     }
     
     static func makeRemoteGetEvents() -> GetEvents {
-        return RemoteGetEvents(url: makeUrl(path: "events"), httpClient: httpClient)
+        let remoteGetEvents = RemoteGetEvents(url: makeUrl(path: "events"), httpClient: httpClient)
+        return MainQueueDispatchDecorator(remoteGetEvents)
+    }
+}
+
+public final class RemoteGetEventsDecorator: GetEvents {
+    private let instance: GetEvents
+    
+    public init(_ instance: GetEvents) {
+        self.instance = instance
+    }
+    
+    public func getEvents(completion: @escaping (Result<[EventModel], DomainError>) -> Void) {
+        instance.getEvents { result in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
     }
 }
