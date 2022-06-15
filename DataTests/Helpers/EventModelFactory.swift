@@ -24,6 +24,20 @@ func makeEventsModel() -> [EventModel] {
     ]
 }
 
+func makeEventDetailModel() -> EventModel {
+    return EventModel(
+        description: "any-description",
+        date: 0,
+        id: "any-id",
+        image: "any-image",
+        latitude: 0,
+        longitude: 0,
+        people: [],
+        price: 0,
+        title: "any-title"
+    )
+}
+
 func makeImageModel() -> Data {
     return Data("any-image".utf8)
 }
