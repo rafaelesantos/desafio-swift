@@ -18,10 +18,9 @@ extension UIView {
         ]
     }
     
-    func constraintAspectRatio(height: CGFloat, ratio: (CGFloat, CGFloat)) -> [NSLayoutConstraint] {
+    func constraintAspectRatio(ratio: (CGFloat, CGFloat)) -> [NSLayoutConstraint] {
         return [
-            heightAnchor.constraint(equalTo: widthAnchor, multiplier: ratio.1 / ratio.0),
-            heightAnchor.constraint(equalToConstant: height)
+            heightAnchor.constraint(equalTo: widthAnchor, multiplier: ratio.1 / ratio.0)
         ]
     }
 }

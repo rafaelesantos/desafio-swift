@@ -9,7 +9,7 @@ import Foundation
 import Domain
 
 public final class MainQueueDispatchDecorator<T> {
-    private let instance: T
+    private var instance: T
 
     public init(_ instance: T) {
         self.instance = instance
@@ -24,6 +24,28 @@ public final class MainQueueDispatchDecorator<T> {
 extension MainQueueDispatchDecorator: GetEvents where T: GetEvents {
     public func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
         instance.getEvents { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+extension MainQueueDispatchDecorator: ImageLoader where T: ImageLoader {
+    public var loadedImages: [URL : Data] {
+        get { return instance.loadedImages }
+        set(newValue) { instance.loadedImages = newValue }
+    }
+    
+    public var runningRequests: [UUID : URLSessionDataTask] {
+        get { return instance.runningRequests }
+        set(newValue) { instance.runningRequests = newValue }
+    }
+    
+    public func cancelLoad(_ uuid: UUID) {
+        instance.cancelLoad(uuid)
+    }
+    
+    public func loadImage(with url: URL, completion: @escaping (ImageLoader.Result) -> Void) -> UUID? {
+        instance.loadImage(with: url) { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }

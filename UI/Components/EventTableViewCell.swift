@@ -86,13 +86,16 @@ final class EventTableViewCell: UITableViewCell {
         imageTextStack.addArrangedSubview(textStack)
         contentView.addSubview(imageTextStack)
         var constraints = imageTextStack.constraintsForAnchoringTo(boundsOf: contentView)
-        constraints += eventImage.constraintAspectRatio(height: 80, ratio: (14, 9))
+        constraints += eventImage.constraintAspectRatio(ratio: (14, 9))
         NSLayoutConstraint.activate(constraints)
     }
     
-    func setupCell(with event: EventModel) {
+    func setupCell(with event: EventModel, loader: UIImageLoader) {
         eventTitle.text = event.title
         eventDescription.text = event.description?.replacingOccurrences(of: "\n", with: " ")
         if let price = event.price { eventPrice.text = price.formatted(.currency(code: "BRL")) }
+        if let urlString = event.image, let url = URL(string: urlString) {
+            eventImage.loadImage(at: url, with: loader)
+        }
     }
 }

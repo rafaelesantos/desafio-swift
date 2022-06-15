@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let httpClient = makeNetworkAdapter()
         let getEvents = makeRemoteGetEvents(httpClient: httpClient)
-        let rootViewController = makeEventsController(getEvents: getEvents)
+        let imageLoader = makeRemoteImageLoader(httpClient: httpClient)
+        let rootViewController = makeEventsController(getEvents: getEvents, imageLoader: imageLoader)
         let navigationController = NavigationController(rootViewController: rootViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -10,9 +10,12 @@ import UI
 import Presentation
 import Domain
 
-public func makeEventsController(getEvents: GetEvents) -> EventsViewController {
+public func makeEventsController(getEvents: GetEvents, imageLoader: ImageLoader) -> EventsViewController {
     let controller = EventsViewController()
     let viewModel = EventsViewModel(alert: WeakProxy(controller), loading: WeakProxy(controller), getEvents: getEvents, events: WeakProxy(controller))
+    let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
+    let imageLoaderViewModel = ImageLoaderViewModel(loading: WeakProxy(controller), imageLoader: imageLoaderModel)
+    controller.imageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
     controller.getAllEvents = viewModel.getAllEvents
     return controller
 }

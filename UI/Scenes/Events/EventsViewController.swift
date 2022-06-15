@@ -17,7 +17,7 @@ public final class EventsViewController: UIViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +26,8 @@ public final class EventsViewController: UIViewController {
     }()
     
     public var getAllEvents: (() -> Void)?
+    public var imageLoader: UIImageLoader?
+    
     private var events = [EventModel]() {
         didSet { tableView.reloadData() }
     }
@@ -37,6 +39,7 @@ public final class EventsViewController: UIViewController {
     
     private func setupUI() {
         title = "Eventos"
+        self.view.backgroundColor = .secondarySystemBackground
         setupActivityIndicatorView()
         setupTableView()
         loadData()
@@ -99,7 +102,10 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(EventTableViewCell.self, for: indexPath) else { return .init() }
         let event = events[indexPath.row]
-        cell.setupCell(with: event)
+        if let imageLoader = imageLoader {
+            cell.setupCell(with: event, loader: imageLoader)
+            cell.accessoryType = .disclosureIndicator
+        }
         return cell
     }
 }

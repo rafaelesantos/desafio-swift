@@ -7,6 +7,7 @@
 
 import Foundation
 import Presentation
+import Domain
 
 class WeakProxy<T: AnyObject> {
     private weak var instance: T?
@@ -31,5 +32,20 @@ extension WeakProxy: LoadingProtocol where T: LoadingProtocol {
 extension WeakProxy: EventsProtocol where T: EventsProtocol {
     func recieved(events: [EventModel]) {
         instance?.recieved(events: events)
+    }
+}
+
+extension WeakProxy: ImageLoaderProtocol where T: ImageLoaderProtocol {
+    var loader: ImageLoader {
+        get { return instance!.loader }
+        set(newValue) { instance!.loader = newValue }
+    }
+    
+    func load(with url: URL, for completion: @escaping (Result<Data, DomainError>) -> Void, completionDefer: @escaping () -> Void, completionToken: (UUID) -> Void, completionLoading: @escaping (LoadingModel) -> Void) {
+        instance?.load(with: url, for: completion, completionDefer: completionDefer, completionToken: completionToken, completionLoading: completionLoading)
+    }
+    
+    func cancel(completionUUID: () -> UUID?, completion: () -> Void) {
+        instance?.cancel(completionUUID: completionUUID, completion: completion)
     }
 }

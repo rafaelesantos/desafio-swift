@@ -46,6 +46,12 @@
 		4CBE2EC92858FAA300297862 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EC82858FAA300297862 /* UIColorExtensions.swift */; };
 		4CBE2ECC285911C300297862 /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECB285911C300297862 /* UIFontsExtension.swift */; };
 		4CBE2ECE2859152D00297862 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECD2859152D00297862 /* ImageLoader.swift */; };
+		4CBE2ED0285916A400297862 /* RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */; };
+		4CBE2ED228591D8E00297862 /* RemoteImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED128591D8E00297862 /* RemoteImageLoaderTests.swift */; };
+		4CBE2ED8285927E100297862 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */; };
+		4CBE2EDA2859280400297862 /* UIImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED92859280400297862 /* UIImageLoader.swift */; };
+		4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */; };
+		4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -328,6 +334,12 @@
 		4CBE2EC82858FAA300297862 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4CBE2ECB285911C300297862 /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		4CBE2ECD2859152D00297862 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageLoader.swift; sourceTree = "<group>"; };
+		4CBE2ED128591D8E00297862 /* RemoteImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageLoaderTests.swift; sourceTree = "<group>"; };
+		4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		4CBE2ED92859280400297862 /* UIImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageLoader.swift; sourceTree = "<group>"; };
+		4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderProtocol.swift; sourceTree = "<group>"; };
+		4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderViewModel.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -482,6 +494,8 @@
 				4CBE2E4F285845B500297862 /* UITableViewExtensions.swift */,
 				4CBE2EC82858FAA300297862 /* UIColorExtensions.swift */,
 				4CBE2ECB285911C300297862 /* UIFontsExtension.swift */,
+				4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */,
+				4CBE2ED92859280400297862 /* UIImageLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -524,7 +538,6 @@
 				4CBE2EBB285874AB00297862 /* Decorators */,
 				4CBE2EB328586C5500297862 /* Env */,
 				4CBE2EB0285865E800297862 /* Proxies */,
-				4CBE2EA8285859D300297862 /* Composers */,
 				4CBE2EA3285854EB00297862 /* Factories */,
 				4CBE2E5E285853B200297862 /* AppDelegate.swift */,
 				4CBE2E60285853B200297862 /* SceneDelegate.swift */,
@@ -551,14 +564,6 @@
 				4CBE2EBE28587AD800297862 /* Http */,
 			);
 			path = Factories;
-			sourceTree = "<group>";
-		};
-		4CBE2EA8285859D300297862 /* Composers */ = {
-			isa = PBXGroup;
-			children = (
-				4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */,
-			);
-			path = Composers;
 			sourceTree = "<group>";
 		};
 		4CBE2EB0285865E800297862 /* Proxies */ = {
@@ -615,6 +620,7 @@
 		4CBE2EC428587CA700297862 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F02F28553B1E00EBCB41 /* RemoteGetEventsTests.swift */,
+				4CBE2ED128591D8E00297862 /* RemoteImageLoaderTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -725,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */,
+				4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -846,6 +854,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */,
+				4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -856,6 +865,7 @@
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
 				4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */,
+				4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1414,6 +1424,7 @@
 			files = (
 				4CF2F04E2856E9E700EBCB41 /* ExtensionHelpers.swift in Sources */,
 				4CF2F0482856E4E900EBCB41 /* HttpError.swift in Sources */,
+				4CBE2ED0285916A400297862 /* RemoteImageLoader.swift in Sources */,
 				4CF2F03F2855419900EBCB41 /* HttpGetClient.swift in Sources */,
 				4CF2F041285541D900EBCB41 /* RemoteGetEvents.swift in Sources */,
 			);
@@ -1423,6 +1434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBE2ED228591D8E00297862 /* RemoteImageLoaderTests.swift in Sources */,
 				4CF2F0532856F13F00EBCB41 /* EventModelFactory.swift in Sources */,
 				4CF2F05A2856F1E700EBCB41 /* HttpClientSpy.swift in Sources */,
 				4CF2F03028553B1E00EBCB41 /* RemoteGetEventsTests.swift in Sources */,
@@ -1465,7 +1477,9 @@
 				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
 				4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
+				4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */,
 				4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */,
+				4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,9 +1507,11 @@
 				4CBE2ECC285911C300297862 /* UIFontsExtension.swift in Sources */,
 				4CBE2EC72858F9D600297862 /* NavigationController.swift in Sources */,
 				4CBE2EC92858FAA300297862 /* UIColorExtensions.swift in Sources */,
+				4CBE2EDA2859280400297862 /* UIImageLoader.swift in Sources */,
 				4CBE2E4E2858441000297862 /* UITableViewCellExtensions.swift in Sources */,
 				4CBE2E50285845B500297862 /* UITableViewExtensions.swift in Sources */,
 				4CBE2E4C285840D500297862 /* UIViewExtensions.swift in Sources */,
+				4CBE2ED8285927E100297862 /* UIImageViewExtensions.swift in Sources */,
 				4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

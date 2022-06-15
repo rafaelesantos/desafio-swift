@@ -15,10 +15,11 @@ public class NetworkAdapter: HttpGetClient {
         self.session = session
     }
     
-    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) {
+    @discardableResult
+    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> Void) -> URLSessionDataTask {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        session.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
             if error != nil { return completion(.failure(.noConnectivity)) }
             if let data = data {
@@ -32,6 +33,8 @@ public class NetworkAdapter: HttpGetClient {
                 default: completion(.failure(.noConnectivity))
                 }
             }
-        }.resume()
+        }
+        task.resume()
+        return task
     }
 }

@@ -23,3 +23,7 @@ func makeEventsModel() -> [EventModel] {
         )
     ]
 }
+
+func makeImageModel() -> Data {
+    return Data("any-image".utf8)
+}
