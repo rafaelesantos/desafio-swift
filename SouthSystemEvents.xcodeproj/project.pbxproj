@@ -56,6 +56,14 @@
 		4CBE2EE4285A50D700297862 /* GetEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE3285A50D700297862 /* GetEventDetail.swift */; };
 		4CBE2EE6285A511C00297862 /* RemoteGetEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE5285A511B00297862 /* RemoteGetEventDetail.swift */; };
 		4CBE2EE8285A51A300297862 /* RemoteGetEventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE7285A51A300297862 /* RemoteGetEventDetailTests.swift */; };
+		4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */; };
+		4CBE2EEC285A532D00297862 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */; };
+		4CBE2EEE285A544B00297862 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EED285A544B00297862 /* EventDetailViewModelTests.swift */; };
+		4CBE2EF0285A54AB00297862 /* GetEventDetailSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EEF285A54AB00297862 /* GetEventDetailSpy.swift */; };
+		4CBE2EF2285A54CD00297862 /* EventDetailSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF1285A54CD00297862 /* EventDetailSpy.swift */; };
+		4CBE2EF5285A59CA00297862 /* ImageLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */; };
+		4CBE2EF6285A5A5300297862 /* ImageLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */; };
+		4CBE2EF9285A5C2900297862 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 4CBE2EF8285A5C2900297862 /* Hero */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -348,6 +356,12 @@
 		4CBE2EE3285A50D700297862 /* GetEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventDetail.swift; sourceTree = "<group>"; };
 		4CBE2EE5285A511B00297862 /* RemoteGetEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEventDetail.swift; sourceTree = "<group>"; };
 		4CBE2EE7285A51A300297862 /* RemoteGetEventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEventDetailTests.swift; sourceTree = "<group>"; };
+		4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailProtocol.swift; sourceTree = "<group>"; };
+		4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		4CBE2EED285A544B00297862 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
+		4CBE2EEF285A54AB00297862 /* GetEventDetailSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventDetailSpy.swift; sourceTree = "<group>"; };
+		4CBE2EF1285A54CD00297862 /* EventDetailSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailSpy.swift; sourceTree = "<group>"; };
+		4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSpy.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -478,6 +492,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBE2EF9285A5C2900297862 /* Hero in Frameworks */,
 				4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +881,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */,
+				4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */,
 				4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */,
 			);
 			path = ViewModel;
@@ -877,6 +893,7 @@
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
 				4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */,
+				4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */,
 				4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */,
 			);
 			path = Protocols;
@@ -902,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F0C428570BEE00EBCB41 /* EventsViewModelTests.swift */,
+				4CBE2EED285A544B00297862 /* EventDetailViewModelTests.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -910,6 +928,8 @@
 			isa = PBXGroup;
 			children = (
 				4CF2F0E02857248E00EBCB41 /* GetEventsSpy.swift */,
+				4CBE2EEF285A54AB00297862 /* GetEventDetailSpy.swift */,
+				4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -920,6 +940,7 @@
 				4CF2F0E3285724CD00EBCB41 /* AlertSpy.swift */,
 				4CF2F0E5285724D900EBCB41 /* LoadingSpy.swift */,
 				4CF2F0E7285724E800EBCB41 /* EventsSpy.swift */,
+				4CBE2EF1285A54CD00297862 /* EventDetailSpy.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1196,6 +1217,9 @@
 				4CBE2E41285834C700297862 /* PBXTargetDependency */,
 			);
 			name = UI;
+			packageProductDependencies = (
+				4CBE2EF8285A5C2900297862 /* Hero */,
+			);
 			productName = UI;
 			productReference = 4CF2F0EE285725C100EBCB41 /* UI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1282,6 +1306,9 @@
 				Base,
 			);
 			mainGroup = 4CF2EFD22855320700EBCB41;
+			packageReferences = (
+				4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */,
+			);
 			productRefGroup = 4CF2EFDC2855320700EBCB41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1413,6 +1440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBE2EAC28585CE100297862 /* EventsComposersTests.swift in Sources */,
+				4CBE2EF6285A5A5300297862 /* ImageLoaderSpy.swift in Sources */,
 				4CBE2EAE285862D000297862 /* GetEventsSpy.swift in Sources */,
 				4CBE2EAF285862FB00297862 /* TestExtensions.swift in Sources */,
 			);
@@ -1489,11 +1517,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */,
 				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
 				4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
 				4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */,
 				4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */,
+				4CBE2EEC285A532D00297862 /* EventDetailViewModel.swift in Sources */,
 				4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1503,9 +1533,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF2F0E4285724CD00EBCB41 /* AlertSpy.swift in Sources */,
+				4CBE2EF5285A59CA00297862 /* ImageLoaderSpy.swift in Sources */,
+				4CBE2EEE285A544B00297862 /* EventDetailViewModelTests.swift in Sources */,
 				4CF2F0D72857206B00EBCB41 /* EventModelFactory.swift in Sources */,
+				4CBE2EF0285A54AB00297862 /* GetEventDetailSpy.swift in Sources */,
 				4CF2F0E8285724E800EBCB41 /* EventsSpy.swift in Sources */,
 				4CF2F0C528570BEE00EBCB41 /* EventsViewModelTests.swift in Sources */,
+				4CBE2EF2285A54CD00297862 /* EventDetailSpy.swift in Sources */,
 				4CF2F0E12857248E00EBCB41 /* GetEventsSpy.swift in Sources */,
 				4CF2F0E6285724D900EBCB41 /* LoadingSpy.swift in Sources */,
 				4CF2F0D428571A8D00EBCB41 /* TestExtensions.swift in Sources */,
@@ -2467,6 +2501,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4CBE2EF8285A5C2900297862 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CF2EFD32855320700EBCB41 /* Project object */;
 }
