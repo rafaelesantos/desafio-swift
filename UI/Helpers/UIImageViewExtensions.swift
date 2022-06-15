@@ -10,8 +10,8 @@ import UIKit
 import Presentation
 
 extension UIImageView {
-    func loadImage(at url: URL, with loader: UIImageLoader) {
-        loader.load(url, for: self)
+    func loadImage(at url: URL, with loader: UIImageLoader, completion: @escaping (Bool) -> Void) {
+        loader.load(url, for: self, completion: completion)
     }
     
     func cancelImageLoad(with loader: UIImageLoader) {

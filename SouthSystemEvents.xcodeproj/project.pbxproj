@@ -52,6 +52,7 @@
 		4CBE2EDA2859280400297862 /* UIImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED92859280400297862 /* UIImageLoader.swift */; };
 		4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */; };
 		4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */; };
+		4CBE2EE0285A45CD00297862 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDF285A45CD00297862 /* IntExtensions.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -340,6 +341,7 @@
 		4CBE2ED92859280400297862 /* UIImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageLoader.swift; sourceTree = "<group>"; };
 		4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderProtocol.swift; sourceTree = "<group>"; };
 		4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderViewModel.swift; sourceTree = "<group>"; };
+		4CBE2EDF285A45CD00297862 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				4CBE2ECB285911C300297862 /* UIFontsExtension.swift */,
 				4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */,
 				4CBE2ED92859280400297862 /* UIImageLoader.swift */,
+				4CBE2EDF285A45CD00297862 /* IntExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1511,6 +1514,7 @@
 				4CBE2E4E2858441000297862 /* UITableViewCellExtensions.swift in Sources */,
 				4CBE2E50285845B500297862 /* UITableViewExtensions.swift in Sources */,
 				4CBE2E4C285840D500297862 /* UIViewExtensions.swift in Sources */,
+				4CBE2EE0285A45CD00297862 /* IntExtensions.swift in Sources */,
 				4CBE2ED8285927E100297862 /* UIImageViewExtensions.swift in Sources */,
 				4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */,
 			);

@@ -17,15 +17,15 @@ public final class UIImageLoader {
         self.viewModel = viewModel
     }
     
-    func load(_ url: URL, for imageView: UIImageView) {
+    func load(_ url: URL, for imageView: UIImageView, completion: @escaping (Bool) -> Void) {
         viewModel.load(with: url) { [weak self] result in
             guard let _ = self else { return }
             switch result {
             case .success(let data):
                 imageView.image = UIImage(data: data)
-                NSLayoutConstraint.activate([imageView.heightAnchor.constraint(equalToConstant: 80)])
+                completion(true)
             case .failure:
-                NSLayoutConstraint.activate([imageView.heightAnchor.constraint(equalToConstant: 0)])
+                completion(false)
             }
         } completionDefer: { [weak self] in
             guard let self = self else { return }

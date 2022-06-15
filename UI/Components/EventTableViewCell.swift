@@ -25,6 +25,16 @@ final class EventTableViewCell: UITableViewCell {
         label.font = .preferredFont(forTextStyle: .footnote).bold()
         label.textColor = .accent
         label.numberOfLines = 1
+        label.textAlignment = .left
+        return label
+    }()
+    
+    var eventDate: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .footnote).bold()
+        label.textColor = .secondaryLabel
+        label.numberOfLines = 1
+        label.textAlignment = .right
         return label
     }()
     
@@ -42,6 +52,16 @@ final class EventTableViewCell: UITableViewCell {
         label.textColor = .secondaryLabel
         label.numberOfLines = 2
         return label
+    }()
+    
+    @UsesAutoLayout
+    var textDateStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        return stackView
     }()
     
     @UsesAutoLayout
@@ -79,23 +99,31 @@ final class EventTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        textStack.addArrangedSubview(eventPrice)
+        textDateStack.addArrangedSubview(eventPrice)
+        textDateStack.addArrangedSubview(eventDate)
+        textStack.addArrangedSubview(textDateStack)
         textStack.addArrangedSubview(eventTitle)
         textStack.addArrangedSubview(eventDescription)
-        imageTextStack.addArrangedSubview(eventImage)
         imageTextStack.addArrangedSubview(textStack)
         contentView.addSubview(imageTextStack)
-        var constraints = imageTextStack.constraintsForAnchoringTo(boundsOf: contentView)
-        constraints += eventImage.constraintAspectRatio(ratio: (14, 9))
+        let constraints = imageTextStack.constraintsForAnchoringTo(boundsOf: contentView)
         NSLayoutConstraint.activate(constraints)
     }
     
     func setupCell(with event: EventModel, loader: UIImageLoader) {
         eventTitle.text = event.title
         eventDescription.text = event.description?.replacingOccurrences(of: "\n", with: " ")
+        eventDate.text = event.date?.toDate()
         if let price = event.price { eventPrice.text = price.formatted(.currency(code: "BRL")) }
         if let urlString = event.image, let url = URL(string: urlString) {
-            eventImage.loadImage(at: url, with: loader)
+            eventImage.loadImage(at: url, with: loader) { [weak self] hasImage in
+                guard let self = self else { return }
+                if hasImage {
+                    self.imageTextStack.insertArrangedSubview(self.eventImage, at: 0)
+                    let constraints = self.eventImage.constraintAspectRatio(ratio: (1, 1)) + [self.eventImage.heightAnchor.constraint(equalToConstant: 80)]
+                    NSLayoutConstraint.activate(constraints)
+                }
+            }
         }
     }
 }
