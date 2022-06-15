@@ -8,6 +8,7 @@
 import XCTest
 import Main
 import UI
+import Domain
 
 class EventsComposersTests: XCTestCase {
     func testBackgroundRequestShouldCompleteOnMainThread() {
@@ -26,7 +27,8 @@ class EventsComposersTests: XCTestCase {
 extension EventsComposersTests {
     func makeSut(file: StaticString = #file, line: UInt = #line) -> (sut: EventsViewController, getEventsSpy: GetEventsSpy) {
         let getEventsSpy = GetEventsSpy()
-        let sut = makeEventsController(getEvents: MainQueueDispatchDecorator(getEventsSpy))
+        let imageLoaderSpy = ImageLoaderSpy()
+        let sut = makeEventsController(getEvents: MainQueueDispatchDecorator(getEventsSpy), imageLoader: MainQueueDispatchDecorator(imageLoaderSpy))
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: getEventsSpy, file: file, line: line)
         return (sut, getEventsSpy)
