@@ -17,45 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g6P-LW-mj4">
-                                <rect key="frame" x="111.5" y="333" width="191" height="230"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CvP-VR-Tcf">
+                                <rect key="frame" x="111.5" y="418" width="191" height="60"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0by-sN-awu">
-                                        <rect key="frame" x="20.5" y="0.0" width="150" height="150"/>
-                                        <color key="tintColor" name="AccentColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="W4J-oA-3rx"/>
-                                            <constraint firstAttribute="width" constant="150" id="vD5-tN-IvG"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CvP-VR-Tcf">
-                                        <rect key="frame" x="0.0" y="170" width="191" height="60"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUTH SYSTEM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nba-rc-fbz">
-                                                <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVi-WV-BUR">
-                                                <rect key="frame" x="38.5" y="30" width="114.5" height="30"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUTH SYSTEM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nba-rc-fbz">
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVi-WV-BUR">
+                                        <rect key="frame" x="38.5" y="30" width="114.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" name="AccentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="g6P-LW-mj4" secondAttribute="height" multiplier="191:230" id="nOK-hd-Ej9"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g6P-LW-mj4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AUI-vw-QKT"/>
-                            <constraint firstItem="g6P-LW-mj4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="L1P-I0-Gvs"/>
+                            <constraint firstItem="CvP-VR-Tcf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="u4o-ow-P1r"/>
+                            <constraint firstItem="CvP-VR-Tcf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vX0-yL-oe2"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -65,13 +49,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="1001" height="975"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.31764705882352939" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
