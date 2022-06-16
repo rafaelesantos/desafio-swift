@@ -19,7 +19,7 @@ class EventDetailViewModelTests: XCTestCase {
             XCTAssertEqual(model, makeErrorAlertModel(message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
             exp.fulfill()
         }
-        sut.get()
+        sut.get(with: "1")
         getEventDetailSpy.completeWithError(.unexpected)
         wait(for: [exp], timeout: 1)
     }
@@ -33,7 +33,7 @@ class EventDetailViewModelTests: XCTestCase {
             XCTAssertEqual(model, .init(isLoading: true))
             exp.fulfill()
         }
-        sut.get()
+        sut.get(with: "1")
         wait(for: [exp], timeout: 1)
         let exp2 = expectation(description: "waiting")
         loadingSpy.observe { model in
@@ -54,7 +54,7 @@ class EventDetailViewModelTests: XCTestCase {
             XCTAssertEqual(makeEventDetailModel(), event)
             exp.fulfill()
         }
-        sut.get()
+        sut.get(with: "1")
         getEventDetailSpy.completeWithSuccess(makeEventDetailModel())
         wait(for: [exp], timeout: 1)
     }

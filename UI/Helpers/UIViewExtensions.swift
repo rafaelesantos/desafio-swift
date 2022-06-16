@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func constraintsForAnchoringTo(boundsOf view: UIView) -> [NSLayoutConstraint] {
+    func constraintsForAnchoringTo(boundsOf view: UIView, constant: CGFloat = 15) -> [NSLayoutConstraint] {
         return [
-            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
-            leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
+            topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant)
         ]
     }
     

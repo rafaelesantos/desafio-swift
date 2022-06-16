@@ -11,7 +11,7 @@ import Domain
 class GetEventDetailSpy: GetEventDetail {
     var completion: ((GetEventDetail.Result) -> Void)?
     
-    func getEventDetail(completion: @escaping (GetEventDetail.Result) -> Void) {
+    func getEventDetail(eventID: String, completion: @escaping (GetEventDetail.Result) -> Void) {
         self.completion = completion
     }
     

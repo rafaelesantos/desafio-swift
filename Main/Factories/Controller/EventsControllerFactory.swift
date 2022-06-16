@@ -17,5 +17,10 @@ public func makeEventsController(getEvents: GetEvents, imageLoader: ImageLoader)
     let imageLoaderViewModel = ImageLoaderViewModel(loading: WeakProxy(controller), imageLoader: imageLoaderModel)
     controller.imageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
     controller.getAllEvents = viewModel.getAllEvents
+    controller.getEventDetailViewController = { eventID in
+        let httpClient = makeNetworkAdapter()
+        let getEventDetail = makeRemoteGetEventDetail(httpClient: httpClient)
+        return makeEventDetailController(eventID: eventID, getEventDetail: getEventDetail, imageLoader: imageLoader)
+    }
     return controller
 }

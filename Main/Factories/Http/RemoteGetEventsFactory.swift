@@ -14,6 +14,11 @@ func makeRemoteGetEvents(httpClient: HttpGetClient) -> GetEvents {
     return MainQueueDispatchDecorator(remoteGetEvents)
 }
 
+func makeRemoteGetEventDetail(httpClient: HttpGetClient) -> GetEventDetail {
+    let remoteGetEventDetail = RemoteGetEventDetail(url: makeApiUrl(path: "events"), httpClient: httpClient)
+    return MainQueueDispatchDecorator(remoteGetEventDetail)
+}
+
 func makeRemoteImageLoader(httpClient: HttpGetClient) -> ImageLoader {
     let remoteImageLoader = RemoteImageLoader(httpClient: httpClient)
     return MainQueueDispatchDecorator(remoteImageLoader)

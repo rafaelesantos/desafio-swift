@@ -29,6 +29,14 @@ extension MainQueueDispatchDecorator: GetEvents where T: GetEvents {
     }
 }
 
+extension MainQueueDispatchDecorator: GetEventDetail where T: GetEventDetail {
+    public func getEventDetail(eventID: String, completion: @escaping (GetEventDetail.Result) -> Void) {
+        instance.getEventDetail(eventID: eventID) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
 extension MainQueueDispatchDecorator: ImageLoader where T: ImageLoader {
     public var loadedImages: [URL : Data] {
         get { return instance.loadedImages }

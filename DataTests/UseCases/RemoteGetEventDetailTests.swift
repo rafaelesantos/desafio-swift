@@ -13,8 +13,8 @@ class RemoteGetEventDetailTests: XCTestCase {
     func testGetEventDetailShouldCallHttpClientWithCorrectUrl() {
         let url = makeUrl()
         let (sut, httpClientSpy) = makeSut(url: url)
-        sut.getEventDetail() { _ in }
-        XCTAssertEqual(httpClientSpy.urls, [url])
+        sut.getEventDetail(eventID: makeValidPath()) { _ in }
+        XCTAssertEqual(httpClientSpy.urls, [url.appendingPathComponent(makeValidPath())])
     }
     
     func testGetEventDetailShouldCompleteWithErrorIfClientCompletesWithError() {
@@ -43,7 +43,7 @@ class RemoteGetEventDetailTests: XCTestCase {
         let httpClientSpy = HttpClientSpy()
         var sut: RemoteGetEventDetail? = RemoteGetEventDetail(url: makeUrl(), httpClient: httpClientSpy)
         var result: GetEventDetail.Result?
-        sut?.getEventDetail() { result = $0 }
+        sut?.getEventDetail(eventID: makeValidPath()) { result = $0 }
         sut = nil
         httpClientSpy.completeWithError(.noConnectivity)
         XCTAssertNil(result)
@@ -51,7 +51,7 @@ class RemoteGetEventDetailTests: XCTestCase {
 }
 
 extension RemoteGetEventDetailTests {
-    func makeSut(url: URL = URL(string: "http://any-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteGetEventDetail, httpClientSpy: HttpClientSpy) {
+    func makeSut(url: URL = URL(string: "http://any-url.com/")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteGetEventDetail, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteGetEventDetail(url: url, httpClient: httpClientSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
@@ -61,7 +61,7 @@ extension RemoteGetEventDetailTests {
     
     func expect(_ sut: RemoteGetEventDetail, completeWith expectedResult: GetEventDetail.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "waiting")
-        sut.getEventDetail() { receivedResult in
+        sut.getEventDetail(eventID: makeValidPath()) { receivedResult in
             switch (expectedResult, receivedResult) {
             case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
             case (.success(let expectedEvents), .success(let receivedEvents)): XCTAssertEqual(expectedEvents, receivedEvents, file: file, line: line)

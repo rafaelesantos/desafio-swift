@@ -12,21 +12,24 @@ public final class EventsViewController: UIViewController {
     @UsesAutoLayout
     var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
+        view.tintColor = .accent
         view.hidesWhenStopped = true
         return view
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(EventTableViewCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         return tableView
     }()
     
     public var getAllEvents: (() -> Void)?
     public var imageLoader: UIImageLoader?
+    public var getEventDetailViewController: ((String) -> EventDetailViewController)?
     
     private var events = [EventModel]() {
         didSet { tableView.reloadData() }
@@ -39,30 +42,34 @@ public final class EventsViewController: UIViewController {
     
     private func setupUI() {
         title = "Eventos"
-        self.view.backgroundColor = .secondarySystemBackground
-        setupActivityIndicatorView()
+        self.view.backgroundColor = .systemBackground
         setupTableView()
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupActivityIndicatorView()
         loadData()
     }
     
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicatorView.removeFromSuperview()
+    }
+    
     private func setupActivityIndicatorView() {
-        view.addSubview(activityIndicatorView)
+        guard let navigationController = navigationController else { return }
+        navigationController.navigationBar.addSubview(activityIndicatorView)
         let constraints = [
-            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            activityIndicatorView.trailingAnchor.constraint(equalTo: navigationController.navigationBar.trailingAnchor, constant: -15),
+            activityIndicatorView.bottomAnchor.constraint(equalTo: navigationController.navigationBar.bottomAnchor, constant: -20)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
     private func setupTableView() {
         view.addSubview(tableView)
-        let constraints = [
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate(tableView.constraintsForAnchoringTo(boundsOf: view))
     }
     
     private func loadData() {
@@ -110,6 +117,9 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = events[indexPath.row]
+        guard let eventDetailViewController = getEventDetailViewController?(event.id) else { return }
+        self.navigationController?.pushViewController(eventDetailViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

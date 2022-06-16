@@ -63,7 +63,11 @@
 		4CBE2EF2285A54CD00297862 /* EventDetailSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF1285A54CD00297862 /* EventDetailSpy.swift */; };
 		4CBE2EF5285A59CA00297862 /* ImageLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */; };
 		4CBE2EF6285A5A5300297862 /* ImageLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */; };
-		4CBE2EF9285A5C2900297862 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 4CBE2EF8285A5C2900297862 /* Hero */; };
+		4CBE2EFB285A5E3D00297862 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EFA285A5E3D00297862 /* EventDetailViewController.swift */; };
+		4CBE2EFF285A618B00297862 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EFE285A618B00297862 /* EventView.swift */; };
+		4CBE2F01285A63CB00297862 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F00285A63CB00297862 /* EventDetailView.swift */; };
+		4CBE2F03285AF60000297862 /* EventDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F02285AF60000297862 /* EventDetailTableViewCell.swift */; };
+		4CBE2F05285B11B900297862 /* EventDetailControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F04285B11B900297862 /* EventDetailControllerFactory.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -362,6 +366,11 @@
 		4CBE2EEF285A54AB00297862 /* GetEventDetailSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventDetailSpy.swift; sourceTree = "<group>"; };
 		4CBE2EF1285A54CD00297862 /* EventDetailSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailSpy.swift; sourceTree = "<group>"; };
 		4CBE2EF4285A59CA00297862 /* ImageLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSpy.swift; sourceTree = "<group>"; };
+		4CBE2EFA285A5E3D00297862 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		4CBE2EFE285A618B00297862 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		4CBE2F00285A63CB00297862 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		4CBE2F02285AF60000297862 /* EventDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTableViewCell.swift; sourceTree = "<group>"; };
+		4CBE2F04285B11B900297862 /* EventDetailControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailControllerFactory.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -492,7 +501,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CBE2EF9285A5C2900297862 /* Hero in Frameworks */,
 				4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBE2E3928582B6E00297862 /* EventsViewController.swift */,
+				4CBE2EFA285A5E3D00297862 /* EventDetailViewController.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -645,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */,
+				4CBE2F04285B11B900297862 /* EventDetailControllerFactory.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -652,10 +662,29 @@
 		4CBE2EC52858F9B800297862 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4CBE2E4928583EEB00297862 /* EventTableViewCell.swift */,
+				4CBE2EFD285A616900297862 /* Cells */,
+				4CBE2EFC285A615D00297862 /* Views */,
 				4CBE2EC62858F9D600297862 /* NavigationController.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		4CBE2EFC285A615D00297862 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2EFE285A618B00297862 /* EventView.swift */,
+				4CBE2F00285A63CB00297862 /* EventDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4CBE2EFD285A616900297862 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CBE2E4928583EEB00297862 /* EventTableViewCell.swift */,
+				4CBE2F02285AF60000297862 /* EventDetailTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4CF2EFD22855320700EBCB41 = {
@@ -1218,7 +1247,6 @@
 			);
 			name = UI;
 			packageProductDependencies = (
-				4CBE2EF8285A5C2900297862 /* Hero */,
 			);
 			productName = UI;
 			productReference = 4CF2F0EE285725C100EBCB41 /* UI.framework */;
@@ -1307,7 +1335,6 @@
 			);
 			mainGroup = 4CF2EFD22855320700EBCB41;
 			packageReferences = (
-				4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = 4CF2EFDC2855320700EBCB41 /* Products */;
 			projectDirPath = "";
@@ -1431,6 +1458,7 @@
 				4CBE2EC328587BC100297862 /* NetworkAdapterFactory.swift in Sources */,
 				4CBE2EA72858592E00297862 /* RemoteGetEventsFactory.swift in Sources */,
 				4CBE2E61285853B200297862 /* SceneDelegate.swift in Sources */,
+				4CBE2F05285B11B900297862 /* EventDetailControllerFactory.swift in Sources */,
 				4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1552,14 +1580,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBE2E4A28583EEB00297862 /* EventTableViewCell.swift in Sources */,
+				4CBE2F03285AF60000297862 /* EventDetailTableViewCell.swift in Sources */,
+				4CBE2EFF285A618B00297862 /* EventView.swift in Sources */,
 				4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */,
 				4CBE2ECC285911C300297862 /* UIFontsExtension.swift in Sources */,
+				4CBE2EFB285A5E3D00297862 /* EventDetailViewController.swift in Sources */,
 				4CBE2EC72858F9D600297862 /* NavigationController.swift in Sources */,
 				4CBE2EC92858FAA300297862 /* UIColorExtensions.swift in Sources */,
 				4CBE2EDA2859280400297862 /* UIImageLoader.swift in Sources */,
 				4CBE2E4E2858441000297862 /* UITableViewCellExtensions.swift in Sources */,
 				4CBE2E50285845B500297862 /* UITableViewExtensions.swift in Sources */,
 				4CBE2E4C285840D500297862 /* UIViewExtensions.swift in Sources */,
+				4CBE2F01285A63CB00297862 /* EventDetailView.swift in Sources */,
 				4CBE2EE0285A45CD00297862 /* IntExtensions.swift in Sources */,
 				4CBE2ED8285927E100297862 /* UIImageViewExtensions.swift in Sources */,
 				4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */,
@@ -1700,10 +1732,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7QLR2PH2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -1728,10 +1762,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7QLR2PH2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -2501,25 +2537,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4CBE2EF8285A5C2900297862 /* Hero */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4CBE2EF7285A5C2900297862 /* XCRemoteSwiftPackageReference "Hero" */;
-			productName = Hero;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CF2EFD32855320700EBCB41 /* Project object */;
 }

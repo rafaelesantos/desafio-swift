@@ -35,6 +35,12 @@ extension WeakProxy: EventsProtocol where T: EventsProtocol {
     }
 }
 
+extension WeakProxy: EventDetailProtocol where T: EventDetailProtocol {
+    func recieved(eventDetail: EventModel) {
+        instance?.recieved(eventDetail: eventDetail)
+    }
+}
+
 extension WeakProxy: ImageLoaderProtocol where T: ImageLoaderProtocol {
     var loader: ImageLoader {
         get { return instance!.loader }

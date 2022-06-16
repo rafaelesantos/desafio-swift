@@ -21,9 +21,9 @@ public class EventDetailViewModel {
         self.eventDetail = eventDetail
     }
 
-    public func get() {
+    public func get(with eventID: String) {
         loading.display(with: .init(isLoading: true))
-        getEventDetail.getEventDetail { [weak self] result in
+        getEventDetail.getEventDetail(eventID: eventID) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure: self.alert.show(with: AlertModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))

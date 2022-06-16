@@ -17,8 +17,8 @@ public class RemoteGetEventDetail: GetEventDetail {
         self.httpClient = httpClient
     }
 
-    public func getEventDetail(completion: @escaping (GetEventDetail.Result) -> Void) {
-        httpClient.get(to: url) { [weak self] result in
+    public func getEventDetail(eventID: String, completion: @escaping (GetEventDetail.Result) -> Void) {
+        httpClient.get(to: url.appendingPathComponent(eventID)) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success(let data):

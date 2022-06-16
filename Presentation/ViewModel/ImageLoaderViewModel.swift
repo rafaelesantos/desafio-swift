@@ -18,18 +18,10 @@ public class ImageLoaderViewModel {
     }
 
     public func load(with url: URL, for completion: @escaping (ImageLoader.Result) -> Void, completionDefer: @escaping () -> Void, completionToken: (UUID) -> Void) {
-        loading.display(with: .init(isLoading: true))
-        imageLoader.load(with: url, for: completion, completionDefer: completionDefer, completionToken: completionToken) { [weak self] loadingModel in
-            guard let self = self else { return }
-            self.loading.display(with: loadingModel)
-        }
+        imageLoader.load(with: url, for: completion, completionDefer: completionDefer, completionToken: completionToken) { _ in }
     }
     
     public func cancel(completionUUID: () -> UUID?, completion: () -> Void) {
-        imageLoader.cancel(completionUUID: completionUUID) { [weak self] in
-            guard let self = self else { return }
-            self.loading.display(with: .init(isLoading: false))
-            completion()
-        }
+        imageLoader.cancel(completionUUID: completionUUID) { completion()}
     }
 }

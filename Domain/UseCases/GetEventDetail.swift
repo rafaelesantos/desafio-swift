@@ -9,5 +9,5 @@ import Foundation
 
 public protocol GetEventDetail {
     typealias Result = Swift.Result<EventModel, DomainError>
-    func getEventDetail(completion: @escaping (Result) -> Void)
+    func getEventDetail(eventID: String, completion: @escaping (Result) -> Void)
 }
