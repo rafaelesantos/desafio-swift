@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 final class EventDetailView: UIView {
     @UsesAutoLayout
@@ -84,6 +85,23 @@ final class EventDetailView: UIView {
         return stackView
     }()
     
+    @UsesAutoLayout
+    var headingMapLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .title2).bold()
+        label.textColor = .label
+        label.text = "Localização"
+        return label
+    }()
+    
+    @UsesAutoLayout
+    var mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.clipsToBounds = true
+        mapView.layer.cornerRadius = 6
+        return mapView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -99,11 +117,15 @@ final class EventDetailView: UIView {
         textStack.addArrangedSubview(eventDate)
         textStack.addArrangedSubview(eventDescription)
         textStack.addArrangedSubview(eventPrice)
+        textStack.addArrangedSubview(headingMapLabel)
         imageTextStack.addArrangedSubview(textStack)
+        imageTextStack.addArrangedSubview(mapView)
         addSubview(imageTextStack)
         NSLayoutConstraint.activate([
             eventPrice.heightAnchor.constraint(equalToConstant: 80),
-            eventPrice.widthAnchor.constraint(equalTo: textStack.widthAnchor)
+            eventPrice.widthAnchor.constraint(equalTo: textStack.widthAnchor),
+            mapView.heightAnchor.constraint(equalToConstant: 200),
+            mapView.widthAnchor.constraint(equalTo: imageTextStack.widthAnchor)
         ])
         NSLayoutConstraint.activate(imageTextStack.constraintsForAnchoringTo(boundsOf: self, constant: 0))
     }

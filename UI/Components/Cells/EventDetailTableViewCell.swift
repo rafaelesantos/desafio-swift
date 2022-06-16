@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Presentation
+import CoreLocation
+import MapKit
 
 final class EventDetailTableViewCell: UITableViewCell {
     @UsesAutoLayout
@@ -40,6 +42,17 @@ final class EventDetailTableViewCell: UITableViewCell {
         eventDetailView.eventDescription.text = event.description
         eventDetailView.eventDate.text = event.date?.toDate()
         if let price = event.price { eventDetailView.eventPrice.text = price.formatted(.currency(code: "BRL")) }
+        if let longitude = event.longitude, let latitude = event.latitude {
+            let locationManager = CLLocationManager()
+            locationManager.requestWhenInUseAuthorization()
+            eventDetailView.mapView.showsUserLocation = true
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            annotation.title = "Local do Evento"
+            annotation.subtitle = event.title
+            eventDetailView.mapView.addAnnotation(annotation)
+            eventDetailView.mapView.setRegion(.init(center: annotation.coordinate, span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
+        }
         if let urlString = event.image, let url = URL(string: urlString) {
             eventDetailView.eventImage.loadImage(at: url, with: loader) { [weak self] hasImage in
                 guard let self = self else { return }

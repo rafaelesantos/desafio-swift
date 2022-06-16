@@ -30,7 +30,7 @@ class EventsViewControllerTests: XCTestCase {
     func testCallsGetAllEventsOnSetupUI() {
         var hasCompletion = false
         let sut = makeSut { hasCompletion = true }
-        sut.viewDidLoad()
+        sut.loadData()
         XCTAssertTrue(hasCompletion)
     }
 }

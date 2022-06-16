@@ -72,7 +72,7 @@ public final class EventsViewController: UIViewController {
         NSLayoutConstraint.activate(tableView.constraintsForAnchoringTo(boundsOf: view))
     }
     
-    private func loadData() {
+    public func loadData() {
         getAllEvents?()
     }
 }

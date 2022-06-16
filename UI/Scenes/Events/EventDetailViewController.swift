@@ -28,6 +28,16 @@ public final class EventDetailViewController: UIViewController {
         return tableView
     }()
     
+    lazy var shareButtonItem: UIBarButtonItem = {
+        let buttomItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(shareEvent))
+        return buttomItem
+    }()
+    
+    lazy var checkInButtonItem: UIBarButtonItem = {
+        let buttomItem = UIBarButtonItem(image: UIImage(systemName: "checkmark.seal.fill"), style: .done, target: self, action: #selector(checkIn))
+        return buttomItem
+    }()
+    
     public var getEventDetail: ((String) -> Void)?
     public var eventID: String?
     public var imageLoader: UIImageLoader?
@@ -47,6 +57,7 @@ public final class EventDetailViewController: UIViewController {
     private func setupUI() {
         title = "Detalhes do Evento"
         view.backgroundColor = .systemBackground
+        navigationItem.setRightBarButtonItems([checkInButtonItem, shareButtonItem], animated: true)
         view.addSubview(tableView)
         NSLayoutConstraint.activate(tableView.constraintsForAnchoringTo(boundsOf: view))
         setupActivityIndicatorView()
@@ -65,6 +76,17 @@ public final class EventDetailViewController: UIViewController {
     private func loadData() {
         guard let eventID = eventID else { return }
         getEventDetail?(eventID)
+    }
+    
+    @objc private func shareEvent() {
+        guard event != nil else { return }
+        let content = "\(event?.title ?? "")\n\n\(event?.date?.toDate() ?? "")\t\(event?.price?.formatted(.currency(code: "BRL")) ?? "")\n\n\(event?.description ?? "")\n"
+        let viewController = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc private func checkIn() {
+        
     }
 }
 
