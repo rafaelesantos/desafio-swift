@@ -12,9 +12,17 @@ import Infra
 class NetworkAdapterTests: XCTestCase {
     func testGetShouldMakeRequestWithValidUrlAndMethod() {
         let url = makeUrl()
-        testRequestFor(url: url) { request in
+        testGetRequestFor(url: url) { request in
             XCTAssertEqual(url, request.url)
             XCTAssertEqual("GET", request.httpMethod)
+        }
+    }
+    
+    func testPostShouldMakeRequestWithValidUrlAndMethod() {
+        let url = makeUrl()
+        testPostRequestFor(url: url) { request in
+            XCTAssertEqual(url, request.url)
+            XCTAssertEqual("POST", request.httpMethod)
         }
     }
     
@@ -62,10 +70,20 @@ extension NetworkAdapterTests {
         return sut
     }
     
-    func testRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
+    func testGetRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
         let exp = expectation(description: "waiting")
         sut.get(to: url) { _ in exp.fulfill() }
+        var request: URLRequest?
+        UrlProtocolStub.observeRequest { request = $0 }
+        wait(for: [exp], timeout: 1)
+        action(request!)
+    }
+    
+    func testPostRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
+        let sut = makeSut()
+        let exp = expectation(description: "waiting")
+        sut.post(to: url, with: Data()) { _ in exp.fulfill() }
         var request: URLRequest?
         UrlProtocolStub.observeRequest { request = $0 }
         wait(for: [exp], timeout: 1)
