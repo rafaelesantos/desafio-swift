@@ -69,6 +69,11 @@
 		4CBE2F03285AF60000297862 /* EventDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F02285AF60000297862 /* EventDetailTableViewCell.swift */; };
 		4CBE2F05285B11B900297862 /* EventDetailControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F04285B11B900297862 /* EventDetailControllerFactory.swift */; };
 		4CBE2F07285B1DE500297862 /* GetEventDetailIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F06285B1DE500297862 /* GetEventDetailIntegrationTests.swift */; };
+		4CBE2F09285BCE1B00297862 /* AddCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F08285BCE1A00297862 /* AddCheckIn.swift */; };
+		4CBE2F0B285BCE7900297862 /* CheckInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F0A285BCE7900297862 /* CheckInModel.swift */; };
+		4CBE2F0D285C3CBA00297862 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F0C285C3CB900297862 /* HttpPostClient.swift */; };
+		4CBE2F0F285C3EBC00297862 /* RemoteAddCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F0E285C3EBC00297862 /* RemoteAddCheckIn.swift */; };
+		4CBE2F11285C3FE100297862 /* RemoteAddCheckInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2F10285C3FE100297862 /* RemoteAddCheckInTests.swift */; };
 		4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01A285537FE00EBCB41 /* GetEvents.swift */; };
 		4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F01C285538E200EBCB41 /* EventModel.swift */; };
 		4CF2F02B28553B1E00EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
@@ -373,6 +378,11 @@
 		4CBE2F02285AF60000297862 /* EventDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTableViewCell.swift; sourceTree = "<group>"; };
 		4CBE2F04285B11B900297862 /* EventDetailControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailControllerFactory.swift; sourceTree = "<group>"; };
 		4CBE2F06285B1DE500297862 /* GetEventDetailIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventDetailIntegrationTests.swift; sourceTree = "<group>"; };
+		4CBE2F08285BCE1A00297862 /* AddCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCheckIn.swift; sourceTree = "<group>"; };
+		4CBE2F0A285BCE7900297862 /* CheckInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInModel.swift; sourceTree = "<group>"; };
+		4CBE2F0C285C3CB900297862 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
+		4CBE2F0E285C3EBC00297862 /* RemoteAddCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddCheckIn.swift; sourceTree = "<group>"; };
+		4CBE2F10285C3FE100297862 /* RemoteAddCheckInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddCheckInTests.swift; sourceTree = "<group>"; };
 		4CF2F0132855371500EBCB41 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F01A285537FE00EBCB41 /* GetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvents.swift; sourceTree = "<group>"; };
 		4CF2F01C285538E200EBCB41 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -771,6 +781,7 @@
 				4CF2F02F28553B1E00EBCB41 /* RemoteGetEventsTests.swift */,
 				4CBE2EE7285A51A300297862 /* RemoteGetEventDetailTests.swift */,
 				4CBE2ED128591D8E00297862 /* RemoteImageLoaderTests.swift */,
+				4CBE2F10285C3FE100297862 /* RemoteAddCheckInTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -780,6 +791,7 @@
 			children = (
 				4CF2F0472856E4E900EBCB41 /* HttpError.swift */,
 				4CF2F03E2855419900EBCB41 /* HttpGetClient.swift */,
+				4CBE2F0C285C3CB900297862 /* HttpPostClient.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -790,6 +802,7 @@
 				4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */,
 				4CBE2EE5285A511B00297862 /* RemoteGetEventDetail.swift */,
 				4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */,
+				4CBE2F0E285C3EBC00297862 /* RemoteAddCheckIn.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -799,6 +812,7 @@
 			children = (
 				4CF2F01C285538E200EBCB41 /* EventModel.swift */,
 				4CF2F04F2856EA5B00EBCB41 /* Model.swift */,
+				4CBE2F0A285BCE7900297862 /* CheckInModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -809,6 +823,7 @@
 				4CF2F01A285537FE00EBCB41 /* GetEvents.swift */,
 				4CBE2EE3285A50D700297862 /* GetEventDetail.swift */,
 				4CBE2ECD2859152D00297862 /* ImageLoader.swift */,
+				4CBE2F08285BCE1A00297862 /* AddCheckIn.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1484,6 +1499,8 @@
 				4CBE2EE4285A50D700297862 /* GetEventDetail.swift in Sources */,
 				4CF2F04B2856E54D00EBCB41 /* DomainError.swift in Sources */,
 				4CF2F01D285538E200EBCB41 /* EventModel.swift in Sources */,
+				4CBE2F0B285BCE7900297862 /* CheckInModel.swift in Sources */,
+				4CBE2F09285BCE1B00297862 /* AddCheckIn.swift in Sources */,
 				4CBE2ECE2859152D00297862 /* ImageLoader.swift in Sources */,
 				4CF2F01B285537FE00EBCB41 /* GetEvents.swift in Sources */,
 				4CF2F0502856EA5B00EBCB41 /* Model.swift in Sources */,
@@ -1497,9 +1514,11 @@
 				4CF2F04E2856E9E700EBCB41 /* ExtensionHelpers.swift in Sources */,
 				4CF2F0482856E4E900EBCB41 /* HttpError.swift in Sources */,
 				4CBE2EE6285A511C00297862 /* RemoteGetEventDetail.swift in Sources */,
+				4CBE2F0F285C3EBC00297862 /* RemoteAddCheckIn.swift in Sources */,
 				4CBE2ED0285916A400297862 /* RemoteImageLoader.swift in Sources */,
 				4CF2F03F2855419900EBCB41 /* HttpGetClient.swift in Sources */,
 				4CF2F041285541D900EBCB41 /* RemoteGetEvents.swift in Sources */,
+				4CBE2F0D285C3CBA00297862 /* HttpPostClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1510,6 +1529,7 @@
 				4CBE2ED228591D8E00297862 /* RemoteImageLoaderTests.swift in Sources */,
 				4CF2F0532856F13F00EBCB41 /* EventModelFactory.swift in Sources */,
 				4CBE2EE8285A51A300297862 /* RemoteGetEventDetailTests.swift in Sources */,
+				4CBE2F11285C3FE100297862 /* RemoteAddCheckInTests.swift in Sources */,
 				4CF2F05A2856F1E700EBCB41 /* HttpClientSpy.swift in Sources */,
 				4CF2F03028553B1E00EBCB41 /* RemoteGetEventsTests.swift in Sources */,
 				4CF2F0572856F1AC00EBCB41 /* TestExtensions.swift in Sources */,

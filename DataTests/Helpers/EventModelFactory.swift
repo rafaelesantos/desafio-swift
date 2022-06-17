@@ -24,6 +24,14 @@ func makeEventsModel() -> [EventModel] {
     ]
 }
 
+func makeAddCheckInModel() -> AddCheckInModel {
+    return AddCheckInModel(
+        name: "any-name",
+        email: "any-email@mail.com",
+        eventId: "0"
+    )
+}
+
 func makeEventDetailModel() -> EventModel {
     return EventModel(
         description: "any-description",
