@@ -34,11 +34,12 @@ public final class EventDetailViewController: UIViewController {
     }()
     
     lazy var checkInButtonItem: UIBarButtonItem = {
-        let buttomItem = UIBarButtonItem(image: UIImage(systemName: "checkmark.seal.fill"), style: .done, target: self, action: #selector(checkIn))
+        let buttomItem = UIBarButtonItem(image: UIImage(systemName: "checkmark.seal.fill"), style: .done, target: self, action: #selector(checkInAction))
         return buttomItem
     }()
     
     public var getEventDetail: ((String) -> Void)?
+    public var addCheckIn: ((AddCheckInModel) -> Void)?
     public var eventID: String?
     public var imageLoader: UIImageLoader?
     
@@ -46,6 +47,12 @@ public final class EventDetailViewController: UIViewController {
         didSet {
             activityIndicatorView.stopAnimating()
             tableView.reloadData()
+        }
+    }
+    
+    private var checkIn: CheckInModel? {
+        didSet {
+            activityIndicatorView.stopAnimating()
         }
     }
     
@@ -85,7 +92,7 @@ public final class EventDetailViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
-    @objc private func checkIn() {
+    @objc private func checkInAction() {
         
     }
 }
@@ -111,6 +118,12 @@ extension EventDetailViewController: AlertProtocol {
 extension EventDetailViewController: EventDetailProtocol {
     public func recieved(eventDetail: EventModel) {
         self.event = eventDetail
+    }
+}
+
+extension EventDetailViewController: CheckInProtocol {
+    public func recieved(checkIn: CheckInModel) {
+        self.checkIn = checkIn
     }
 }
 

@@ -20,7 +20,8 @@ public func makeEventsController(getEvents: GetEvents, imageLoader: ImageLoader)
     controller.getEventDetailViewController = { eventID in
         let httpClient = makeNetworkAdapter()
         let getEventDetail = makeRemoteGetEventDetail(httpClient: httpClient)
-        return makeEventDetailController(eventID: eventID, getEventDetail: getEventDetail, imageLoader: imageLoader)
+        let addCheckIn = makeRemoteAddCheckIn(httpClient: httpClient)
+        return makeEventDetailController(eventID: eventID, imageLoader: imageLoader, getEventDetail: getEventDetail, addCheckIn: addCheckIn)
     }
     return controller
 }

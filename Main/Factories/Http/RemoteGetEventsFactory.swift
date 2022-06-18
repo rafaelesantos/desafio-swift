@@ -23,3 +23,8 @@ func makeRemoteImageLoader(httpClient: HttpGetClient) -> ImageLoader {
     let remoteImageLoader = RemoteImageLoader(httpClient: httpClient)
     return MainQueueDispatchDecorator(remoteImageLoader)
 }
+
+func makeRemoteAddCheckIn(httpClient: HttpPostClient) -> AddCheckIn {
+    let remoteAddCheckIn = RemoteAddCheckIn(url: makeApiUrl(path: "checkin"), httpClient: httpClient)
+    return MainQueueDispatchDecorator(remoteAddCheckIn)
+}

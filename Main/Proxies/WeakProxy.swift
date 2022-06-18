@@ -41,6 +41,12 @@ extension WeakProxy: EventDetailProtocol where T: EventDetailProtocol {
     }
 }
 
+extension WeakProxy: CheckInProtocol where T: CheckInProtocol {
+    func recieved(checkIn: CheckInModel) {
+        instance?.recieved(checkIn: checkIn)
+    }
+}
+
 extension WeakProxy: ImageLoaderProtocol where T: ImageLoaderProtocol {
     var loader: ImageLoader {
         get { return instance!.loader }

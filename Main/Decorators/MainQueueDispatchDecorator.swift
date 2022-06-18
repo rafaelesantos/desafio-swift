@@ -37,6 +37,14 @@ extension MainQueueDispatchDecorator: GetEventDetail where T: GetEventDetail {
     }
 }
 
+extension MainQueueDispatchDecorator: AddCheckIn where T: AddCheckIn {
+    public func add(addCheckInModel: AddCheckInModel, completion: @escaping (AddCheckIn.Result) -> Void) {
+        instance.add(addCheckInModel: addCheckInModel) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
 extension MainQueueDispatchDecorator: ImageLoader where T: ImageLoader {
     public var loadedImages: [URL : Data] {
         get { return instance.loadedImages }
