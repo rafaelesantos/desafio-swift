@@ -8,5 +8,9 @@
 import Foundation
 
 public struct CheckInModel: Model {
+    public var value: String?
     
+    public init(value: String? = nil) {
+        self.value = value
+    }
 }

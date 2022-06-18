@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol AddCheckIn {
-    typealias Result = Swift.Result<Data, DomainError>
+    typealias Result = Swift.Result<CheckInModel, DomainError>
     func add(addCheckInModel: AddCheckInModel, completion: @escaping (Result) -> Void)
 }
 

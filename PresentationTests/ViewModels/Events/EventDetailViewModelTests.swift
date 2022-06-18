@@ -61,8 +61,15 @@ class EventDetailViewModelTests: XCTestCase {
 }
 
 extension EventDetailViewModelTests {
-    func makeSut(alert: AlertSpy = AlertSpy(), loading: LoadingSpy = LoadingSpy(), getEventDetail: GetEventDetailSpy = GetEventDetailSpy(), eventDetail: EventDetailSpy = EventDetailSpy(), file: StaticString = #file, line: UInt = #line) -> EventDetailViewModel {
-        let sut = EventDetailViewModel(alert: alert, loading: loading, getEventDetail: getEventDetail, eventDetail: eventDetail)
+    func makeSut(alert: AlertSpy = AlertSpy(), loading: LoadingSpy = LoadingSpy(), getEventDetail: GetEventDetailSpy = GetEventDetailSpy(), eventDetail: EventDetailSpy = EventDetailSpy(), addCheckIn: AddCheckIn = AddCheckInSpy(), checkIn: CheckInSpy = CheckInSpy(), file: StaticString = #file, line: UInt = #line) -> EventDetailViewModel {
+        let sut = EventDetailViewModel(
+            alert: alert,
+            loading: loading,
+            getEventDetail: getEventDetail,
+            eventDetail: eventDetail,
+            addCheckIn: addCheckIn,
+            checkIn: checkIn
+        )
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

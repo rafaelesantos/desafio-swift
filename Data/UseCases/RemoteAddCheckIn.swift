@@ -22,8 +22,8 @@ public final class RemoteAddCheckIn: AddCheckIn {
             guard self != nil else { return }
             switch result {
             case .success(let data):
-                if let data = data {
-                    completion(.success(data))
+                if let model: CheckInModel = data?.toModel() {
+                    completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))
                 }
