@@ -46,8 +46,8 @@ public class EventDetailViewModel {
     
     public func addCheckIn(with model: AddCheckInModel) {
         loading.display(with: .init(isLoading: true))
-        if model.email.isEmpty == false, model.email.isValidEmail() {
-            if model.name.isEmpty == false {
+        if model.name.isEmpty == false {
+            if model.email.isEmpty == false, model.email.isValidEmail() {
                 addCheckIn.add(addCheckInModel: model) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
@@ -57,11 +57,11 @@ public class EventDetailViewModel {
                     self.loading.display(with: .init(isLoading: false))
                 }
             } else {
-                alert.show(with: .init(title: "Nome", message: "Nenhum nome foi informado"))
+                alert.show(with: .init(title: "E-mail", message: "E-mail inválido, informe um e-mail válido"))
                 self.loading.display(with: .init(isLoading: false))
             }
         } else {
-            alert.show(with: .init(title: "E-mail", message: "E-mail inválido, informe um e-mail válido"))
+            alert.show(with: .init(title: "Nome", message: "Nenhum nome foi informado"))
             self.loading.display(with: .init(isLoading: false))
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 final class CheckInView: UIView {
     var constraintY: NSLayoutConstraint?
     var onDismiss: (() -> Void)?
+    var onCheckIn: (() -> Void)?
     
     @UsesAutoLayout
     var visualEffectView: UIView = {
@@ -24,7 +25,6 @@ final class CheckInView: UIView {
         view.clipsToBounds = true
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 6
-        view.addParallax()
         return view
     }()
     
@@ -88,7 +88,7 @@ final class CheckInView: UIView {
     }()
     
     lazy var addCheckInButton: UIButton = {
-        let primaryAction = UIAction { _ in  }
+        let primaryAction = UIAction { [weak self] _ in self?.onCheckIn?() }
         let button = UIButton(primaryAction: primaryAction)
         button.setTitle("CheckIn".uppercased(), for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .footnote).bold()
@@ -188,7 +188,7 @@ final class CheckInView: UIView {
         contentView.endEditing(true)
     }
     
-    @objc private func dismiss() {
+    @objc func dismiss() {
         contentView.endEditing(true)
         UIView.animate(withDuration: 0.15) { [weak self] in
             guard let self = self else { return }

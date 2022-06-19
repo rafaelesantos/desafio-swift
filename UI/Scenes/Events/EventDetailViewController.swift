@@ -106,6 +106,11 @@ public final class EventDetailViewController: UIViewController {
                 self?.checkInButtonItem.isEnabled = true
                 self?.shareButtonItem.isEnabled = true
             }
+            checkInView.onCheckIn = { [weak self] in
+                if let name = self?.checkInView.nameTextField.text, let email = self?.checkInView.emailTextField.text {
+                    self?.addCheckIn?(AddCheckInModel(name: name, email: email, eventId: event.id))
+                }
+            }
             checkInView.descriptionLabel.text = "Para efetuar o check in em - \(event.title ?? "") - informe seu nome e e-mail abaixo."
             view.addSubview(checkInView)
             NSLayoutConstraint.activate(checkInView.constraintsForAnchoringTo(boundsOf: view, constant: 0))
@@ -154,6 +159,7 @@ extension EventDetailViewController: EventDetailProtocol {
 extension EventDetailViewController: CheckInProtocol {
     public func recieved(checkIn: CheckInModel) {
         self.checkIn = checkIn
+        checkInView.dismiss()
     }
 }
 
