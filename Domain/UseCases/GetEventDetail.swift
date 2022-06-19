@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol GetEventDetail {
-    typealias Result = Swift.Result<EventModel, DomainError>
-    func getEventDetail(eventID: String, completion: @escaping (Result) -> Void)
+    func get(with eventID: String) -> Observable<EventModel>
 }
