@@ -17,6 +17,10 @@ public final class EventDetailViewController: UIViewController {
         return view
     }()
     
+    lazy var checkInView: CheckInView = {
+        return setupCheckInView()
+    }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -59,6 +63,7 @@ public final class EventDetailViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     private func setupUI() {
@@ -93,7 +98,32 @@ public final class EventDetailViewController: UIViewController {
     }
     
     @objc private func checkInAction() {
-        
+        if let event = event {
+            checkInButtonItem.isEnabled = false
+            shareButtonItem.isEnabled = false
+            checkInView = setupCheckInView()
+            checkInView.onDismiss = { [weak self] in
+                self?.checkInButtonItem.isEnabled = true
+                self?.shareButtonItem.isEnabled = true
+            }
+            checkInView.descriptionLabel.text = "Para efetuar o check in em - \(event.title ?? "") - informe seu nome e e-mail abaixo."
+            view.addSubview(checkInView)
+            NSLayoutConstraint.activate(checkInView.constraintsForAnchoringTo(boundsOf: view, constant: 0))
+        }
+    }
+    
+    private func setupCheckInView() -> CheckInView {
+        let view = CheckInView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        checkInView.constraintY?.constant = -keyboardSize.height - 15
+        UIView.animate(withDuration: 0.15) { [weak self] in
+            self?.checkInView.layoutIfNeeded()
+        }
     }
 }
 

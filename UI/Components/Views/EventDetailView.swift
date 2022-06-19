@@ -67,21 +67,13 @@ final class EventDetailView: UIView {
     
     @UsesAutoLayout
     var textStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .leading
-        stackView.axis = .vertical
-        stackView.spacing = 15
+        let stackView = UIStackView.setup(with: .vertical, distribution: .fill, alignment: .leading, spacing: 15)
         return stackView
     }()
     
     @UsesAutoLayout
     var imageTextStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .leading
-        stackView.axis = .vertical
-        stackView.spacing = 15
+        let stackView = UIStackView.setup(with: .vertical, distribution: .fill, alignment: .leading, spacing: 15)
         return stackView
     }()
     

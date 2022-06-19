@@ -27,6 +27,8 @@ final class EventTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 6
         contentView.addSubview(eventView)
         NSLayoutConstraint.activate(eventView.constraintsForAnchoringTo(boundsOf: contentView))
     }
