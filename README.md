@@ -38,3 +38,19 @@ O POST deve conter os dados do interessado (Nome, e-mail) e o id do evento. Ex:
 - A API pode ter falhas, prepare seu aplicativo para contorná-las
 -Crie um repositório e compartilhe conosco para avaliarmos o seu código
 Bom teste!
+
+#### Screen Shots
+
+<p align="center">
+<img src="Screenshots/screenshot-1.png" width="20%"/>
+<img src="Screenshots/screenshot-3.png" width="20%"/>
+<img src="Screenshots/screenshot-5.png" width="20%"/>
+<img src="Screenshots/screenshot-7.png" width="20%"/>
+</p>
+
+<p align="center">
+<img src="Screenshots/screenshot-2.png" width="20%"/>
+<img src="Screenshots/screenshot-4.png" width="20%"/>
+<img src="Screenshots/screenshot-6.png" width="20%"/>
+<img src="Screenshots/screenshot-8.png" width="20%"/>
+</p>
