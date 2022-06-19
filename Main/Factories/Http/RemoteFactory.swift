@@ -1,5 +1,5 @@
 //
-//  RemoteGetEventsFactory.swift
+//  RemoteFactory.swift
 //  Main
 //
 //  Created by Rafael Escaleira on 14/06/22.
@@ -11,7 +11,7 @@ import Domain
 
 func makeRemoteGetEvents(httpClient: HttpGetClient) -> GetEvents {
     let remoteGetEvents = RemoteGetEvents(url: makeApiUrl(path: "events"), httpClient: httpClient)
-    return MainQueueDispatchDecorator(remoteGetEvents)
+    return remoteGetEvents
 }
 
 func makeRemoteGetEventDetail(httpClient: HttpGetClient) -> GetEventDetail {

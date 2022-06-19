@@ -14,7 +14,7 @@ public func makeEventDetailController(eventID: String, imageLoader: ImageLoader,
     let controller = EventDetailViewController()
     let viewModel = EventDetailViewModel(alert: WeakProxy(controller), loading: WeakProxy(controller), getEventDetail: getEventDetail, eventDetail: WeakProxy(controller), addCheckIn: addCheckIn, checkIn: WeakProxy(controller))
     let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
-    let imageLoaderViewModel = ImageLoaderViewModel(loading: WeakProxy(controller), imageLoader: imageLoaderModel)
+    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoaderModel)
     controller.imageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
     controller.getEventDetail = viewModel.get
     controller.addCheckIn = viewModel.addCheckIn

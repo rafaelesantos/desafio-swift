@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
 public class RemoteGetEvents: GetEvents {
@@ -16,19 +17,15 @@ public class RemoteGetEvents: GetEvents {
         self.url = url
         self.httpClient = httpClient
     }
-
-    public func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
-        httpClient.get(to: url) { [weak self] result in
-            guard self != nil else { return }
-            switch result {
-            case .success(let data):
-                if let model: [EventModel] = data?.toModel() {
-                    completion(.success(model))
-                } else {
-                    completion(.failure(.unexpected))
-                }
-            case .failure: completion(.failure(.unexpected))
+    
+    public func get() -> Observable<[EventModel]> {
+        return httpClient.get(to: url)
+            .catch { error in
+                return .error(error)
             }
-        }
+            .flatMap { data -> Observable<[EventModel]> in
+                guard let model: [EventModel] = data.toModel() else { return .error(DomainError.unexpected) }
+                return .just(model)
+            }
     }
 }

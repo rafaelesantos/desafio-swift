@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import Presentation
 
 public final class EventsViewController: UIViewController {
@@ -27,23 +28,47 @@ public final class EventsViewController: UIViewController {
         return tableView
     }()
     
-    public var getAllEvents: (() -> Void)?
-    public var imageLoader: UIImageLoader?
-    public var getEventDetailViewController: ((String) -> EventDetailViewController)?
+    private var viewModel: EventsViewModel
+    private var imageLoader: UIImageLoader
+    private var getEventDetailViewController: (_ eventID: String) -> EventDetailViewController
+    private let disposeBag = DisposeBag()
+    
+    public init(viewModel: EventsViewModel, imageLoader: UIImageLoader, getEventDetailViewController: @escaping (_ eventID: String) -> EventDetailViewController) {
+        self.viewModel = viewModel
+        self.imageLoader = imageLoader
+        self.getEventDetailViewController = getEventDetailViewController
+        super.init(nibName: nil, bundle: nil)
+        setupObservePublish()
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var events = [EventModel]() {
         didSet { tableView.reloadData() }
-    }
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
     }
     
     private func setupUI() {
         title = "Eventos"
         self.view.backgroundColor = .systemBackground
         setupTableView()
+    }
+    
+    private func setupObservePublish() {
+        viewModel.loadingPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            if model.isLoading { self?.activityIndicatorView.startAnimating() }
+            else { self?.activityIndicatorView.stopAnimating() }
+        }).disposed(by: disposeBag)
+        viewModel.alertPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
+            alerController.addAction(.init(title: "Ok", style: .default))
+            self?.present(alerController, animated: true)
+        }).disposed(by: disposeBag)
+        viewModel.eventsPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            self?.events = model
+        }).disposed(by: disposeBag)
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -73,31 +98,7 @@ public final class EventsViewController: UIViewController {
     }
     
     public func loadData() {
-        getAllEvents?()
-    }
-}
-
-extension EventsViewController: LoadingProtocol {
-    public func display(with model: LoadingModel) {
-        if model.isLoading {
-            activityIndicatorView.startAnimating()
-        } else {
-            activityIndicatorView.stopAnimating()
-        }
-    }
-}
-
-extension EventsViewController: AlertProtocol {
-    public func show(with model: AlertModel) {
-        let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
-        alerController.addAction(.init(title: "Ok", style: .default))
-        present(alerController, animated: true)
-    }
-}
-
-extension EventsViewController: EventsProtocol {
-    public func recieved(events: [EventModel]) {
-        self.events = events
+        viewModel.getAll()
     }
 }
 
@@ -109,16 +110,14 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(EventTableViewCell.self, for: indexPath) else { return .init() }
         let event = events[indexPath.row]
-        if let imageLoader = imageLoader {
-            cell.setupCell(with: event, loader: imageLoader)
-            cell.accessoryType = .disclosureIndicator
-        }
+        cell.setupCell(with: event, loader: imageLoader)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.row]
-        guard let eventDetailViewController = getEventDetailViewController?(event.id) else { return }
+        let eventDetailViewController = getEventDetailViewController(event.id)
         self.navigationController?.pushViewController(eventDetailViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

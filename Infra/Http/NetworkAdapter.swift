@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import Data
 
 public class NetworkAdapter: HttpGetClient {
@@ -22,10 +23,16 @@ public class NetworkAdapter: HttpGetClient {
         let task = session.dataTask(with: request) { data, response, error in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
             if error != nil { return completion(.failure(.noConnectivity)) }
-            if let data = data { self.hadle(statusCode: statusCode, with: data, completion: completion) }
+            if let data = data { self.handler(statusCode: statusCode, with: data, completion: completion) }
         }
         task.resume()
         return task
+    }
+    
+    public func get(to url: URL) -> Observable<Data> {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        return session.data(request: request)
     }
 }
 
@@ -38,7 +45,7 @@ extension NetworkAdapter: HttpPostClient {
         let task = session.dataTask(with: request) { data, response, error in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
             if error != nil { return completion(.failure(.noConnectivity)) }
-            if let data = data { self.hadle(statusCode: statusCode, with: data, completion: completion) }
+            if let data = data { self.handler(statusCode: statusCode, with: data, completion: completion) }
         }
         task.resume()
         return task
@@ -46,7 +53,7 @@ extension NetworkAdapter: HttpPostClient {
 }
 
 extension NetworkAdapter {
-    private func hadle(statusCode: Int, with data: Data, completion: @escaping (Result<Data?, HttpError>) -> Void) {
+    private func handler(statusCode: Int, with data: Data, completion: @escaping (Result<Data?, HttpError>) -> Void) {
         switch statusCode {
         case 204: completion(.success(nil))
         case 200...299: completion(.success(data))

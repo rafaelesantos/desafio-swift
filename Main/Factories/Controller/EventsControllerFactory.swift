@@ -11,13 +11,11 @@ import Presentation
 import Domain
 
 public func makeEventsController(getEvents: GetEvents, imageLoader: ImageLoader) -> EventsViewController {
-    let controller = EventsViewController()
-    let viewModel = EventsViewModel(alert: WeakProxy(controller), loading: WeakProxy(controller), getEvents: getEvents, events: WeakProxy(controller))
+    let viewModel = EventsViewModel(getEvents: getEvents)
     let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
-    let imageLoaderViewModel = ImageLoaderViewModel(loading: WeakProxy(controller), imageLoader: imageLoaderModel)
-    controller.imageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
-    controller.getAllEvents = viewModel.getAllEvents
-    controller.getEventDetailViewController = { eventID in
+    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoaderModel)
+    let uiImageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
+    let controller = EventsViewController(viewModel: viewModel, imageLoader: uiImageLoader) { eventID in
         let httpClient = makeNetworkAdapter()
         let getEventDetail = makeRemoteGetEventDetail(httpClient: httpClient)
         let addCheckIn = makeRemoteAddCheckIn(httpClient: httpClient)

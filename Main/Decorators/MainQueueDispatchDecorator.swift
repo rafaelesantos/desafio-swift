@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
 public final class MainQueueDispatchDecorator<T> {
@@ -22,10 +23,8 @@ public final class MainQueueDispatchDecorator<T> {
 }
 
 extension MainQueueDispatchDecorator: GetEvents where T: GetEvents {
-    public func getEvents(completion: @escaping (GetEvents.Result) -> Void) {
-        instance.getEvents { [weak self] result in
-            self?.dispatch { completion(result) }
-        }
+    public func get() -> Observable<[EventModel]> {
+        instance.get().observe(on: MainScheduler.instance)
     }
 }
 

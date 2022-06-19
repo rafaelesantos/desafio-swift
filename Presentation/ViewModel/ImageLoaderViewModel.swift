@@ -6,14 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
 public class ImageLoaderViewModel {
-    private let loading: LoadingProtocol
+    public let loadingPublishSubject = PublishSubject<LoadingModel>()
     private let imageLoader: ImageLoaderProtocol
     
-    public init(loading: LoadingProtocol, imageLoader: ImageLoaderProtocol) {
-        self.loading = loading
+    public init(imageLoader: ImageLoaderProtocol) {
         self.imageLoader = imageLoader
     }
 

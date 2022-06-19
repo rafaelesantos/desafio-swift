@@ -6,30 +6,30 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
+public typealias EventModel = Domain.EventModel
+
 public class EventsViewModel {
-    private let alert: AlertProtocol
-    private let loading: LoadingProtocol
     private let getEvents: GetEvents
-    private let events: EventsProtocol
+    public let alertPublishSubject = PublishSubject<AlertModel>()
+    public let loadingPublishSubject = PublishSubject<LoadingModel>()
+    public let eventsPublishSubject = PublishSubject<[EventModel]>()
+    private let disposeBag = DisposeBag()
     
-    public init(alert: AlertProtocol, loading: LoadingProtocol, getEvents: GetEvents, events: EventsProtocol) {
-        self.alert = alert
-        self.loading = loading
+    public init(getEvents: GetEvents) {
         self.getEvents = getEvents
-        self.events = events
     }
 
-    public func getAllEvents() {
-        loading.display(with: .init(isLoading: true))
-        getEvents.getEvents { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure: self.alert.show(with: AlertModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
-            case .success(let events): self.events.recieved(events: events)
-            }
-            self.loading.display(with: .init(isLoading: false))
-        }
+    public func getAll() {
+        loadingPublishSubject.onNext(.init(isLoading: true))
+        getEvents.get().subscribe(onNext: { [weak self] events in
+            self?.eventsPublishSubject.onNext(events)
+        }, onError: { [weak self] _ in
+            self?.alertPublishSubject.onNext(.init(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+        }, onCompleted: { [weak self] in
+            self?.loadingPublishSubject.onNext(.init(isLoading: false))
+        }).disposed(by: disposeBag)
     }
 }

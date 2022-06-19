@@ -13,6 +13,12 @@
 		4C523057285D9AB8004A649E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523056285D9AB8004A649E /* CheckInView.swift */; };
 		4C523059285E5D76004A649E /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523058285E5D76004A649E /* UIStackViewExtensions.swift */; };
 		4C52305C285FA00A004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C52305B285FA00A004A649E /* RxSwift */; };
+		4C52305E285FA0A7004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C52305D285FA0A7004A649E /* RxSwift */; };
+		4C523061285FA2D8004A649E /* URLSessiosExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */; };
+		4C523063285FA446004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523062285FA446004A649E /* RxSwift */; };
+		4C523065285FA5ED004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523064285FA5ED004A649E /* RxSwift */; };
+		4C523067285FA92D004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523066285FA92D004A649E /* RxSwift */; };
+		4C523069285FB235004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523068285FB235004A649E /* RxSwift */; };
 		4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3928582B6E00297862 /* EventsViewController.swift */; };
 		4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */; };
 		4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; };
@@ -37,7 +43,7 @@
 		4CBE2E99285853CF00297862 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CBE2E9C285853CF00297862 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; };
 		4CBE2E9D285853CF00297862 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0EE285725C100EBCB41 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4CBE2EA72858592E00297862 /* RemoteGetEventsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */; };
+		4CBE2EA72858592E00297862 /* RemoteFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA62858592E00297862 /* RemoteFactory.swift */; };
 		4CBE2EAA28585A0000297862 /* EventsControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */; };
 		4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB12858660600297862 /* WeakProxy.swift */; };
 		4CBE2EB928586E0200297862 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EB828586E0200297862 /* Environment.swift */; };
@@ -85,7 +91,6 @@
 		4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */; };
 		4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */; };
 		4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */; };
-		4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +235,7 @@
 		4C523054285D98E0004A649E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		4C523056285D9AB8004A649E /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		4C523058285E5D76004A649E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
+		4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessiosExtensions.swift; sourceTree = "<group>"; };
 		4CBE2E3928582B6E00297862 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		4CBE2E4928583EEB00297862 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,7 +248,7 @@
 		4CBE2E67285853B500297862 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CBE2E6A285853B500297862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CBE2E6C285853B500297862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEventsFactory.swift; sourceTree = "<group>"; };
+		4CBE2EA62858592E00297862 /* RemoteFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFactory.swift; sourceTree = "<group>"; };
 		4CBE2EA928585A0000297862 /* EventsControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsControllerFactory.swift; sourceTree = "<group>"; };
 		4CBE2EB12858660600297862 /* WeakProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakProxy.swift; sourceTree = "<group>"; };
 		4CBE2EB428586C6800297862 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -290,7 +296,6 @@
 		4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 		4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
-		4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProtocol.swift; sourceTree = "<group>"; };
 		4CF2F0EE285725C100EBCB41 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -299,6 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C523069285FB235004A649E /* RxSwift in Frameworks */,
 				4CBE2E8C285853CF00297862 /* Data.framework in Frameworks */,
 				4CBE2E90285853CF00297862 /* Domain.framework in Frameworks */,
 				4CBE2E94285853CF00297862 /* Infra.framework in Frameworks */,
@@ -319,6 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C52305E285FA0A7004A649E /* RxSwift in Frameworks */,
 				4CF2F03928553B4500EBCB41 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +334,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C523063285FA446004A649E /* RxSwift in Frameworks */,
 				4CF2F0752856F3B300EBCB41 /* Data.framework in Frameworks */,
 				4CF2F0792856F3B400EBCB41 /* Domain.framework in Frameworks */,
 			);
@@ -336,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C523065285FA5ED004A649E /* RxSwift in Frameworks */,
 				4CBE2E5328584BFE00297862 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C523067285FA92D004A649E /* RxSwift in Frameworks */,
 				4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +365,14 @@
 			isa = PBXGroup;
 			children = (
 				4C523054285D98E0004A649E /* StringExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C52305F285FA2C6004A649E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -449,7 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBE2EBF28587AF100297862 /* ApiUrlFactory.swift */,
-				4CBE2EA62858592E00297862 /* RemoteGetEventsFactory.swift */,
+				4CBE2EA62858592E00297862 /* RemoteFactory.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -615,6 +633,7 @@
 		4CF2F0612856F2C200EBCB41 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				4C52305F285FA2C6004A649E /* Helpers */,
 				4CF2F0802857022500EBCB41 /* Http */,
 			);
 			path = Infra;
@@ -655,7 +674,6 @@
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
 				4C52304B285D8EF1004A649E /* CheckInProtocol.swift */,
 				4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */,
-				4CF2F0D82857217900EBCB41 /* EventsProtocol.swift */,
 				4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
 			);
@@ -732,6 +750,9 @@
 				4CBE2E9F285853CF00297862 /* PBXTargetDependency */,
 			);
 			name = Main;
+			packageProductDependencies = (
+				4C523068285FB235004A649E /* RxSwift */,
+			);
 			productName = Main;
 			productReference = 4CBE2E5C285853B200297862 /* Main.app */;
 			productType = "com.apple.product-type.application";
@@ -773,6 +794,9 @@
 				4CF2F03C28553B4500EBCB41 /* PBXTargetDependency */,
 			);
 			name = Data;
+			packageProductDependencies = (
+				4C52305D285FA0A7004A649E /* RxSwift */,
+			);
 			productName = Data;
 			productReference = 4CF2F02328553B1E00EBCB41 /* Data.framework */;
 			productType = "com.apple.product-type.framework";
@@ -794,6 +818,9 @@
 				4CF2F07C2856F3B400EBCB41 /* PBXTargetDependency */,
 			);
 			name = Infra;
+			packageProductDependencies = (
+				4C523062285FA446004A649E /* RxSwift */,
+			);
 			productName = Infra;
 			productReference = 4CF2F0602856F2C200EBCB41 /* Infra.framework */;
 			productType = "com.apple.product-type.framework";
@@ -814,6 +841,9 @@
 				4CBE2E5628584BFE00297862 /* PBXTargetDependency */,
 			);
 			name = Presentation;
+			packageProductDependencies = (
+				4C523064285FA5ED004A649E /* RxSwift */,
+			);
 			productName = Presentation;
 			productReference = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */;
 			productType = "com.apple.product-type.framework";
@@ -835,6 +865,7 @@
 			);
 			name = UI;
 			packageProductDependencies = (
+				4C523066285FA92D004A649E /* RxSwift */,
 			);
 			productName = UI;
 			productReference = 4CF2F0EE285725C100EBCB41 /* UI.framework */;
@@ -959,7 +990,7 @@
 				4CBE2EAA28585A0000297862 /* EventsControllerFactory.swift in Sources */,
 				4CBE2EBD285874C300297862 /* MainQueueDispatchDecorator.swift in Sources */,
 				4CBE2EC328587BC100297862 /* NetworkAdapterFactory.swift in Sources */,
-				4CBE2EA72858592E00297862 /* RemoteGetEventsFactory.swift in Sources */,
+				4CBE2EA72858592E00297862 /* RemoteFactory.swift in Sources */,
 				4CBE2E61285853B200297862 /* SceneDelegate.swift in Sources */,
 				4CBE2F05285B11B900297862 /* EventDetailControllerFactory.swift in Sources */,
 				4CBE2EB22858660600297862 /* WeakProxy.swift in Sources */,
@@ -1001,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF2F0822857023700EBCB41 /* NetworkAdapter.swift in Sources */,
+				4C523061285FA2D8004A649E /* URLSessiosExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,7 +1042,6 @@
 			files = (
 				4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */,
 				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
-				4CF2F0D92857217900EBCB41 /* EventsProtocol.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
 				4C52304C285D8EF1004A649E /* CheckInProtocol.swift in Sources */,
 				4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */,
@@ -1680,6 +1711,31 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		4C52305B285FA00A004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C52305D285FA0A7004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C523062285FA446004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C523064285FA5ED004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C523066285FA92D004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C523068285FB235004A649E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
