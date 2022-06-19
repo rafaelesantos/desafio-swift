@@ -81,7 +81,7 @@
 		4CF2F041285541D900EBCB41 /* RemoteGetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */; };
 		4CF2F0482856E4E900EBCB41 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0472856E4E900EBCB41 /* HttpError.swift */; };
 		4CF2F04B2856E54D00EBCB41 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F04A2856E54D00EBCB41 /* DomainError.swift */; };
-		4CF2F04E2856E9E700EBCB41 /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F04D2856E9E700EBCB41 /* ExtensionHelpers.swift */; };
+		4CF2F04E2856E9E700EBCB41 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F04D2856E9E700EBCB41 /* DataExtensions.swift */; };
 		4CF2F0502856EA5B00EBCB41 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F04F2856EA5B00EBCB41 /* Model.swift */; };
 		4CF2F0752856F3B300EBCB41 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
 		4CF2F0762856F3B300EBCB41 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -288,7 +288,7 @@
 		4CF2F040285541D900EBCB41 /* RemoteGetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEvents.swift; sourceTree = "<group>"; };
 		4CF2F0472856E4E900EBCB41 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		4CF2F04A2856E54D00EBCB41 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
-		4CF2F04D2856E9E700EBCB41 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelpers.swift; sourceTree = "<group>"; };
+		4CF2F04D2856E9E700EBCB41 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		4CF2F04F2856EA5B00EBCB41 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4CF2F0602856F2C200EBCB41 /* Infra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
@@ -625,7 +625,7 @@
 		4CF2F04C2856E9DD00EBCB41 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				4CF2F04D2856E9E700EBCB41 /* ExtensionHelpers.swift */,
+				4CF2F04D2856E9E700EBCB41 /* DataExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1016,7 +1016,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CF2F04E2856E9E700EBCB41 /* ExtensionHelpers.swift in Sources */,
+				4CF2F04E2856E9E700EBCB41 /* DataExtensions.swift in Sources */,
 				4CF2F0482856E4E900EBCB41 /* HttpError.swift in Sources */,
 				4CBE2EE6285A511C00297862 /* RemoteGetEventDetail.swift in Sources */,
 				4CBE2F0F285C3EBC00297862 /* RemoteAddCheckIn.swift in Sources */,

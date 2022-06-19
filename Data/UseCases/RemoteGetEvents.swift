@@ -20,9 +20,7 @@ public class RemoteGetEvents: GetEvents {
     
     public func get() -> Observable<[EventModel]> {
         return httpClient.get(to: url)
-            .catch { error in
-                return .error(error)
-            }
+            .catch { return .error($0) }
             .flatMap { data -> Observable<[EventModel]> in
                 guard let model: [EventModel] = data.toModel() else { return .error(DomainError.unexpected) }
                 return .just(model)
