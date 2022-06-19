@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol HttpPostClient {
-    @discardableResult
-    func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HttpError>) -> Void) -> URLSessionDataTask
+    func post(to url: URL, with data: Data?) -> Observable<Data>
 }

@@ -37,18 +37,11 @@ public class NetworkAdapter: HttpGetClient {
 }
 
 extension NetworkAdapter: HttpPostClient {
-    @discardableResult
-    public func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HttpError>) -> Void) -> URLSessionDataTask {
+    public func post(to url: URL, with data: Data?) -> Observable<Data> {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = data
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return completion(.failure(.noConnectivity)) }
-            if error != nil { return completion(.failure(.noConnectivity)) }
-            if let data = data { self.handler(statusCode: statusCode, with: data, completion: completion) }
-        }
-        task.resume()
-        return task
+        return session.data(request: request)
     }
 }
 

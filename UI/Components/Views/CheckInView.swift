@@ -15,7 +15,7 @@ final class CheckInView: UIView {
     @UsesAutoLayout
     var visualEffectView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground.withAlphaComponent(0.9)
+        view.backgroundColor = .systemBackground.withAlphaComponent(0.90)
         return view
     }()
     
@@ -140,7 +140,7 @@ final class CheckInView: UIView {
         visualEffectView.addSubview(contentView)
         addSubview(visualEffectView)
         
-        constraintY = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: visualEffectView, attribute: .bottom, multiplier: 1, constant: 0)
+        constraintY = NSLayoutConstraint(item: contentStackView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 0)
         constraintY?.isActive = true
         
         NSLayoutConstraint.activate(visualEffectView.constraintsForAnchoringTo(boundsOf: self, constant: 0))
@@ -170,22 +170,18 @@ final class CheckInView: UIView {
         ])
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: visualEffectView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: visualEffectView.trailingAnchor)
+            contentView.trailingAnchor.constraint(equalTo: visualEffectView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: visualEffectView.bottomAnchor)
         ])
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismiss))
         visualEffectView.addGestureRecognizer(tap)
         
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        contentView.addGestureRecognizer(tap2)
-    }
-    
-    @objc private func hideKeyboard() {
-        constraintY?.constant = 0
-        UIView.animate(withDuration: 0.15) { [weak self] in
-            self?.layoutIfNeeded()
-        }
-        contentView.endEditing(true)
+        let tapContent = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        contentView.addGestureRecognizer(tapContent)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        contentView.addGestureRecognizer(panGesture)
     }
     
     @objc func dismiss() {
@@ -205,6 +201,26 @@ final class CheckInView: UIView {
             self.visualEffectView.removeFromSuperview()
             self.removeFromSuperview()
             self.onDismiss?()
+        }
+    }
+    
+    @objc private func hideKeyboard() {
+        constraintY?.constant = 0
+        UIView.animate(withDuration: 0.15) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+        contentView.endEditing(true)
+    }
+    
+    @objc func didPan(_ sender: UIPanGestureRecognizer) {
+        if contentView.frame.origin.y > 20 {
+            constraintY?.constant += sender.location(in: contentView).y
+            contentView.endEditing(true)
+            layoutIfNeeded()
+        } else if sender.location(in: contentView).y > 20 {
+            constraintY?.constant += sender.location(in: contentView).y
+            contentView.endEditing(true)
+            layoutIfNeeded()
         }
     }
 }

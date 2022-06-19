@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol AddCheckIn {
-    typealias Result = Swift.Result<CheckInModel, DomainError>
-    func add(addCheckInModel: AddCheckInModel, completion: @escaping (Result) -> Void)
+    func add(with model: AddCheckInModel) -> Observable<CheckInModel>
 }
 
 public struct AddCheckInModel: Model {

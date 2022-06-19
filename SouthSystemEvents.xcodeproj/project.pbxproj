@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C52304C285D8EF1004A649E /* CheckInProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52304B285D8EF1004A649E /* CheckInProtocol.swift */; };
 		4C523052285D95F1004A649E /* AddCheckInProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523051285D95F1004A649E /* AddCheckInProtocol.swift */; };
 		4C523055285D98E0004A649E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523054285D98E0004A649E /* StringExtensions.swift */; };
 		4C523057285D9AB8004A649E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523056285D9AB8004A649E /* CheckInView.swift */; };
@@ -19,6 +18,7 @@
 		4C523065285FA5ED004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523064285FA5ED004A649E /* RxSwift */; };
 		4C523067285FA92D004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523066285FA92D004A649E /* RxSwift */; };
 		4C523069285FB235004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523068285FB235004A649E /* RxSwift */; };
+		4C52306B285FCA27004A649E /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52306A285FCA27004A649E /* CheckInViewModel.swift */; };
 		4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3928582B6E00297862 /* EventsViewController.swift */; };
 		4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */; };
 		4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; };
@@ -230,12 +230,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4C52304B285D8EF1004A649E /* CheckInProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInProtocol.swift; sourceTree = "<group>"; };
 		4C523051285D95F1004A649E /* AddCheckInProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCheckInProtocol.swift; sourceTree = "<group>"; };
 		4C523054285D98E0004A649E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		4C523056285D9AB8004A649E /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		4C523058285E5D76004A649E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessiosExtensions.swift; sourceTree = "<group>"; };
+		4C52306A285FCA27004A649E /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
 		4CBE2E3928582B6E00297862 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		4CBE2E4928583EEB00297862 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -660,6 +660,7 @@
 		4CF2F0CD2857174E00EBCB41 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4C52306A285FCA27004A649E /* CheckInViewModel.swift */,
 				4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */,
 				4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */,
 				4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */,
@@ -672,7 +673,6 @@
 			children = (
 				4C523051285D95F1004A649E /* AddCheckInProtocol.swift */,
 				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
-				4C52304B285D8EF1004A649E /* CheckInProtocol.swift */,
 				4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */,
 				4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */,
 				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
@@ -1043,8 +1043,8 @@
 				4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */,
 				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
-				4C52304C285D8EF1004A649E /* CheckInProtocol.swift in Sources */,
 				4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */,
+				4C52306B285FCA27004A649E /* CheckInViewModel.swift in Sources */,
 				4C523055285D98E0004A649E /* StringExtensions.swift in Sources */,
 				4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */,
 				4CBE2EEC285A532D00297862 /* EventDetailViewModel.swift in Sources */,

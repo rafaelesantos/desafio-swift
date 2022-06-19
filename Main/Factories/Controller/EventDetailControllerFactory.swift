@@ -11,13 +11,11 @@ import Presentation
 import Domain
 
 public func makeEventDetailController(eventID: String, imageLoader: ImageLoader, getEventDetail: GetEventDetail, addCheckIn: AddCheckIn) -> EventDetailViewController {
-    let controller = EventDetailViewController()
-    let viewModel = EventDetailViewModel(alert: WeakProxy(controller), loading: WeakProxy(controller), getEventDetail: getEventDetail, eventDetail: WeakProxy(controller), addCheckIn: addCheckIn, checkIn: WeakProxy(controller))
+    let viewModel = EventDetailViewModel(getEventDetail: getEventDetail)
+    let checkInViewModel = CheckInViewModel(addCheckIn: addCheckIn)
     let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
     let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoaderModel)
-    controller.imageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
-    controller.getEventDetail = viewModel.get
-    controller.addCheckIn = viewModel.addCheckIn
-    controller.eventID = eventID
+    let uiImageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
+    let controller = EventDetailViewController(eventID: eventID, viewModel: viewModel, checkInViewModel: checkInViewModel, imageLoader: uiImageLoader)
     return controller
 }

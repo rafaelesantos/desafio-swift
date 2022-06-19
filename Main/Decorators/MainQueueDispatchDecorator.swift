@@ -29,18 +29,14 @@ extension MainQueueDispatchDecorator: GetEvents where T: GetEvents {
 }
 
 extension MainQueueDispatchDecorator: GetEventDetail where T: GetEventDetail {
-    public func getEventDetail(eventID: String, completion: @escaping (GetEventDetail.Result) -> Void) {
-        instance.getEventDetail(eventID: eventID) { [weak self] result in
-            self?.dispatch { completion(result) }
-        }
+    public func get(with eventID: String) -> Observable<EventModel> {
+        instance.get(with: eventID).observe(on: MainScheduler.instance)
     }
 }
 
 extension MainQueueDispatchDecorator: AddCheckIn where T: AddCheckIn {
-    public func add(addCheckInModel: AddCheckInModel, completion: @escaping (AddCheckIn.Result) -> Void) {
-        instance.add(addCheckInModel: addCheckInModel) { [weak self] result in
-            self?.dispatch { completion(result) }
-        }
+    public func add(with model: AddCheckInModel) -> Observable<CheckInModel> {
+        instance.add(with: model).observe(on: MainScheduler.instance)
     }
 }
 

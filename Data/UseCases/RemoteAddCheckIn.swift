@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
 public final class RemoteAddCheckIn: AddCheckIn {
@@ -17,19 +18,12 @@ public final class RemoteAddCheckIn: AddCheckIn {
         self.httpClient = httpClient
     }
     
-    public func add(addCheckInModel: AddCheckInModel, completion: @escaping (AddCheckIn.Result) -> Void) {
-        httpClient.post(to: url, with: addCheckInModel.toData()) { [weak self] result in
-            guard self != nil else { return }
-            switch result {
-            case .success(let data):
-                if let model: CheckInModel = data?.toModel() {
-                    completion(.success(model))
-                } else {
-                    completion(.failure(.unexpected))
-                }
-            case .failure:
-                completion(.failure(.unexpected))
+    public func add(with model: AddCheckInModel) -> Observable<CheckInModel> {
+        return httpClient.post(to: url, with: model.toData())
+            .catch { return .error($0) }
+            .flatMap { data -> Observable<CheckInModel> in
+                guard let model: CheckInModel = data.toModel() else { return .error(DomainError.unexpected) }
+                return .just(model)
             }
-        }
     }
 }

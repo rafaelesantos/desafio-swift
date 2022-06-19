@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import Presentation
 
 public final class EventDetailViewController: UIViewController {
@@ -42,28 +43,33 @@ public final class EventDetailViewController: UIViewController {
         return buttomItem
     }()
     
-    public var getEventDetail: ((String) -> Void)?
-    public var addCheckIn: ((AddCheckInModel) -> Void)?
-    public var eventID: String?
-    public var imageLoader: UIImageLoader?
+    private let eventID: String
+    private let viewModel: EventDetailViewModel
+    private let checkInViewModel: CheckInViewModel
+    private let imageLoader: UIImageLoader
+    private let disposeBag = DisposeBag()
     
     private var event: EventModel? {
-        didSet {
-            activityIndicatorView.stopAnimating()
-            tableView.reloadData()
-        }
+        didSet { tableView.reloadData() }
     }
     
     private var checkIn: CheckInModel? {
-        didSet {
-            activityIndicatorView.stopAnimating()
-        }
+        didSet { activityIndicatorView.stopAnimating() }
     }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public init(eventID: String, viewModel: EventDetailViewModel, checkInViewModel: CheckInViewModel, imageLoader: UIImageLoader) {
+        self.eventID = eventID
+        self.viewModel = viewModel
+        self.checkInViewModel = checkInViewModel
+        self.imageLoader = imageLoader
+        super.init(nibName: nil, bundle: nil)
+        setupObservePublish()
         setupUI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupUI() {
@@ -76,6 +82,35 @@ public final class EventDetailViewController: UIViewController {
         loadData()
     }
     
+    private func setupObservePublish() {
+        viewModel.loadingPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            if model.isLoading { self?.activityIndicatorView.startAnimating() }
+            else { self?.activityIndicatorView.stopAnimating() }
+        }).disposed(by: disposeBag)
+        viewModel.alertPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
+            alerController.addAction(.init(title: "Ok", style: .default))
+            self?.present(alerController, animated: true)
+        }).disposed(by: disposeBag)
+        viewModel.eventDetailPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            self?.event = model
+        }).disposed(by: disposeBag)
+        
+        checkInViewModel.loadingPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            if model.isLoading { self?.activityIndicatorView.startAnimating() }
+            else { self?.activityIndicatorView.stopAnimating() }
+        }).disposed(by: disposeBag)
+        checkInViewModel.alertPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
+            alerController.addAction(.init(title: "Ok", style: .default))
+            self?.present(alerController, animated: true)
+        }).disposed(by: disposeBag)
+        checkInViewModel.checkInPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] model in
+            self?.checkIn = model
+            self?.checkInView.dismiss()
+        }).disposed(by: disposeBag)
+    }
+    
     private func setupActivityIndicatorView() {
         view.addSubview(activityIndicatorView)
         let constraints = [
@@ -85,11 +120,18 @@ public final class EventDetailViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func loadData() {
-        guard let eventID = eventID else { return }
-        getEventDetail?(eventID)
+    private func setupCheckInView() -> CheckInView {
+        let view = CheckInView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
     
+    private func loadData() {
+        viewModel.get(with: eventID)
+    }
+}
+
+extension EventDetailViewController {
     @objc private func shareEvent() {
         guard event != nil else { return }
         let content = "\(event?.title ?? "")\n\n\(event?.date?.toDate() ?? "")\t\(event?.price?.formatted(.currency(code: "BRL")) ?? "")\n\n\(event?.description ?? "")\n"
@@ -108,19 +150,18 @@ public final class EventDetailViewController: UIViewController {
             }
             checkInView.onCheckIn = { [weak self] in
                 if let name = self?.checkInView.nameTextField.text, let email = self?.checkInView.emailTextField.text {
-                    self?.addCheckIn?(AddCheckInModel(name: name, email: email, eventId: event.id))
+                    self?.checkInViewModel.addCheckIn(with: .init(name: name, email: email, eventId: event.id))
                 }
             }
             checkInView.descriptionLabel.text = "Para efetuar o check in em - \(event.title ?? "") - informe seu nome e e-mail abaixo."
             view.addSubview(checkInView)
-            NSLayoutConstraint.activate(checkInView.constraintsForAnchoringTo(boundsOf: view, constant: 0))
+            NSLayoutConstraint.activate([
+                checkInView.topAnchor.constraint(equalTo: navigationController?.navigationBar != nil ? navigationController!.navigationBar.bottomAnchor : view.safeAreaLayoutGuide.topAnchor),
+                checkInView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                checkInView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                checkInView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
         }
-    }
-    
-    private func setupCheckInView() -> CheckInView {
-        let view = CheckInView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -132,47 +173,13 @@ public final class EventDetailViewController: UIViewController {
     }
 }
 
-extension EventDetailViewController: LoadingProtocol {
-    public func display(with model: LoadingModel) {
-        if model.isLoading {
-            activityIndicatorView.startAnimating()
-        } else {
-            activityIndicatorView.stopAnimating()
-        }
-    }
-}
-
-extension EventDetailViewController: AlertProtocol {
-    public func show(with model: AlertModel) {
-        let alerController = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
-        alerController.addAction(.init(title: "Ok", style: .default))
-        present(alerController, animated: true)
-    }
-}
-
-extension EventDetailViewController: EventDetailProtocol {
-    public func recieved(eventDetail: EventModel) {
-        self.event = eventDetail
-    }
-}
-
-extension EventDetailViewController: CheckInProtocol {
-    public func recieved(checkIn: CheckInModel) {
-        self.checkIn = checkIn
-        checkInView.dismiss()
-    }
-}
-
 extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return event == nil ? 0 : 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.cell(EventDetailTableViewCell.self, for: indexPath),
-            let event = event,
-            let imageLoader = imageLoader else { return .init() }
+        guard let cell = tableView.cell(EventDetailTableViewCell.self, for: indexPath), let event = event else { return .init() }
         cell.setupCell(with: event, loader: imageLoader) {
             tableView.beginUpdates()
             tableView.setNeedsDisplay()
