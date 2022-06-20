@@ -9,6 +9,9 @@ import Foundation
 import RxSwift
 import Domain
 
+public typealias AddCheckInModel = Domain.AddCheckInModel
+public typealias CheckInModel = Domain.CheckInModel
+
 public class CheckInViewModel {
     private let addCheckIn: AddCheckIn
     public let alertPublishSubject = PublishSubject<AlertModel>()

@@ -213,7 +213,7 @@ final class CheckInView: UIView {
     }
     
     @objc func didPan(_ sender: UIPanGestureRecognizer) {
-        if contentView.frame.origin.y > 20 {
+        if contentView.frame.origin.y > 20  {
             constraintY?.constant += sender.location(in: contentView).y
             contentView.endEditing(true)
             layoutIfNeeded()

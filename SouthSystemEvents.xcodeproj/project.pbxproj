@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C523052285D95F1004A649E /* AddCheckInProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523051285D95F1004A649E /* AddCheckInProtocol.swift */; };
 		4C523055285D98E0004A649E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523054285D98E0004A649E /* StringExtensions.swift */; };
 		4C523057285D9AB8004A649E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523056285D9AB8004A649E /* CheckInView.swift */; };
 		4C523059285E5D76004A649E /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523058285E5D76004A649E /* UIStackViewExtensions.swift */; };
@@ -57,12 +56,10 @@
 		4CBE2ED0285916A400297862 /* RemoteImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */; };
 		4CBE2ED8285927E100297862 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */; };
 		4CBE2EDA2859280400297862 /* UIImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2ED92859280400297862 /* UIImageLoader.swift */; };
-		4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */; };
 		4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */; };
 		4CBE2EE0285A45CD00297862 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EDF285A45CD00297862 /* IntExtensions.swift */; };
 		4CBE2EE4285A50D700297862 /* GetEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE3285A50D700297862 /* GetEventDetail.swift */; };
 		4CBE2EE6285A511C00297862 /* RemoteGetEventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE5285A511B00297862 /* RemoteGetEventDetail.swift */; };
-		4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */; };
 		4CBE2EEC285A532D00297862 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */; };
 		4CBE2EFB285A5E3D00297862 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EFA285A5E3D00297862 /* EventDetailViewController.swift */; };
 		4CBE2EFF285A618B00297862 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2EFE285A618B00297862 /* EventView.swift */; };
@@ -89,8 +86,8 @@
 		4CF2F07A2856F3B400EBCB41 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0132855371500EBCB41 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CF2F0822857023700EBCB41 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */; };
 		4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */; };
-		4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */; };
-		4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */; };
+		4CF2F0D22857179A00EBCB41 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D12857179A00EBCB41 /* AlertModel.swift */; };
+		4CF2F0D628571AFC00EBCB41 /* LoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2F0D528571AFC00EBCB41 /* LoadingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,7 +227,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4C523051285D95F1004A649E /* AddCheckInProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCheckInProtocol.swift; sourceTree = "<group>"; };
 		4C523054285D98E0004A649E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		4C523056285D9AB8004A649E /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		4C523058285E5D76004A649E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
@@ -264,12 +260,10 @@
 		4CBE2ECF285916A400297862 /* RemoteImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageLoader.swift; sourceTree = "<group>"; };
 		4CBE2ED7285927E100297862 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		4CBE2ED92859280400297862 /* UIImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageLoader.swift; sourceTree = "<group>"; };
-		4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderProtocol.swift; sourceTree = "<group>"; };
 		4CBE2EDD28592D3100297862 /* ImageLoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderViewModel.swift; sourceTree = "<group>"; };
 		4CBE2EDF285A45CD00297862 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		4CBE2EE3285A50D700297862 /* GetEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEventDetail.swift; sourceTree = "<group>"; };
 		4CBE2EE5285A511B00297862 /* RemoteGetEventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGetEventDetail.swift; sourceTree = "<group>"; };
-		4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailProtocol.swift; sourceTree = "<group>"; };
 		4CBE2EEB285A532D00297862 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		4CBE2EFA285A5E3D00297862 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		4CBE2EFE285A618B00297862 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
@@ -294,8 +288,8 @@
 		4CF2F0812857023700EBCB41 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		4CF2F0B828570BEE00EBCB41 /* Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF2F0CE2857176700EBCB41 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
-		4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
-		4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
+		4CF2F0D12857179A00EBCB41 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		4CF2F0D528571AFC00EBCB41 /* LoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModel.swift; sourceTree = "<group>"; };
 		4CF2F0EE285725C100EBCB41 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -651,7 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				4C523053285D98D2004A649E /* Helpers */,
-				4CF2F0D02857178B00EBCB41 /* Protocols */,
+				4CF2F0D02857178B00EBCB41 /* Models */,
 				4CF2F0CD2857174E00EBCB41 /* ViewModel */,
 			);
 			path = Presentation;
@@ -668,16 +662,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		4CF2F0D02857178B00EBCB41 /* Protocols */ = {
+		4CF2F0D02857178B00EBCB41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C523051285D95F1004A649E /* AddCheckInProtocol.swift */,
-				4CF2F0D12857179A00EBCB41 /* AlertProtocol.swift */,
-				4CBE2EE9285A52F000297862 /* EventDetailProtocol.swift */,
-				4CBE2EDB285928B200297862 /* ImageLoaderProtocol.swift */,
-				4CF2F0D528571AFC00EBCB41 /* LoadingProtocol.swift */,
+				4CF2F0D12857179A00EBCB41 /* AlertModel.swift */,
+				4CF2F0D528571AFC00EBCB41 /* LoadingModel.swift */,
 			);
-			path = Protocols;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4CF2F0EF285725C100EBCB41 /* UI */ = {
@@ -1040,16 +1031,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CBE2EEA285A52F000297862 /* EventDetailProtocol.swift in Sources */,
-				4CF2F0D22857179A00EBCB41 /* AlertProtocol.swift in Sources */,
+				4CF2F0D22857179A00EBCB41 /* AlertModel.swift in Sources */,
 				4CF2F0CF2857176700EBCB41 /* EventsViewModel.swift in Sources */,
 				4CBE2EDE28592D3100297862 /* ImageLoaderViewModel.swift in Sources */,
 				4C52306B285FCA27004A649E /* CheckInViewModel.swift in Sources */,
 				4C523055285D98E0004A649E /* StringExtensions.swift in Sources */,
-				4CF2F0D628571AFC00EBCB41 /* LoadingProtocol.swift in Sources */,
+				4CF2F0D628571AFC00EBCB41 /* LoadingModel.swift in Sources */,
 				4CBE2EEC285A532D00297862 /* EventDetailViewModel.swift in Sources */,
-				4CBE2EDC285928B200297862 /* ImageLoaderProtocol.swift in Sources */,
-				4C523052285D95F1004A649E /* AddCheckInProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

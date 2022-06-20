@@ -13,8 +13,7 @@ import Domain
 public func makeEventDetailController(eventID: String, imageLoader: ImageLoader, getEventDetail: GetEventDetail, addCheckIn: AddCheckIn) -> EventDetailViewController {
     let viewModel = EventDetailViewModel(getEventDetail: getEventDetail)
     let checkInViewModel = CheckInViewModel(addCheckIn: addCheckIn)
-    let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
-    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoaderModel)
+    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoader)
     let uiImageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
     let controller = EventDetailViewController(eventID: eventID, viewModel: viewModel, checkInViewModel: checkInViewModel, imageLoader: uiImageLoader)
     return controller

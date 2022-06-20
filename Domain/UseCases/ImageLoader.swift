@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol ImageLoader {
-    typealias Result = Swift.Result<Data, DomainError>
     var loadedImages: [URL: Data] { get set }
     var runningRequests: [UUID: URLSessionDataTask] { get set }
-    func loadImage(with url: URL, completion: @escaping (Result) -> Void) -> UUID?
+    var tokenPublishSubject: PublishSubject<UUID> { get set }
+    func load(to url: URL) -> Observable<Data>
     func cancelLoad(_ uuid: UUID)
 }

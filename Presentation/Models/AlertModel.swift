@@ -1,15 +1,11 @@
 //
-//  AlertProtocol.swift
+//  AlertModel.swift
 //  Presentation
 //
 //  Created by Rafael Escaleira on 13/06/22.
 //
 
 import Foundation
-
-public protocol AlertProtocol {
-    func show(with model: AlertModel)
-}
 
 public struct AlertModel: Equatable {
     public var title: String

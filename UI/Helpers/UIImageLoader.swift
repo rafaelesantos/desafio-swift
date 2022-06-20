@@ -6,40 +6,45 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 import Presentation
 
 public final class UIImageLoader {
     private let viewModel: ImageLoaderViewModel
     private var uuidMap = [UIImageView: UUID]()
+    public let completePublishSubject = PublishSubject<Bool>()
+    private let disposeBag = DisposeBag()
     
     public init(viewModel: ImageLoaderViewModel) {
         self.viewModel = viewModel
     }
     
-    func load(_ url: URL, for imageView: UIImageView, completion: @escaping (Bool) -> Void) {
-        viewModel.load(with: url) { [weak self] result in
-            guard let _ = self else { return }
-            switch result {
-            case .success(let data):
-                imageView.image = UIImage(data: data)
-                completion(true)
-            case .failure:
-                completion(false)
-            }
-        } completionDefer: { [weak self] in
-            guard let self = self else { return }
-            self.uuidMap.removeValue(forKey: imageView)
-        } completionToken: { token in
-            uuidMap[imageView] = token
-        }
+    func load(_ url: URL, for imageView: UIImageView) {
+        var completeWithSuccess = false
+        viewModel.dataPublishSubject.observe(on: MainScheduler.instance).subscribe(onNext: { data in
+            imageView.image = UIImage(data: data)
+            completeWithSuccess = true
+        }, onCompleted: { [weak self] in
+            self?.completePublishSubject.onNext(completeWithSuccess)
+        }).disposed(by: disposeBag)
+        
+        viewModel.deferPublishSubject.subscribe(onNext: { [weak self] in
+            self?.uuidMap.removeValue(forKey: imageView)
+        }).disposed(by: disposeBag)
+        
+        viewModel.tokenPublishSubject.subscribe(onNext: { [weak self] token in
+            self?.uuidMap[imageView] = token
+        }).disposed(by: disposeBag)
+        
+        viewModel.load(to: url)
     }
     
     func cancel(for imageView: UIImageView) {
-        viewModel.cancel {
-            return uuidMap[imageView]
-        } completion: {
-            uuidMap.removeValue(forKey: imageView)
-        }
+        viewModel.cancelPublishSubject.subscribe(onNext: { [weak self] in
+            self?.uuidMap.removeValue(forKey: imageView)
+        }).disposed(by: disposeBag)
+        viewModel.cancel()
+        viewModel.uuidPublishSubject.onNext(uuidMap[imageView])
     }
 }

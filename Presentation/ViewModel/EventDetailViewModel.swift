@@ -9,8 +9,6 @@ import Foundation
 import RxSwift
 import Domain
 
-public typealias CheckInModel = Domain.CheckInModel
-
 public class EventDetailViewModel {
     private let getEventDetail: GetEventDetail
     public let alertPublishSubject = PublishSubject<AlertModel>()

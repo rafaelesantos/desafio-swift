@@ -6,39 +6,31 @@
 //
 
 import Foundation
+import RxSwift
 import Domain
 
 public class RemoteImageLoader: ImageLoader {
     public var loadedImages: [URL : Data] = [:]
     public var runningRequests: [UUID : URLSessionDataTask] = [:]
     private let httpClient: HttpGetClient
+    public var tokenPublishSubject = PublishSubject<UUID>()
 
     public init(httpClient: HttpGetClient) {
         self.httpClient = httpClient
     }
     
-    public func loadImage(with url: URL, completion: @escaping (ImageLoader.Result) -> Void) -> UUID? {
+    public func load(to url: URL) -> Observable<Data> {
         if let data = loadedImages[url] {
-            completion(.success(data))
-            return nil
+            return .just(data)
         }
         let uuid = UUID()
-        let task = httpClient.get(to: url) { [weak self] result in
-            guard let self = self else { return }
-            defer { self.runningRequests.removeValue(forKey: uuid) }
-            switch result {
-            case .success(let data):
-                if let data = data, data.isEmpty == false {
-                    self.loadedImages[url] = data
-                    completion(.success(data))
-                } else {
-                    completion(.failure(.unexpected))
-                }
-            case .failure: completion(.failure(.unexpected))
-            }
+        tokenPublishSubject.onNext(uuid)
+        return httpClient.get(to: url, completionTask: { [weak self] task in
+            self?.runningRequests[uuid] = task
+        }).catch { _ in return .error(DomainError.unexpected) }.flatMap { data -> Observable<Data> in
+            guard data.isEmpty == false else { return .error(DomainError.unexpected) }
+            return .just(data)
         }
-        runningRequests[uuid] = task
-        return uuid
     }
     
     public func cancelLoad(_ uuid: UUID) {

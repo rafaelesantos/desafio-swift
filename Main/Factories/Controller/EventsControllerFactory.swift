@@ -12,8 +12,7 @@ import Domain
 
 public func makeEventsController(getEvents: GetEvents, imageLoader: ImageLoader) -> EventsViewController {
     let viewModel = EventsViewModel(getEvents: getEvents)
-    let imageLoaderModel = ImageLoaderModel(loader: imageLoader)
-    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoaderModel)
+    let imageLoaderViewModel = ImageLoaderViewModel(imageLoader: imageLoader)
     let uiImageLoader = UIImageLoader(viewModel: imageLoaderViewModel)
     let controller = EventsViewController(viewModel: viewModel, imageLoader: uiImageLoader) { eventID in
         let httpClient = makeNetworkAdapter()

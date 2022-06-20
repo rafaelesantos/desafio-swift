@@ -39,25 +39,3 @@ extension MainQueueDispatchDecorator: AddCheckIn where T: AddCheckIn {
         instance.add(with: model).observe(on: MainScheduler.instance)
     }
 }
-
-extension MainQueueDispatchDecorator: ImageLoader where T: ImageLoader {
-    public var loadedImages: [URL : Data] {
-        get { return instance.loadedImages }
-        set(newValue) { instance.loadedImages = newValue }
-    }
-    
-    public var runningRequests: [UUID : URLSessionDataTask] {
-        get { return instance.runningRequests }
-        set(newValue) { instance.runningRequests = newValue }
-    }
-    
-    public func cancelLoad(_ uuid: UUID) {
-        instance.cancelLoad(uuid)
-    }
-    
-    public func loadImage(with url: URL, completion: @escaping (ImageLoader.Result) -> Void) -> UUID? {
-        instance.loadImage(with: url) { [weak self] result in
-            self?.dispatch { completion(result) }
-        }
-    }
-}

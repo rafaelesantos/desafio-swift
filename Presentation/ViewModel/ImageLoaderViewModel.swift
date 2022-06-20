@@ -10,18 +10,39 @@ import RxSwift
 import Domain
 
 public class ImageLoaderViewModel {
+    public var imageLoader: ImageLoader
+    public let dataPublishSubject = PublishSubject<Data>()
+    public let deferPublishSubject = PublishSubject<Void>()
+    public let tokenPublishSubject = PublishSubject<UUID>()
     public let loadingPublishSubject = PublishSubject<LoadingModel>()
-    private let imageLoader: ImageLoaderProtocol
+    public let uuidPublishSubject = PublishSubject<UUID?>()
+    public let cancelPublishSubject = PublishSubject<Void>()
+    private let disposeBag = DisposeBag()
     
-    public init(imageLoader: ImageLoaderProtocol) {
+    public init(imageLoader: ImageLoader) {
         self.imageLoader = imageLoader
     }
-
-    public func load(with url: URL, for completion: @escaping (ImageLoader.Result) -> Void, completionDefer: @escaping () -> Void, completionToken: (UUID) -> Void) {
-        imageLoader.load(with: url, for: completion, completionDefer: completionDefer, completionToken: completionToken) { _ in }
+    
+    public func load(to url: URL) {
+        loadingPublishSubject.onNext(.init(isLoading: true))
+        imageLoader.tokenPublishSubject.subscribe(onNext: { [weak self] token in
+            self?.tokenPublishSubject.onNext(token)
+        }).disposed(by: disposeBag)
+        imageLoader.load(to: url).subscribe(onNext: { [weak self] data in
+            self?.dataPublishSubject.onNext(data)
+            self?.dataPublishSubject.onCompleted()
+        }, onCompleted: { [weak self] in
+            defer { self?.deferPublishSubject.onNext(()) }
+            self?.loadingPublishSubject.onNext(.init(isLoading: false))
+        }).disposed(by: disposeBag)
     }
     
-    public func cancel(completionUUID: () -> UUID?, completion: () -> Void) {
-        imageLoader.cancel(completionUUID: completionUUID) { completion()}
+    public func cancel() {
+        uuidPublishSubject.subscribe(onNext: { [weak self] uuid in
+            if let uuid = uuid {
+                self?.imageLoader.cancelLoad(uuid)
+                self?.cancelPublishSubject.onNext(())
+            }
+        }).disposed(by: disposeBag)
     }
 }

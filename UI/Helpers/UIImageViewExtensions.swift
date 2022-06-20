@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 import Presentation
 
 extension UIImageView {
-    func loadImage(at url: URL, with loader: UIImageLoader, completion: @escaping (Bool) -> Void) {
-        loader.load(url, for: self, completion: completion)
+    func loadImage(at url: URL, with uiImageLoader: UIImageLoader) -> Observable<Bool> {
+        uiImageLoader.load(url, for: self)
+        return uiImageLoader.completePublishSubject.asObserver().observe(on: MainScheduler.instance)
     }
     
-    func cancelImageLoad(with loader: UIImageLoader) {
-        loader.cancel(for: self)
+    func cancelImageLoad(with uiImageLoader: UIImageLoader) {
+        uiImageLoader.cancel(for: self)
     }
 }

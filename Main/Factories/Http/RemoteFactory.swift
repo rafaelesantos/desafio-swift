@@ -21,7 +21,7 @@ func makeRemoteGetEventDetail(httpClient: HttpGetClient) -> GetEventDetail {
 
 func makeRemoteImageLoader(httpClient: HttpGetClient) -> ImageLoader {
     let remoteImageLoader = RemoteImageLoader(httpClient: httpClient)
-    return MainQueueDispatchDecorator(remoteImageLoader)
+    return remoteImageLoader
 }
 
 func makeRemoteAddCheckIn(httpClient: HttpPostClient) -> AddCheckIn {
