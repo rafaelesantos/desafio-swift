@@ -29,8 +29,10 @@ public class CheckInViewModel {
             if model.email.isEmpty == false, model.email.isValidEmail() {
                 addCheckIn.add(with: model).subscribe(onNext: { [weak self] checkIn in
                     self?.checkInPublishSubject.onNext(checkIn)
+                    self?.loadingPublishSubject.onNext(.init(isLoading: false))
                 }, onError: { [weak self] _ in
                     self?.alertPublishSubject.onNext(.init(title: "Erro", message: "Algo inesperado aconteceu, tente novamente em alguns instantes."))
+                    self?.loadingPublishSubject.onNext(.init(isLoading: false))
                 }, onCompleted: { [weak self] in
                     self?.loadingPublishSubject.onNext(.init(isLoading: false))
                 }).disposed(by: disposeBag)
