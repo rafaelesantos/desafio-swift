@@ -113,7 +113,12 @@ public final class EventDetailViewController: UIViewController {
             }
             checkInView.descriptionLabel.text = "Para efetuar o check in em - \(event.title ?? "") - informe seu nome e e-mail abaixo."
             view.addSubview(checkInView)
-            NSLayoutConstraint.activate(checkInView.constraintsForAnchoringTo(boundsOf: view, constant: 0))
+            NSLayoutConstraint.activate([
+                checkInView.topAnchor.constraint(equalTo: navigationController?.navigationBar != nil ? navigationController!.navigationBar.bottomAnchor : view.safeAreaLayoutGuide.topAnchor),
+                checkInView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                checkInView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                checkInView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
         }
     }
     
