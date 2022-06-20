@@ -32,8 +32,8 @@ class RemoteAddCheckInTests: XCTestCase {
 
     func testAddShouldCompleteWithAccountIfClientCompletesWithValidData() {
         let (sut, httpClientSpy) = makeSut()
-        let model = CheckInModel()
-        expect(sut, completeWith: .success(CheckInModel()), when: {
+        let model = makeValidChackInModel()
+        expect(sut, completeWith: .success(makeValidChackInModel()), when: {
             httpClientSpy.completeWithData(model.toData()!)
         })
     }

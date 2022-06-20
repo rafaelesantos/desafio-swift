@@ -32,6 +32,14 @@ func makeAddCheckInModel() -> AddCheckInModel {
     )
 }
 
+func makeValidChackInModel() -> CheckInModel {
+    return CheckInModel(
+        name: "any-name",
+        email: "any-email@mail.com",
+        eventId: "0"
+    )
+}
+
 func makeEventDetailModel() -> EventModel {
     return EventModel(
         description: "any-description",
