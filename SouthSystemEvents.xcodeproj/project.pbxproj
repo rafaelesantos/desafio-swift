@@ -11,13 +11,19 @@
 		4C523057285D9AB8004A649E /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523056285D9AB8004A649E /* CheckInView.swift */; };
 		4C523059285E5D76004A649E /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523058285E5D76004A649E /* UIStackViewExtensions.swift */; };
 		4C52305C285FA00A004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C52305B285FA00A004A649E /* RxSwift */; };
-		4C52305E285FA0A7004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C52305D285FA0A7004A649E /* RxSwift */; };
 		4C523061285FA2D8004A649E /* URLSessiosExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */; };
 		4C523063285FA446004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523062285FA446004A649E /* RxSwift */; };
 		4C523065285FA5ED004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523064285FA5ED004A649E /* RxSwift */; };
 		4C523067285FA92D004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523066285FA92D004A649E /* RxSwift */; };
 		4C523069285FB235004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C523068285FB235004A649E /* RxSwift */; };
 		4C52306B285FCA27004A649E /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52306A285FCA27004A649E /* CheckInViewModel.swift */; };
+		4C5230742860301F004A649E /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F02328553B1E00EBCB41 /* Data.framework */; };
+		4C5230902860322A004A649E /* RxBlocking-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4C52308D2860322A004A649E /* RxBlocking-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4C5230932860322A004A649E /* RxSwift-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4C5230912860322A004A649E /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4C5230962860322A004A649E /* RxTest-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4C5230942860322A004A649E /* RxTest-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4C5230C1286033DE004A649E /* RxCocoa-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4C5230BF286033DE004A649E /* RxCocoa-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4C5230C4286033DE004A649E /* RxRelay-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4C5230C2286033DE004A649E /* RxRelay-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4C5231072860356A004A649E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4C5231062860356A004A649E /* RxSwift */; };
 		4CBE2E3A28582B6E00297862 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3928582B6E00297862 /* EventsViewController.swift */; };
 		4CBE2E3D2858328000297862 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */; };
 		4CBE2E3E285834C700297862 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF2F0B828570BEE00EBCB41 /* Presentation.framework */; };
@@ -91,6 +97,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C5230752860301F004A649E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CF2EFD32855320700EBCB41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CF2F02228553B1E00EBCB41;
+			remoteInfo = Data;
+		};
 		4CBE2E40285834C700297862 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CF2EFD32855320700EBCB41 /* Project object */;
@@ -164,6 +177,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4C52308F2860322A004A649E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4C5230C1286033DE004A649E /* RxCocoa-Dynamic in Embed Frameworks */,
+				4C5230C4286033DE004A649E /* RxRelay-Dynamic in Embed Frameworks */,
+				4C5230962860322A004A649E /* RxTest-Dynamic in Embed Frameworks */,
+				4C5230932860322A004A649E /* RxSwift-Dynamic in Embed Frameworks */,
+				4C5230902860322A004A649E /* RxBlocking-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBE2E42285834C700297862 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +260,7 @@
 		4C523058285E5D76004A649E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		4C523060285FA2D8004A649E /* URLSessiosExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessiosExtensions.swift; sourceTree = "<group>"; };
 		4C52306A285FCA27004A649E /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
+		4C5230702860301F004A649E /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBE2E3928582B6E00297862 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		4CBE2E3C2858328000297862 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		4CBE2E4928583EEB00297862 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +323,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C52306D2860301F004A649E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5230742860301F004A649E /* Data.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBE2E59285853B200297862 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,7 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C52305E285FA0A7004A649E /* RxSwift in Frameworks */,
+				4C5231072860356A004A649E /* RxSwift in Frameworks */,
 				4CF2F03928553B4500EBCB41 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +572,7 @@
 				4CF2F0B828570BEE00EBCB41 /* Presentation.framework */,
 				4CF2F0EE285725C100EBCB41 /* UI.framework */,
 				4CBE2E5C285853B200297862 /* Main.app */,
+				4C5230702860301F004A649E /* DataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -722,6 +760,32 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4C52306F2860301F004A649E /* DataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C5230772860301F004A649E /* Build configuration list for PBXNativeTarget "DataTests" */;
+			buildPhases = (
+				4C52306C2860301F004A649E /* Sources */,
+				4C52306D2860301F004A649E /* Frameworks */,
+				4C52306E2860301F004A649E /* Resources */,
+				4C52308F2860322A004A649E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C5230762860301F004A649E /* PBXTargetDependency */,
+			);
+			name = DataTests;
+			packageProductDependencies = (
+				4C52308D2860322A004A649E /* RxBlocking-Dynamic */,
+				4C5230912860322A004A649E /* RxSwift-Dynamic */,
+				4C5230942860322A004A649E /* RxTest-Dynamic */,
+				4C5230BF286033DE004A649E /* RxCocoa-Dynamic */,
+				4C5230C2286033DE004A649E /* RxRelay-Dynamic */,
+			);
+			productName = DataTests;
+			productReference = 4C5230702860301F004A649E /* DataTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4CBE2E5B285853B200297862 /* Main */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CBE2E83285853B600297862 /* Build configuration list for PBXNativeTarget "Main" */;
@@ -786,7 +850,7 @@
 			);
 			name = Data;
 			packageProductDependencies = (
-				4C52305D285FA0A7004A649E /* RxSwift */,
+				4C5231062860356A004A649E /* RxSwift */,
 			);
 			productName = Data;
 			productReference = 4CF2F02328553B1E00EBCB41 /* Data.framework */;
@@ -872,6 +936,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					4C52306F2860301F004A649E = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					4CBE2E5B285853B200297862 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -919,11 +986,19 @@
 				4CF2F0B728570BEE00EBCB41 /* Presentation */,
 				4CF2F0ED285725C100EBCB41 /* UI */,
 				4CBE2E5B285853B200297862 /* Main */,
+				4C52306F2860301F004A649E /* DataTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C52306E2860301F004A649E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBE2E5A285853B200297862 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -971,6 +1046,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4C52306C2860301F004A649E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBE2E58285853B200297862 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1069,6 +1151,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C5230762860301F004A649E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CF2F02228553B1E00EBCB41 /* Data */;
+			targetProxy = 4C5230752860301F004A649E /* PBXContainerItemProxy */;
+		};
 		4CBE2E41285834C700297862 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CF2F0B728570BEE00EBCB41 /* Presentation */;
@@ -1133,6 +1220,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4C5230782860301F004A649E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.rafaelescaleira.SouthSystemEvents.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C5230792860301F004A649E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.rafaelescaleira.SouthSystemEvents.DataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4CBE2E84285853B600297862 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CBE2EB428586C6800297862 /* Debug.xcconfig */;
@@ -1621,6 +1738,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C5230772860301F004A649E /* Build configuration list for PBXNativeTarget "DataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C5230782860301F004A649E /* Debug */,
+				4C5230792860301F004A649E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		4CBE2E83285853B600297862 /* Build configuration list for PBXNativeTarget "Main" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1703,11 +1829,6 @@
 			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		4C52305D285FA0A7004A649E /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
 		4C523062285FA446004A649E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
@@ -1724,6 +1845,36 @@
 			productName = RxSwift;
 		};
 		4C523068285FB235004A649E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4C52308D2860322A004A649E /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		4C5230912860322A004A649E /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+		4C5230942860322A004A649E /* RxTest-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxTest-Dynamic";
+		};
+		4C5230BF286033DE004A649E /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		4C5230C2286033DE004A649E /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		4C5231062860356A004A649E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C52305A285FA00A004A649E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
