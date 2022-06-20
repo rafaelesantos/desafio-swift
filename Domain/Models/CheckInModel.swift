@@ -8,9 +8,13 @@
 import Foundation
 
 public struct CheckInModel: Model {
-    public var value: String?
+    public var name: String?
+    public var email: String?
+    public var eventId: String?
     
-    public init(value: String? = nil) {
-        self.value = value
+    public init(name: String?, email: String?, eventId: String?) {
+        self.name = name
+        self.email = email
+        self.eventId = eventId
     }
 }
