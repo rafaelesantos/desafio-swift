@@ -26,7 +26,9 @@ Para realizar o check-in faça um POST no seguinte endereço: http://5f5a8f24d44
 
 O POST deve conter os dados do interessado (Nome, e-mail) e o id do evento. Ex:
 
+```json
 { "eventId": "1", "name": "Otávio", "email": "otavio_souza@..." }
+```
 
 #### Dicas
 - Faça commits frequentes. Queremos entender como você pensa :)
